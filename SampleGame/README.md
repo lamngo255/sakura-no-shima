@@ -41,6 +41,13 @@ $ git checkout -b <branch_name>
 $ git push origin <branch_name>
 ```
 
+### Checkout to other branch
+```sh
+$ git branch -a  # view branches list
+$ git fetch 	 # get all remote branches
+$ git checkout <new_branch> # go to new_branch
+```
+
 ### Edit commit message (in case of merging two commits)
 ```sh
 $ git commit --amend
