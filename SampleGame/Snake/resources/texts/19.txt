@@ -1,0 +1,1 @@
+In game: Arrow keys to turn. Press P to pauseChange Replay Speed: Left and right arrow keys
