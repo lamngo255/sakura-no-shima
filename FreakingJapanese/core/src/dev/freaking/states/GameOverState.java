@@ -9,11 +9,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import dev.freaking.controller.HightScoreData;
+import dev.freaking.controller.HighScoreData;
+import dev.freaking.main.Handler;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 
-public class GameOverState extends GameState {
+public class GameOverState extends State {
 
 	private Label noiDung, Score, BestScore;
 	private LabelStyle style;
@@ -27,8 +28,8 @@ public class GameOverState extends GameState {
 	private int screenWidth = Gdx.graphics.getWidth();
 	private int screenHight = Gdx.graphics.getHeight();
 
-	public GameOverState(final GameStateManager gsm) {
-		super(gsm);
+	public GameOverState(final Handler handler, final GameStateManager gsm) {
+		super(handler, gsm);
 		generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese2.ttc"));
 		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
@@ -42,9 +43,9 @@ public class GameOverState extends GameState {
 
 		noiDung = new Label("GAME OVER", style);
 		noiDung.setPosition((float) (screenWidth*0.32), (float) (screenHight*0.6));
-		Score = new Label("Score: " + Play.getHighScore(), style);
+		Score = new Label("Score: " + PlayState.getHighScore(), style);
 		Score.setPosition((float) (screenWidth*0.35), (float) (screenHight*0.54));
-		BestScore = new Label("Best: " + HightScoreData.getScoreData(), style);
+		BestScore = new Label("Best: " + HighScoreData.getScoreData(), style);
 		BestScore.setPosition((float) (screenWidth*0.35), (float) (screenHight*0.48));
 
 		btnTryStyle = new TextButton.TextButtonStyle(); //** Button properties **//
@@ -75,7 +76,7 @@ public class GameOverState extends GameState {
 				style.font.dispose();
 				buttonsAtlas.dispose();
 				generator.dispose();
-				gsm.pushState(1);
+				gsm.set(new PlayState(handler, gsm));
 				stage.getRoot().getColor().a = 0;
 				stage.getRoot().addAction(fadeIn(0.5f));
 			}
@@ -95,7 +96,7 @@ public class GameOverState extends GameState {
 				btnMainStyle.font.dispose();
 				buttonsAtlas.dispose();
 				generator.dispose();
-				gsm.pushState(0);
+				gsm.set(new MenuState(handler, gsm));
 				stage.getRoot().getColor().a = 0;
 				stage.getRoot().addAction(fadeIn(0.5f));
 			}
@@ -116,6 +117,11 @@ public class GameOverState extends GameState {
 		stage.addActor(BestScore);
 		stage.addActor(btn);
 		stage.addActor(btnMainMenu);
+	}
+
+	@Override
+	public void dispose() {
+
 	}
 
 }

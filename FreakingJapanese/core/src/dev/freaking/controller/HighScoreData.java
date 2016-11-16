@@ -3,23 +3,23 @@ package dev.freaking.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
-public class HightScoreData {
+public class HighScoreData {
 
-	public static Preferences HightScore;
+	public static Preferences highScore;
 	public static int Score;
 
 	public static void load() {
-		HightScore = Gdx.app.getPreferences("MathScore");
+		highScore = Gdx.app.getPreferences("MathScore");
 	}
 
 	public static int getScoreData() {
-		Score = HightScore.getInteger("Score");
-		HightScore.flush();
+		Score = highScore.getInteger("Score");
+		highScore.flush();
 		return Score;
 	}
 	
 	public static void addScore(int Score) {
-		HightScore.putInteger("Score", Score);
-		HightScore.flush();
+		highScore.putInteger("Score", Score);
+		highScore.flush();
 	}
 }
