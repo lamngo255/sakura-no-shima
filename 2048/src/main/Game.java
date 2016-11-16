@@ -26,13 +26,12 @@ public class Game extends JPanel implements KeyListener, Runnable {
         setFocusable(true);
         setPreferredSize(new Dimension(width, height));
         addKeyListener(this);
-        gameBoard = new GameBoard(WIDTH/2-GameBoard.BOARD_WIDTH/2,HEIGHT-GameBoard.BOARD_HEIGHT-10);
+        gameBoard = new GameBoard((width/2-GameBoard.BOARD_WIDTH/2),(height-GameBoard.BOARD_HEIGHT-10));
 
     }
 
     private void update() {
         gameBoard.update();
-
         KeyBoard.update();
     }
 
@@ -41,8 +40,8 @@ public class Game extends JPanel implements KeyListener, Runnable {
         g.setColor(Color.white);
         g.fillRect(0, 0, width, height);
         gameBoard.render(g);
-        //render board
         g.dispose();
+        //render board
         Graphics2D g2d = (Graphics2D) getGraphics();
         g2d.drawImage(bufferedImage,0,0,null);
         g2d.dispose();
@@ -84,6 +83,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
 
             while (unprocessed >= 1) {
                 update++;
+
                 update();
                 unprocessed--;
                 souldrender = true;

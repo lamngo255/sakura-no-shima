@@ -12,7 +12,7 @@ public class Title {
     public static final int SLIDE_SPEED = 20;
     public static final int ARC_WIDTH = 15;
     public static final int ARC_HEIGHT = 15;
-
+    private Point slideTo;
     private int value;
     private BufferedImage titleImage;
     private Color background;
@@ -20,6 +20,17 @@ public class Title {
     private Font font;
     private int x;
     private int y;
+
+    private boolean canCombine;
+
+    public boolean setCanCombine() {
+        return canCombine;
+    }
+
+    public void setCanCombine(boolean canCombine) {
+        this.canCombine = canCombine;
+    }
+
 
     public Title(int value, int x, int y) {
         this.value = value;
@@ -39,31 +50,31 @@ public class Title {
             text = new Color(0x000000);
         } else if (value == 8) {
             background = new Color(0xf79d3d);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 16) {
             background = new Color(0xf28007);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 32) {
             background = new Color(0xf55e3b);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 64) {
             background = new Color(0xff0000);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 128) {
             background = new Color(0xe9de84);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 256) {
             background = new Color(0xf6e873);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 512) {
             background = new Color(0xf5e455);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 1024) {
             background = new Color(0xf7e12c);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else if (value == 2048) {
             background = new Color(0xffe400);
-            text = new Color(0xfffff);
+            text = new Color(0x000000);
         } else {
             background = Color.black;
             text = Color.white;
@@ -80,8 +91,28 @@ public class Title {
         }
         g.setFont(font);
         int drawX = WIDTH / 2 - DrawUtils.getMessageWidth("" + value, font, g) / 2;
-        int drawY = HEIGHT / 2 - DrawUtils.getMessageWidth("" + value, font, g) / 2;
+        int drawY = HEIGHT / 2 + DrawUtils.getMessageHeight("" + value, font, g) / 2;
         g.drawString("" + value, drawX, drawY);
         g.dispose();
+    }
+
+    public void update() {
+
+    }
+
+    public void render(Graphics2D g) {
+        g.drawImage(titleImage, x, y, null);
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public Point getSlideTo() {
+        return slideTo;
+    }
+
+    public void setSlideTo(Point slideTo) {
+        this.slideTo = slideTo;
     }
 }
