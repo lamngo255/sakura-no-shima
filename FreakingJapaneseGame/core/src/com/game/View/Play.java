@@ -59,7 +59,7 @@ public class Play extends com.game.Controller.GameState {
         r = new Random();
      //   System.out.println("num: "+num);
         alphabets = getAlphabet.getAllAlphabet(num);
-
+        blendAlpList();
         styleCont = new LabelStyle();
         styleScore = new LabelStyle();
 
@@ -74,15 +74,9 @@ public class Play extends com.game.Controller.GameState {
 
 //init label japanese
         parameterCont.size = (int)(screenWidth*0.33);
-        String character = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにょにゅひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ";
-        character+="アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポキャキュキョシャシュショチャチュチョニャニュニョミャミュミョヒャヒュヒョリャリョリュギャギュギョジャジュジョビャビュビョピャプオピュ";
-     //   String character="そ";
-//        for(Alphabet alp:alphabets){
-//                character += alp.getJapansese();
-//        }
-        blendAlpList();
-        System.out.println("character: "+character);
+        String character=alphabets.get(currentAlp).getJapansese();
         parameterCont.characters=character;
+        System.out.println("character: "+parameterCont.characters);
         styleCont.font = generator.generateFont(parameterCont);
 
         jpnContent = new Label("0", styleCont);
@@ -110,10 +104,11 @@ public class Play extends com.game.Controller.GameState {
 //        case1IMG.setY((float) (screenHight * 0.006));
 
         //button
-        String character1 = "zxcvbnmasdfghjklqwertyuiop";
-        for(Alphabet alp:alphabets){
-            character1 += alp.getLatin();
-        }
+       String character1 = "zxcvbnmasdfghjklqwertyuiop";
+//        for(Alphabet alp:alphabets){
+//            character1 += alp.getLatin();
+//        }
+
 
         btnCase1Style = new TextButton.TextButtonStyle(); //** Button properties **//
         btnCase1Style.up = btnSkin.getDrawable("ButtonUp");
@@ -122,6 +117,9 @@ public class Play extends com.game.Controller.GameState {
         parameterCase.size=(int)(screenWidth*0.27);
         parameterCase.color=Color.RED;
         btnCase1Style.font = generator.generateFont(parameterCase);
+
+       generator.dispose();
+
         btnCase1 = new TextButton("", btnCase1Style);
 
         btnCase2 = new TextButton("", btnCase1Style);
@@ -162,11 +160,41 @@ public class Play extends com.game.Controller.GameState {
             }
         }
         if (nd) {
+            jpnContent.clear();
+            parameterCase.characters="";
+            parameterCont.characters="";
+            btnSkin.dispose();
+            styleCont.font.dispose();
+            btnCase1Style.font.dispose();
+
+            generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese4.ttf"));
+            //Update label japanese content
+            styleCont = new LabelStyle();
+            parameterCont = new FreeTypeFontGenerator.FreeTypeFontParameter();
+            parameterCont.size = (int)(screenWidth*0.33);
+            String character=alphabets.get(currentAlp).getJapansese();
+            parameterCont.characters=character;
+            styleCont.font = generator.generateFont(parameterCont);
+
+            jpnContent.setStyle(styleCont);
             String text = alphabets.get(currentAlp).getJapansese();
             if(text.length()==1){
                 text=" "+text+" ";
             }
+
             jpnContent.setText(text);
+
+            //update button case content
+            btnCase1Style = new TextButton.TextButtonStyle(); //** Button properties **//
+            btnCase1Style.up = btnSkin.getDrawable("ButtonUp");
+            btnCase1Style.down = btnSkin.getDrawable("ButtonDown");
+            parameterCase.characters=caseLT1+caseLT2;;
+            parameterCase.size=(int)(screenWidth*0.27);
+            parameterCase.color=Color.RED;
+            btnCase1Style.font = generator.generateFont(parameterCase);
+            generator.dispose();
+            btnCase1.setStyle(btnCase1Style);
+            btnCase2.setStyle(btnCase1Style);
             btnCase1.setText(caseLT1);
             btnCase2.setText(caseLT2);
         } else{
@@ -183,7 +211,7 @@ public class Play extends com.game.Controller.GameState {
             styleScore.font.dispose();
             btnCase1Style.font.dispose();
             buttonsAtlas.dispose();
-            generator.dispose();
+       //     generator.dispose();
             gsm.pusState(2);
             stage.getRoot().getColor().a = 0;
             stage.getRoot().addAction(fadeIn(0.5f));

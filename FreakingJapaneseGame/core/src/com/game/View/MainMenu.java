@@ -68,6 +68,7 @@ public class MainMenu extends GameState {
 		btnBothStyle.up = skin.getDrawable("ButtonUp");
 		btnBothStyle.down = skin.getDrawable("ButtonDown");
 		btnBothStyle.font = generator.generateFont(parameter);
+		generator.dispose();
 
 		btnBoth = new TextButton("Hira and Kata", btnBothStyle);
 		btnHira.setBounds((float) (screenWidth*0.27), (float) (screenHight*0.4), (float) (screenWidth*0.5), (float) (screenHight*0.1));
@@ -88,7 +89,7 @@ public class MainMenu extends GameState {
 				btnKataStyle.font.dispose();
 				btnBothStyle.font.dispose();
 				btnHiraStyle.font.dispose();
-				generator.dispose();
+			//	generator.dispose();
 				gsm.pusState(1);
 				stage.getRoot().getColor().a = 0;
 				stage.getRoot().addAction(fadeIn(0.5f));
@@ -109,7 +110,7 @@ public class MainMenu extends GameState {
 				btnKataStyle.font.dispose();
 				btnBothStyle.font.dispose();
 				btnHiraStyle.font.dispose();
-				generator.dispose();
+			//	generator.dispose();
 				gsm.pusState(1);
 				stage.getRoot().getColor().a = 0;
 				stage.getRoot().addAction(fadeIn(0.5f));
@@ -130,7 +131,7 @@ public class MainMenu extends GameState {
 				btnKataStyle.font.dispose();
 				btnBothStyle.font.dispose();
 				btnHiraStyle.font.dispose();
-				generator.dispose();
+			//	generator.dispose();
 				gsm.pusState(1);
 				stage.getRoot().getColor().a = 0;
 				stage.getRoot().addAction(fadeIn(0.5f));

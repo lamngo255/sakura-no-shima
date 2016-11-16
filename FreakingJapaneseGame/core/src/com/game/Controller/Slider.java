@@ -33,7 +33,7 @@ public class Slider {
 
 	public void update() {
 		if (running) {
-			ilong -= screenWidth*0.005;
+			ilong -= screenWidth*0.015;
 			slider.setWidth(ilong);
 			slider.invalidate();
 		}
