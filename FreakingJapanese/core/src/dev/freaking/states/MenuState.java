@@ -46,7 +46,7 @@ public class MenuState extends State {
     }
 
     private void initFontGenerator() {
-        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese2.ttc"));
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         style = new LabelStyle();
     }
@@ -96,7 +96,7 @@ public class MenuState extends State {
             public void touchUp(InputEvent event, float x, float y,
                                 int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-                PlayState.setNum(1);
+                PlayState.setAlphabetType(1);
                 gsm.set(new PlayState(handler, gsm));
                 stage.getRoot().getColor().a = 0;
                 stage.getRoot().addAction(fadeIn(0.5f));
@@ -109,7 +109,7 @@ public class MenuState extends State {
             public void touchUp(InputEvent event, float x, float y,
                                 int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-                PlayState.setNum(2);
+                PlayState.setAlphabetType(2);
                 gsm.set(new PlayState(handler, gsm));
                 stage.getRoot().getColor().a = 0;
                 stage.getRoot().addAction(fadeIn(0.5f));
@@ -122,7 +122,7 @@ public class MenuState extends State {
             public void touchUp(InputEvent event, float x, float y,
                                 int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-                PlayState.setNum(0);
+                PlayState.setAlphabetType(0);
                 gsm.set(new PlayState(handler, gsm));
                 stage.getRoot().getColor().a = 0;
                 stage.getRoot().addAction(fadeIn(0.5f));
