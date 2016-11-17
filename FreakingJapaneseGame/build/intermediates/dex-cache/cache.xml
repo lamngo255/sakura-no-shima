@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\FreakingJapaneseGame\android\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="cd18cbacf06e4f8bc4c7336038107f384ed1aec3">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_186e06f4f5adf7125aa8076a2bfb7cc97933de7a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\MinhQ\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.4\8816dd669b8ca09e7d5e9575807e92c4318f708\gdx-freetype-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="08816dd669b8ca09e7d5e9575807e92c4318f708">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-freetype-1.9.4_85b0bff505d52b4eae2c73a9784cf864f2163426\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\MinhQ\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-controllers-android\1.9.4\dd3d37ac9f03084edc1b1d9aa7c7b3e08b6744a3\gdx-controllers-android-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd3d37ac9f03084edc1b1d9aa7c7b3e08b6744a3">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-controllers-android-1.9.4_5d80287fb09ea0a0de121f8b8045ad3a32a6093c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\FreakingJapaneseGame\android\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="229ca2d588d1788c466ee712d9686a33a13871b7">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fa88b1435620f1c294fcc32b6e6f7f52bc1a4bb5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\MinhQ\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.4\4b4b7962d1bc75af0438f5c81ec1010557bc9ee5\gdx-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4b4b7962d1bc75af0438f5c81ec1010557bc9ee5">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-1.9.4_743f3f04e491e6ca72c1e800ddcd87ed7bed35cc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\MinhQ\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.4\98a0d25c9f0637fecac6e4aacf7287aa635964f5\gdx-box2d-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="98a0d25c9f0637fecac6e4aacf7287aa635964f5">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-box2d-1.9.4_2ad1db11dea4e7caf504abe9eb5d8c63d244a597\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\MinhQ\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-controllers\1.9.4\d182ca36785df4226ef63009a3d96462952665c3\gdx-controllers-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d182ca36785df4226ef63009a3d96462952665c3">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-controllers-1.9.4_a2609d13e689c166a4604582ef656caf81c16c4f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\MinhQ\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.4\194b33382d6d58fad031521ba3331d926c476c9b\gdx-backend-android-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="194b33382d6d58fad031521ba3331d926c476c9b">
+        <dex dex="D:\FreakingJapaneseGame\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-backend-android-1.9.4_905e7f4c8fa01c2c5f36c4463d519bb2d8dc4854\classes.dex" />
+    </item>
+
+</items>

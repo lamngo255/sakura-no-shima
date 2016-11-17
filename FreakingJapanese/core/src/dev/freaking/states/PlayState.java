@@ -76,7 +76,8 @@ public class PlayState extends State {
         FreeTypeFontGenerator.FreeTypeFontParameter paramJapan
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         paramJapan.size = (int) (screenWidth * 0.33);
-        paramJapan.characters = Alphabet.getAllCharacter();
+     //   paramJapan.characters = Alphabet.getAllCharacter();
+        paramJapan.characters = alphabets.get(currentAlphabet).getJapanese();
         japanLabelStyle.font = generator.generateFont(paramJapan);
 
         japanLabel = new Label("0", japanLabelStyle);
@@ -122,6 +123,7 @@ public class PlayState extends State {
             }
         }
         if (isCorrectAnswer) {
+            initJapaneseLabel();
             String text = alphabets.get(currentAlphabet).getJapanese();
             if (text.length() == 1) {
                 text = " " + text + " ";

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="moe-core">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.moe/moe-sdk-1.2.3/sdk/moe-core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.moe/moe-sdk-1.2.3/sdk/moe-core-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
