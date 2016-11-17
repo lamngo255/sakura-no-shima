@@ -2,10 +2,13 @@ package dev.freaking.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import dev.freaking.controller.HighScoreData;
@@ -31,6 +34,10 @@ public class PlayState extends State {
     private int bgColor;
     private TextButton.TextButtonStyle buttonStyle;
     private TextButton btnCase1, btnCase2;
+    private LabelStyle japanLabelStyle;
+    private Skin buttonSkin;
+    private TextureAtlas buttonsAtlas;
+    private LabelStyle scoreLabelStyle;
 
     private int screenWidth;
     private int screenHeight;
@@ -45,6 +52,7 @@ public class PlayState extends State {
         rand = new Random();
         Alphabet.initAlphabet();
         alphabets = Alphabet.getAlphabet(alphabetType);
+        blendAlpList();
 
         initJapaneseLabel();
         initScoreLabel();
@@ -72,7 +80,7 @@ public class PlayState extends State {
 
     private void initJapaneseLabel() {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
-        LabelStyle japanLabelStyle = new LabelStyle();
+        japanLabelStyle = new LabelStyle();
         FreeTypeFontGenerator.FreeTypeFontParameter paramJapan
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         paramJapan.size = (int) (screenWidth * 0.33);
@@ -85,9 +93,21 @@ public class PlayState extends State {
         generator.dispose();
     }
 
+    private void updateJapaneseLabel() {
+        japanLabelStyle.font.dispose();
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter paramJapan
+                = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        paramJapan.size = (int) (screenWidth * 0.33);
+        paramJapan.characters = alphabets.get(currentAlphabet).getJapanese();
+        japanLabelStyle.font = generator.generateFont(paramJapan);
+        japanLabel.setStyle(japanLabelStyle);
+        generator.dispose();
+    }
+
     private void initScoreLabel() {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
-        LabelStyle scoreLabelStyle = new LabelStyle();
+        scoreLabelStyle = new LabelStyle();
         FreeTypeFontGenerator.FreeTypeFontParameter paramScore
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         paramScore.size = (int) (screenWidth * 0.084);
@@ -95,14 +115,20 @@ public class PlayState extends State {
 
         scoreLabel = new Label("0", scoreLabelStyle);
         scoreLabel.setPosition((float) (screenWidth * 0.8), (float) (screenHeight * 0.8));
+        generator.dispose();
     }
 
     private void initButton() {
+        buttonsAtlas = new TextureAtlas("skin/ButtonSkin.txt");
+        buttonSkin= new Skin();
+        buttonSkin.addRegions(buttonsAtlas);//** skins for on and off **//
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter paramButton
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         buttonStyle = new TextButton.TextButtonStyle(); //** Button properties **//
-        paramButton.size = (int) (screenWidth * 0.27);
+        buttonStyle.up=buttonSkin.getDrawable("ButtonUp");
+        buttonStyle.down = buttonSkin.getDrawable("ButtonDown");
+        paramButton.size = (int) (screenWidth * 0.22);
         paramButton.color = Color.RED;
         buttonStyle.font = generator.generateFont(paramButton);
 
@@ -111,6 +137,21 @@ public class PlayState extends State {
         btnCase2 = new TextButton("", buttonStyle);
         btnCase1.setBounds((float) (screenWidth * 0.025), (float) (screenHeight * 0.006), (float) (screenWidth * 0.45), (float) (screenWidth * 0.45));
         btnCase2.setBounds((float) (screenWidth * 0.5 + screenWidth * 0.025), (float) (screenHeight * 0.006), (float) (screenWidth * 0.45), (float) (screenWidth * 0.45));
+        generator.dispose();
+    }
+    private void updateButton() {
+        buttonStyle.font.dispose();
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter paramButton
+                = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        paramButton.characters=caseLT1+caseLT2;
+        paramButton.size = (int) (screenWidth * 0.22);
+        paramButton.color = Color.RED;
+        buttonStyle.font = generator.generateFont(paramButton);
+
+        btnCase1.setStyle(buttonStyle);
+        btnCase2.setStyle(buttonStyle);
+        generator.dispose();
     }
 
     @Override
@@ -123,7 +164,8 @@ public class PlayState extends State {
             }
         }
         if (isCorrectAnswer) {
-            initJapaneseLabel();
+            updateJapaneseLabel();
+            updateButton();
             String text = alphabets.get(currentAlphabet).getJapanese();
             if (text.length() == 1) {
                 text = " " + text + " ";
@@ -150,7 +192,7 @@ public class PlayState extends State {
             Gdx.gl.glClearColor(64 / 255f, 64 / 255f, 64 / 255f, 64 / 255f);
         }
         if (bgColor == 1) {
-            Gdx.gl.glClearColor(1, 0, 0, 0);
+            Gdx.gl.glClearColor(109 / 255f, 135 / 255f, 100 / 255f, 64 / 255f);
         }
         if (bgColor == 2) {
             Gdx.gl.glClearColor(112 / 255f, 77 / 255f, 54 / 255f, 255 / 255f);
@@ -170,13 +212,17 @@ public class PlayState extends State {
         japanLabel.clear();
         scoreLabel.clear();
         buttonStyle.font.dispose();
+        buttonSkin.dispose();
+        buttonsAtlas.dispose();
+        scoreLabelStyle.font.dispose();
+        japanLabelStyle.font.dispose();
     }
 
     //get content of label case
     public void getContent() {
         trueLT = alphabets.get(currentAlphabet).getLatin();
         int index = rand.nextInt(alphabets.size());
-        while (alphabets.get(currentAlphabet).equals(alphabets.get(index))) {
+        while (currentAlphabet==index) {
             index = rand.nextInt(alphabets.size());
         }
         String falseLT = alphabets.get(index).getLatin();
@@ -205,6 +251,7 @@ public class PlayState extends State {
         }
         if (trueLT.equalsIgnoreCase(caseLT1.trim())) {
             highScore += 1;
+            updateCurrentAlp();
             slider.setIlong(screenWidth);
             Music.play("point");
             getContent();
@@ -222,6 +269,7 @@ public class PlayState extends State {
 
         if (!trueLT.equalsIgnoreCase(caseLT1.trim())) {
             highScore += 1;
+            updateCurrentAlp();
             slider.setIlong(screenWidth);
             Music.play("point");
             getContent();
@@ -242,6 +290,14 @@ public class PlayState extends State {
             Alphabet temp = alphabets.get(j);
             alphabets.set(j, alphabets.get(k));
             alphabets.set(k, temp);
+        }
+    }
+
+    public void updateCurrentAlp(){
+        currentAlphabet++;
+        if(currentAlphabet==alphabets.size()){
+            currentAlphabet=0;
+            blendAlpList();
         }
     }
 

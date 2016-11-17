@@ -30,7 +30,7 @@ public class GameOverState extends State {
 
     public GameOverState(final Handler handler, final GameStateManager gsm) {
         super(handler, gsm);
-        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese2.ttc"));
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         buttonsAtlas = new TextureAtlas("skin/ButtonMenu.txt"); //** button atlas image **//

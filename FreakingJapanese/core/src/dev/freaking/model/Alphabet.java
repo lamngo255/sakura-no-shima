@@ -8,9 +8,9 @@ import java.util.ArrayList;
  */
 
 public class Alphabet {
-    public static final int HIRAGANA = 0;
-    public static final int KATAKANA = 1;
-    public static final int MIX = 2;
+    public static final int HIRAGANA = 1;
+    public static final int KATAKANA = 2;
+    public static final int MIX = 0;
     private String japanese;
     private String latin;
     private int type;
@@ -105,7 +105,7 @@ public class Alphabet {
         alphabets.add(new Alphabet("nya", "にゃ", HIRAGANA));
         alphabets.add(new Alphabet("nyu", "にゅ", HIRAGANA));
         alphabets.add(new Alphabet("nyo", "にょ", HIRAGANA));
-        alphabets.add(new Alphabet("hya", "ゃ", HIRAGANA));
+        alphabets.add(new Alphabet("hya", "ひゃ", HIRAGANA));
         alphabets.add(new Alphabet("hyu", "ひゅ", HIRAGANA));
         alphabets.add(new Alphabet("hyo", "ひょ", HIRAGANA));
         alphabets.add(new Alphabet("mya", "みゃ", HIRAGANA));
