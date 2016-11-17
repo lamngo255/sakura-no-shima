@@ -1,7 +1,0 @@
-#Wed Nov 16 23:54:16 ICT 2016
-base.0=D\:\\FreakingJapaneseGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_fa88b1435620f1c294fcc32b6e6f7f52bc1a4bb5
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=D\:\\FreakingJapaneseGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_186e06f4f5adf7125aa8076a2bfb7cc97933de7a\\classes.dex
-base.1=D\:\\FreakingJapaneseGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_186e06f4f5adf7125aa8076a2bfb7cc97933de7a
-file.0=D\:\\FreakingJapaneseGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_fa88b1435620f1c294fcc32b6e6f7f52bc1a4bb5\\classes.dex
