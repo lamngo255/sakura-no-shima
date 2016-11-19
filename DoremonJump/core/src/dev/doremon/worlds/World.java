@@ -54,7 +54,7 @@ public class World {
         loadWorld();
         gameOver = false;
 
-        background = Assets.background;
+        background = Assets.gameplaybackground;
     }
 
     public void tick() {
