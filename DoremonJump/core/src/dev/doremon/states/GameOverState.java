@@ -74,14 +74,14 @@ public class GameOverState extends State {
         batch.begin();
 
         batch.draw(background, 0, 0, handler.getWidth(), handler.getHeight());
-        batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
-                            handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
-                            doremon.getRegionWidth() / 2,
-                            doremon.getRegionHeight() / 2);
+//        batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
+//                            handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
+//                            doremon.getRegionWidth() / 2,
+//                            doremon.getRegionHeight() / 2);
 //        gameOverFont.draw(batch, "Game Over", 90, 50);
         scoreFont.draw(batch, "Score: " + score,(float)handler.getWidth()*0.23f, handler.getHeight()*0.3125f);
         bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, (float)handler.getWidth()*0.23f, handler.getHeight()*0.37f);
-        testFont.draw(batch, myText, handler.getWidth() / 2, handler.getHeight() / 2);
+//        testFont.draw(batch, myText, handler.getWidth() / 2, handler.getHeight() / 2);
         batch.end();
 
         Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);

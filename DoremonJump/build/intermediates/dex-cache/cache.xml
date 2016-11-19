@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Ha San~\Documents\tratteam-game-project1\DoremonJump\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="7914035e7102b6904218987980c94a31d97563c6">
+        <dex dex="C:\Users\Ha San~\Documents\tratteam-game-project1\DoremonJump\android\build\intermediates\pre-dexed\debug\core-1.0_27b6d5eb3dd2056a55d45e9831a07b74e8eba03d.jar" />
+    </item>
+
+</items>
