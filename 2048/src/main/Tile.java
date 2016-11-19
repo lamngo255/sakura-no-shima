@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Ha San~ on 10/27/2016.
  */
-public class Title {
+public class Tile {
     public static final int WIDTH = 80;
     public static final int HEIGHT = 80;
     public static final int SLIDE_SPEED = 20;
@@ -21,21 +21,23 @@ public class Title {
     private int x;
     private int y;
 
-    private boolean canCombine;
+    private boolean canCombine = true;
 
-    public boolean setCanCombine() {
+    public boolean canCombine() {
         return canCombine;
     }
+
 
     public void setCanCombine(boolean canCombine) {
         this.canCombine = canCombine;
     }
 
 
-    public Title(int value, int x, int y) {
+    public Tile(int value, int x, int y) {
         this.value = value;
         this.x = x;
         this.y = y;
+        slideTo = new Point(x, y);
         titleImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
         drawImage();
     }
@@ -112,7 +114,37 @@ public class Title {
         return slideTo;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+        drawImage();
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public void setSlideTo(Point slideTo) {
         this.slideTo = slideTo;
+    }
+
+    @Override
+    public String toString() {
+        return "Tile{" +
+                "value=" + value +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

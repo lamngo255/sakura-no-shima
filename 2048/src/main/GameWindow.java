@@ -13,7 +13,7 @@ public class GameWindow  {
         window.setResizable(false);
         window.add(game);
         window.pack();
-        System.out.println("Helloi");
+        System.out.println("Hello");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
         game.start();
