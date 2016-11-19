@@ -23,7 +23,7 @@ public class GameOverState extends State {
     public GameOverState(Handler handler, GameStateManager gsm, int score) {
         super(handler, gsm);
         this.doremon = Assets.player_jump[0];
-        this.background = Assets.background;
+        this.background = Assets.gameoverbackground;
         initFont();
 
         DoremonJump.bestScore = Math.max(DoremonJump.bestScore, score);
@@ -35,7 +35,7 @@ public class GameOverState extends State {
         FreeTypeFontGenerator generator =
                 new FreeTypeFontGenerator(Gdx.files.internal("gloriahallelujah.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 80;
+        parameter.size = 60;
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         parameter.flip = true;
 
@@ -43,13 +43,14 @@ public class GameOverState extends State {
         gameOverFont = generator.generateFont(parameter);
 
         // For best score + score text
-        parameter.size = 50;
+        parameter.size = 70;
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 
 
         gameOverFont.setColor(Color.BROWN);
         scoreFont.setColor(Color.BLACK);
+
         bestScoreFont.setColor(Color.BLACK);
         generator.dispose();
 
@@ -71,14 +72,15 @@ public class GameOverState extends State {
     @Override
     public void render(SpriteBatch batch) {
         batch.begin();
+
         batch.draw(background, 0, 0, handler.getWidth(), handler.getHeight());
         batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
                             handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
                             doremon.getRegionWidth() / 2,
                             doremon.getRegionHeight() / 2);
-        gameOverFont.draw(batch, "Game Over", 90, 50);
-        scoreFont.draw(batch, "Score: " + score, 200, 180);
-        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, 100, 240);
+//        gameOverFont.draw(batch, "Game Over", 90, 50);
+        scoreFont.draw(batch, "Score: " + score,(float)handler.getWidth()*0.23f, handler.getHeight()*0.3125f);
+        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, (float)handler.getWidth()*0.23f, handler.getHeight()*0.37f);
         testFont.draw(batch, myText, handler.getWidth() / 2, handler.getHeight() / 2);
         batch.end();
 

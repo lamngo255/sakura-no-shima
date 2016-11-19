@@ -1,7 +1,10 @@
 package dev.freaking.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -18,15 +21,15 @@ public class MenuState extends State {
     private Label freaking, japanese;
     private LabelStyle style;
     private Skin skin;
-    private TextButton btnHira, btnKata, btnBoth;
+    private TextButton btnHira, btnKata, btnBoth,btnExit;
     private FreeTypeFontGenerator generator;
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     private TextureAtlas buttonsAtlas; //** image of buttons **//
-    private TextButton.TextButtonStyle btnHiraStyle, btnKataStyle, btnBothStyle;
-
+    private TextButton.TextButtonStyle btnHiraStyle, btnKataStyle, btnBothStyle,btnExitStyle;
     private int screenWidth;
     private int screenHeight;
-
+    private TextureRegion backgroundTexture;
+    private SpriteBatch batch;
     public MenuState(Handler handler, GameStateManager gsm) {
         super(handler, gsm);
         screenWidth = handler.getWidth();
@@ -85,9 +88,18 @@ public class MenuState extends State {
         btnBothStyle.font = generator.generateFont(parameter);
         btnBoth = new TextButton("Hira and Kata", btnBothStyle);
 
-        btnHira.setBounds((float) (screenWidth * 0.27), (float) (screenHeight * 0.4), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
-        btnKata.setBounds((float) (screenWidth * 0.27), (float) (screenHeight * 0.29), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
-        btnBoth.setBounds((float) (screenWidth * 0.27), (float) (screenHeight * 0.18), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
+        btnExitStyle = new TextButton.TextButtonStyle(); //** Button properties **//
+        parameter.size = (int) (screenWidth * 0.07);
+        btnExitStyle.up = skin.getDrawable("ButtonUp");
+        btnExitStyle.down = skin.getDrawable("ButtonDown");
+        btnExitStyle.font = generator.generateFont(parameter);
+        btnExit = new TextButton("Exit", btnExitStyle);
+
+
+        btnHira.setBounds((float) (screenWidth * 0.25), (float) (screenHeight * 0.4), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
+        btnKata.setBounds((float) (screenWidth * 0.25), (float) (screenHeight * 0.29), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
+        btnBoth.setBounds((float) (screenWidth * 0.25), (float) (screenHeight * 0.18), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
+        btnExit.setBounds((float) (screenWidth * 0.25), (float) (screenHeight * 0.07), (float) (screenWidth * 0.5), (float) (screenHeight * 0.1));
     }
 
     private void addButtonListener() {
@@ -133,6 +145,7 @@ public class MenuState extends State {
     @Override
     public void update(float dt) {
         Gdx.gl.glClearColor(64 / 255f, 64 / 255f, 64 / 255f, 64 / 255f);
+//        Gdx.gl.glClearColor(234/ 255f, 128/ 255f, 252/ 255f, 1/ 255f);
     }
 
     @Override
@@ -142,6 +155,7 @@ public class MenuState extends State {
         stage.addActor(btnKata);
         stage.addActor(btnBoth);
         stage.addActor(japanese);
+        stage.addActor(btnExit);
     }
 
     @Override
@@ -153,6 +167,7 @@ public class MenuState extends State {
         btnKataStyle.font.dispose();
         btnBothStyle.font.dispose();
         btnHiraStyle.font.dispose();
+        btnExitStyle.font.dispose();
         generator.dispose();
     }
 

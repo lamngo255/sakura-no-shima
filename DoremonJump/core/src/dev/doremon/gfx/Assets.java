@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
-    public static TextureRegion background, base, platform_broken;
+    public static TextureRegion background, base, platform_broken,gameplaybackground,gameoverbackground;
     public static TextureRegion[] platform, spring;
     public static TextureRegion[] player_idle, player_jump, player_high, player_fall;
 
@@ -29,7 +29,9 @@ public class Assets {
         spring = new TextureRegion[2];
         playButton = new TextureRegion[2];
 
-        background = getFlipped("capture.png");
+        gameplaybackground = getFlipped("capture.png");
+        background = getFlipped("menu.png");
+        gameoverbackground = getFlipped("gameover1.png");
         player_idle[0] = getFlipped("mon_idle1.png");
         player_idle[1] = getFlipped("mon_idle2.png");
         player_jump[0] = getFlipped("mon_jump1.png");
