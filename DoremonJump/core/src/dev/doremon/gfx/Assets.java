@@ -27,7 +27,7 @@ public class Assets {
 
         platform = new TextureRegion[5];
         spring = new TextureRegion[2];
-        playButton = new TextureRegion[2];
+        playButton = new TextureRegion[5];
 
         gameplaybackground = getFlipped("capture.png");
         background = getFlipped("menuNo.png");
@@ -53,8 +53,11 @@ public class Assets {
 
         platform_broken = new TextureRegion(sheet, 0, 554, 105, 60);
 
-        playButton[0] = getFlipped("button/play.png");
+        playButton[0] = getFlipped("button/playbuttonmain.png");
         playButton[1] = getFlipped("button/play.png");
+        playButton[2] = getFlipped("button/home_button_main.png");
+        playButton[4] = getFlipped("button/mainmenu.png");
+        playButton[3] = getFlipped("button/replay.png");
     }
 
     public static void dispose() {
@@ -82,6 +85,9 @@ public class Assets {
 
         playButton[0].getTexture().dispose();
         playButton[1].getTexture().dispose();
+        playButton[2].getTexture().dispose();
+        playButton[3].getTexture().dispose();
+        playButton[4].getTexture().dispose();
     }
 }
 
