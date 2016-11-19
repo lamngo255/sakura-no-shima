@@ -54,12 +54,13 @@ public class World {
         loadWorld();
         gameOver = false;
 
-        background = Assets.gameplaybackground;
+        background = Assets.background;
     }
 
     public void tick() {
 
         instancesTick();
+
         countItemTime++;
         countSpringTime++;
 
