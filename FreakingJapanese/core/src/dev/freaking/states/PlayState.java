@@ -84,7 +84,7 @@ public class PlayState extends State {
         FreeTypeFontGenerator.FreeTypeFontParameter paramJapan
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         paramJapan.size = (int) (screenWidth * 0.33);
-        paramJapan.characters = Alphabet.ALL_CHARS;
+        paramJapan.characters = alphabets.get(currentAlphabet).getJapanese();
         japanLabelStyle.font = generator.generateFont(paramJapan);
 
         japanLabel = new Label("0", japanLabelStyle);
@@ -156,7 +156,7 @@ public class PlayState extends State {
             japanLabel.setText(text);
             btnCase1.setText(caseLT1);
             btnCase2.setText(caseLT2);
-//            updateJapaneseLabel();
+            updateJapaneseLabel();
         } else {
             stage.clear();
             Music.play("gameover");
