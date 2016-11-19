@@ -27,7 +27,7 @@ public class GameBoard {
     private ShapeRenderer finalBoard;
     private int x;
     private int y;
-    private static int SPACING = 20;
+    private static int SPACING = Gdx.graphics.getWidth() / 36;
     public static int BOARD_WIDTH = (COLS + 1) * SPACING + COLS * Tile.TILE_WIDTH;
     public static int BOARD_HEIGHT = (ROWS + 1) * SPACING + ROWS * Tile.TILE_HEIGHT;
     public static boolean hasStarted;
