@@ -13,7 +13,7 @@ import dev.game.main.Game2048;
 public class Tile {
     public static int TILE_WIDTH = (int) (Gdx.graphics.getWidth() / 4.6f);
     public static int TILE_HEIGHT = (int) (Gdx.graphics.getWidth() / 4.6f);
-    public static final int SLIDE_SPEED = 45;
+    public static final int SLIDE_SPEED = 65;
     private int x;
     private int y;
     private int value;
