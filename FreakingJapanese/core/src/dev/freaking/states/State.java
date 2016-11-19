@@ -1,7 +1,6 @@
 package dev.freaking.states;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import dev.freaking.main.FreakingGame;
 import dev.freaking.main.Handler;
 
 public abstract class State {

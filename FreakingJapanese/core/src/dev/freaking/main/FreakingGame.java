@@ -4,9 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import dev.freaking.controller.HighScoreData;
-import dev.freaking.states.GameStateManager;
 import dev.freaking.controller.Music;
+import dev.freaking.states.GameStateManager;
 import dev.freaking.states.MenuState;
 
 public class FreakingGame extends ApplicationAdapter {
@@ -28,7 +27,6 @@ public class FreakingGame extends ApplicationAdapter {
     public void init() {
         Music.load("point", "sounds/sfx_point.wav");
         Music.load("gameover", "sounds/sfx_over.wav");
-        HighScoreData.load();
         Gdx.input.setInputProcessor(stage);
 
         handler = new Handler(this);

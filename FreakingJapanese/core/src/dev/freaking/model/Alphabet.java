@@ -1,6 +1,5 @@
 package dev.freaking.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -15,12 +14,9 @@ public class Alphabet {
     private String latin;
     private int type;
 
-    public static String getAllCharacter() {
-        String character = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにょにゅひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ";
-        character += "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポキャキュキョシャシュショチャチュチョニャニュニョミャミュミョヒャヒュヒョリャリョリュギャギュギョジャジュジョビャビュビョピャプオピュ";
-        return character;
-    }
-    
+    public static String ALL_CHARS = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにょにゅひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ"
+            + "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポキャキュキョシャシュショチャチュチョニャニュニョミャミュミョヒャヒュヒョリャリョリュギャギュギョジャジュジョビャビュビョピャプオピュ";
+
     public static ArrayList<Alphabet> alphabets = new ArrayList<>();
     public static void initAlphabet() {
         alphabets.add(new Alphabet("a", "あ", HIRAGANA));

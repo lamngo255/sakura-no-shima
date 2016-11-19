@@ -11,7 +11,7 @@ public class Slider {
     private float ilong;
     private boolean running;
     private int screenWidth = Gdx.graphics.getWidth();
-    private int screenHight = Gdx.graphics.getHeight();
+    private int screenHeight = Gdx.graphics.getHeight();
 
     public Slider() {
         super();
@@ -19,9 +19,9 @@ public class Slider {
         ilong = screenWidth;
         slider = new Image(new Texture(Gdx.files.internal("data/load.PNG")));
         slider.setX(0);
-        slider.setY((float) (screenHight * 0.85));
+        slider.setY((float) (screenHeight * 0.85));
         slider.setWidth(ilong);
-        slider.setHeight((float) (screenHight * 0.01));
+        slider.setHeight((float) (screenHeight * 0.01));
     }
 
     public Image getSlider() {
@@ -34,7 +34,7 @@ public class Slider {
 
     public void update() {
         if (running) {
-            ilong -= screenWidth * 0.005;
+            ilong -= screenWidth * 0.05;
             slider.setWidth(ilong);
             slider.invalidate();
         }

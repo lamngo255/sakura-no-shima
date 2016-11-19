@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import dev.freaking.controller.HighScoreData;
+import com.sun.media.jfxmedia.events.PlayerStateEvent;
 import dev.freaking.main.Handler;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
@@ -42,11 +42,11 @@ public class GameOverState extends State {
         style.font = generator.generateFont(parameter);
 
         noiDung = new Label("GAME OVER", style);
-        noiDung.setPosition((float) (screenWidth * 0.32), (float) (screenHight * 0.6));
-        Score = new Label("Score: " + PlayState.getHighScore(), style);
-        Score.setPosition((float) (screenWidth * 0.35), (float) (screenHight * 0.54));
-        BestScore = new Label("Best: " + HighScoreData.getScoreData(), style);
-        BestScore.setPosition((float) (screenWidth * 0.35), (float) (screenHight * 0.48));
+        noiDung.setPosition((float) (screenWidth * 0.26), (float) (screenHight * 0.6));
+        Score = new Label("Score: " + PlayState.ACHIEVED_SCORE, style);
+        Score.setPosition((float) (screenWidth * 0.30), (float) (screenHight * 0.54));
+        BestScore = new Label("Best: " + PlayState.HIGH_SCORE, style);
+        BestScore.setPosition((float) (screenWidth * 0.30), (float) (screenHight * 0.48));
 
         btnTryStyle = new TextButton.TextButtonStyle(); //** Button properties **//
         parameter.size = (int) (screenWidth * 0.08);

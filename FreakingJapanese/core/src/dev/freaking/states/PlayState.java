@@ -5,16 +5,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import dev.freaking.controller.HighScoreData;
-import dev.freaking.main.Handler;
 import dev.freaking.controller.Music;
 import dev.freaking.controller.Slider;
+import dev.freaking.main.Handler;
 import dev.freaking.model.Alphabet;
 
 import java.util.ArrayList;
@@ -24,7 +22,8 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 
 public class PlayState extends State {
     private static int alphabetType = 1;
-    public static int highScore = 0;
+    public static int HIGH_SCORE = 0;
+    public static int ACHIEVED_SCORE;
     private Slider slider;
     private Label japanLabel, scoreLabel;
     private int currentAlphabet = 0;
@@ -48,15 +47,16 @@ public class PlayState extends State {
         super(handler, gsm);
         screenWidth = handler.getWidth();
         screenHeight = handler.getHeight();
+        ACHIEVED_SCORE = 0;
 
         rand = new Random();
         Alphabet.initAlphabet();
         alphabets = Alphabet.getAlphabet(alphabetType);
         blendAlpList();
 
+        initButton();
         initJapaneseLabel();
         initScoreLabel();
-        initButton();
         getContent();
 
         btnCase1.addListener(new ClickListener() {
@@ -84,8 +84,7 @@ public class PlayState extends State {
         FreeTypeFontGenerator.FreeTypeFontParameter paramJapan
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         paramJapan.size = (int) (screenWidth * 0.33);
-     //   paramJapan.characters = Alphabet.getAllCharacter();
-        paramJapan.characters = alphabets.get(currentAlphabet).getJapanese();
+        paramJapan.characters = Alphabet.ALL_CHARS;
         japanLabelStyle.font = generator.generateFont(paramJapan);
 
         japanLabel = new Label("0", japanLabelStyle);
@@ -120,13 +119,13 @@ public class PlayState extends State {
 
     private void initButton() {
         buttonsAtlas = new TextureAtlas("skin/ButtonSkin.txt");
-        buttonSkin= new Skin();
+        buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);//** skins for on and off **//
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter paramButton
                 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         buttonStyle = new TextButton.TextButtonStyle(); //** Button properties **//
-        buttonStyle.up=buttonSkin.getDrawable("ButtonUp");
+        buttonStyle.up = buttonSkin.getDrawable("ButtonUp");
         buttonStyle.down = buttonSkin.getDrawable("ButtonDown");
         paramButton.size = (int) (screenWidth * 0.22);
         paramButton.color = Color.RED;
@@ -137,20 +136,6 @@ public class PlayState extends State {
         btnCase2 = new TextButton("", buttonStyle);
         btnCase1.setBounds((float) (screenWidth * 0.025), (float) (screenHeight * 0.006), (float) (screenWidth * 0.45), (float) (screenWidth * 0.45));
         btnCase2.setBounds((float) (screenWidth * 0.5 + screenWidth * 0.025), (float) (screenHeight * 0.006), (float) (screenWidth * 0.45), (float) (screenWidth * 0.45));
-        generator.dispose();
-    }
-    private void updateButton() {
-        buttonStyle.font.dispose();
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/japanese6.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter paramButton
-                = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        paramButton.characters=caseLT1+caseLT2;
-        paramButton.size = (int) (screenWidth * 0.22);
-        paramButton.color = Color.RED;
-        buttonStyle.font = generator.generateFont(paramButton);
-
-        btnCase1.setStyle(buttonStyle);
-        btnCase2.setStyle(buttonStyle);
         generator.dispose();
     }
 
@@ -164,8 +149,6 @@ public class PlayState extends State {
             }
         }
         if (isCorrectAnswer) {
-            updateJapaneseLabel();
-            updateButton();
             String text = alphabets.get(currentAlphabet).getJapanese();
             if (text.length() == 1) {
                 text = " " + text + " ";
@@ -173,17 +156,16 @@ public class PlayState extends State {
             japanLabel.setText(text);
             btnCase1.setText(caseLT1);
             btnCase2.setText(caseLT2);
+//            updateJapaneseLabel();
         } else {
             stage.clear();
             Music.play("gameover");
-            if (highScore > HighScoreData.getScoreData()) {
-                HighScoreData.addScore(highScore);
-            }
+            HIGH_SCORE = Math.max(HIGH_SCORE, ACHIEVED_SCORE);
             gsm.set(new GameOverState(handler, gsm));
             stage.getRoot().getColor().a = 0;
             stage.getRoot().addAction(fadeIn(0.5f));
         }
-        scoreLabel.setText("" + highScore);
+        scoreLabel.setText("" + ACHIEVED_SCORE);
     }
 
     @Override
@@ -222,7 +204,7 @@ public class PlayState extends State {
     public void getContent() {
         trueLT = alphabets.get(currentAlphabet).getLatin();
         int index = rand.nextInt(alphabets.size());
-        while (currentAlphabet==index) {
+        while (currentAlphabet == index) {
             index = rand.nextInt(alphabets.size());
         }
         String falseLT = alphabets.get(index).getLatin();
@@ -236,10 +218,6 @@ public class PlayState extends State {
         }
     }
 
-    public static int getHighScore() {
-        return highScore;
-    }
-
     public static void setAlphabetType(int alphabetType) {
         PlayState.alphabetType = alphabetType;
     }
@@ -250,7 +228,7 @@ public class PlayState extends State {
             slider = new Slider();
         }
         if (trueLT.equalsIgnoreCase(caseLT1.trim())) {
-            highScore += 1;
+            ACHIEVED_SCORE += 1;
             updateCurrentAlp();
             slider.setIlong(screenWidth);
             Music.play("point");
@@ -268,7 +246,7 @@ public class PlayState extends State {
         }
 
         if (!trueLT.equalsIgnoreCase(caseLT1.trim())) {
-            highScore += 1;
+            ACHIEVED_SCORE += 1;
             updateCurrentAlp();
             slider.setIlong(screenWidth);
             Music.play("point");
@@ -281,7 +259,7 @@ public class PlayState extends State {
 
     //blend japanese alphabet list
     public void blendAlpList() {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 50; i++) {
             int j = rand.nextInt(alphabets.size());
             int k = rand.nextInt(alphabets.size());
             while (j == k) {
@@ -293,13 +271,11 @@ public class PlayState extends State {
         }
     }
 
-    public void updateCurrentAlp(){
+    public void updateCurrentAlp() {
         currentAlphabet++;
-        if(currentAlphabet==alphabets.size()){
-            currentAlphabet=0;
+        if (currentAlphabet == alphabets.size()) {
+            currentAlphabet = 0;
             blendAlpList();
         }
     }
-
 }
-
