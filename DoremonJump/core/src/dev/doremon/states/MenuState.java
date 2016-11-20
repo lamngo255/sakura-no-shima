@@ -21,9 +21,24 @@ public class MenuState extends State {
     }
 
     public void handleInput() {
-        if (Gdx.input.justTouched()) {
-            Gdx.app.log("GameState", "loaded");
+//        if (Gdx.input.justTouched()) {
+//            Gdx.app.log("GameState", "loaded");
+//            gsm.set(new GameState(handler, gsm));
+//        }
+
+        if(Gdx.input.justTouched()){
+        if(Gdx.input.getX()>=handler.getWidth() * 0.056f&&
+                Gdx.input.getX()<=handler.getWidth()*0.53f&&
+                Gdx.input.getY()>=handler.getHeight() *0.6f&&
+                Gdx.input.getY()<=handler.getHeight()*0.7f){
             gsm.set(new GameState(handler, gsm));
+        }
+        else if(Gdx.input.getX()>=handler.getWidth() * 0.056f&&
+                Gdx.input.getX()<=handler.getWidth()*0.53f&&
+                Gdx.input.getY()>=handler.getHeight() *0.73f&&
+                Gdx.input.getY()<=handler.getHeight()*0.83f){
+            System.exit(0);
+        }
         }
     }
 
