@@ -32,10 +32,10 @@ public class World {
 
     public void generateFont() {
         FreeTypeFontGenerator generator =
-                new FreeTypeFontGenerator(Gdx.files.internal("KaoriGelBold.ttf"));
+                new FreeTypeFontGenerator(Gdx.files.internal("OpenSans.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter =
                 new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = Gdx.graphics.getWidth() / 8;
+        parameter.size = Gdx.graphics.getWidth() / 7;
         parameter.characters = "Gameover!";
         gameOverFont = generator.generateFont(parameter);
         generator.dispose();
@@ -52,12 +52,14 @@ public class World {
         shape.setProjectionMatrix(Game2048.camera.combined);
         if (gameBoard.isDead()) {
             shape.begin(ShapeRenderer.ShapeType.Filled);
-            shape.setColor(33, 150, 243, 0.4f);
+            shape.setColor(33, 150, 243, 0.7f);
             shape.rect(0, 0, handler.getWidth(), handler.getHeight());
             shape.end();
 
             batch.begin();
-            gameOverFont.draw(batch, "Game over!", handler.getWidth() / 2, handler.getHeight() / 2);
+            gameOverFont.setColor(Color.valueOf("#424242"));
+            gameOverFont.draw(batch, "Game over!", handler.getWidth() * 0.1f,
+                                                    handler.getHeight() * 0.32f);
             batch.end();
         }
     }
@@ -69,5 +71,6 @@ public class World {
     public void dispose() {
         gameBoard.dispose();
         shape.dispose();
+        gameOverFont.dispose();
     }
 }
