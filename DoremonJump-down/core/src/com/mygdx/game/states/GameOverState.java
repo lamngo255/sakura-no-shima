@@ -61,8 +61,7 @@ public class GameOverState extends State {
                     Gdx.input.getY() >= handler.getHeight() * 0.5f &&
                     Gdx.input.getY() <= handler.getHeight() * 0.58f) {
                 gsm.set(new GameState(handler, gsm));
-            }
-            else if (Gdx.input.getX() >= handler.getWidth() * 0.27f &&
+            } else if (Gdx.input.getX() >= handler.getWidth() * 0.27f &&
                     Gdx.input.getX() <= handler.getWidth() * 0.69f &&
                     Gdx.input.getY() >= handler.getHeight() * 0.64f &&
                     Gdx.input.getY() <= handler.getHeight() * 0.69f
@@ -82,26 +81,21 @@ public class GameOverState extends State {
     public void render(SpriteBatch batch) {
         batch.begin();
         batch.draw(background, 0, 0, handler.getWidth(), handler.getHeight());
-<<<<<<< cca7a38cdf02b138fbef5bf88065cc248090b80b
-        batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
-                handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
-                doremon.getRegionWidth() / 2,
-                doremon.getRegionHeight() / 2);
-        gameOver.draw(batch, "Game Over", 90, 50);
-        scoreFont.draw(batch, "Score: " + score, 200, 180);
-        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, 100, 240);
-=======
+//
 //        batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
-//                            handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
-//                            doremon.getRegionWidth() / 2,
-//                            doremon.getRegionHeight() / 2);
-//        gameOverFont.draw(batch, "Game Over", 90, 50);
+//                handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
+//                doremon.getRegionWidth() / 2,
+//                doremon.getRegionHeight() / 2);
+//        gameOver.draw(batch, "Game Over", 90, 50);
+//        scoreFont.draw(batch, "Score: " + score, 200, 180);
+//        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, 100, 240);
+
+
         scoreFont.draw(batch, "Score: " + score, (float) handler.getWidth() * 0.23f, handler.getHeight() * 0.3125f);
         bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, (float) handler.getWidth() * 0.23f, handler.getHeight() * 0.37f);
-//        testFont.draw(batch, myText, handler.getWidth() / 2, handler.getHeight() / 2);
         batch.draw(replayButton, handler.getWidth() * 0.27f, handler.getHeight() * 0.5f, handler.getWidth() * 0.47f, handler.getHeight() * 0.09f);
         batch.draw(mainmenuButton, handler.getWidth() * 0.27f, handler.getHeight() * 0.63f, handler.getWidth() * 0.47f, handler.getHeight() * 0.09f);
->>>>>>> DoremonJump: Add background listener + images
+
         batch.end();
 
         Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);

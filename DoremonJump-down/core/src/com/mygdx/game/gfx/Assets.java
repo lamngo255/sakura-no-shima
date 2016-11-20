@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Assets {
-    public static TextureRegion background, base, platform_broken,gameplaybackground,gameoverbackground;    public static TextureRegion[] platform, spring;
+    public static TextureRegion background, base, platform_broken, gameplaybackground, gameoverbackground,playingGuide;
+    public static TextureRegion[] platform, spring;
     public static TextureRegion[] player_idle, player_jump, player_high, player_fall;
 
     public static TextureRegion[] playButton;
 
     public static ItemAttributes[] attributes;
 
-    public static  ArrayList<ItemAttributes> itemTypes ;
+    public static ArrayList<ItemAttributes> itemTypes;
 
 
     public static TextureRegion getFlipped(String path) {
@@ -38,6 +39,7 @@ public class Assets {
         gameplaybackground = getFlipped("capture.png");
         background = getFlipped("menuNo.png");
         gameoverbackground = getFlipped("gameoverNo.png");
+        playingGuide = getFlipped("huongdan.png");
 
         player_idle[0] = getFlipped("mon_idle1.png");
         player_idle[1] = getFlipped("mon_idle2.png");
@@ -92,7 +94,7 @@ public class Assets {
                 new ItemAttributes("Untitled-1-22.png")
 
         };
-        itemTypes =  new ArrayList<ItemAttributes>(Arrays.asList(attributes));
+        itemTypes = new ArrayList<ItemAttributes>(Arrays.asList(attributes));
 
     }
 

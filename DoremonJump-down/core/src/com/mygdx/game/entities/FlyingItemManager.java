@@ -44,9 +44,7 @@ public class FlyingItemManager {
             if (flyingItem.isAlive()) {
                 flyingItem.tick();
             }
-
         }
-
     }
 
     public void remove(int i) {

@@ -47,7 +47,7 @@ public class MenuState extends State {
                     Gdx.input.getX()<=handler.getWidth()*0.53f&&
                     Gdx.input.getY()>=handler.getHeight() *0.6f&&
                     Gdx.input.getY()<=handler.getHeight()*0.7f){
-                gsm.set(new GameState(handler, gsm));
+                gsm.set(new PlayingGuide(handler, gsm));
                 System.out.println("ahihi");
             }
             else if(Gdx.input.getX()>=handler.getWidth() * 0.056f&&
