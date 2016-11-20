@@ -3,11 +3,10 @@ package dev.game.entities;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import dev.game.input.DirectionGestureDetector;
-import dev.game.main.Game2048;
 import dev.game.utils.Direction;
 
 import java.util.Random;
@@ -31,6 +30,7 @@ public class GameBoard {
     public static int BOARD_WIDTH = (COLS + 1) * SPACING + COLS * Tile.TILE_WIDTH;
     public static int BOARD_HEIGHT = (ROWS + 1) * SPACING + ROWS * Tile.TILE_HEIGHT;
     public static boolean hasStarted;
+    private BitmapFont tileFont;
 
     public GameBoard(int x, int y) {
         this.x = x;
@@ -40,6 +40,10 @@ public class GameBoard {
         finalBoard = new ShapeRenderer();
         start();
         checkSwipe();
+
+        tileFont = new BitmapFont(Gdx.files.internal("font.fnt"));
+        tileFont.getData().setScale(Tile.TILE_WIDTH / 250f * 0.7f);
+        tileFont.setColor(Color.BROWN);
     }
 
     public void checkSwipe() {
@@ -47,7 +51,7 @@ public class GameBoard {
             @Override
             public void onUp() {
                 Gdx.app.log("Dir", "Up");
-                moveTiles(Direction.UP);
+                moveTiles(Direction.DOWN);
                 if (!hasStarted)
                     hasStarted = true;
             }
@@ -71,7 +75,7 @@ public class GameBoard {
             @Override
             public void onDown() {
                 Gdx.app.log("Dir", "Down");
-                moveTiles(Direction.DOWN);
+                moveTiles(Direction.UP);
                 if (!hasStarted)
                     hasStarted = true;
             }
@@ -82,7 +86,7 @@ public class GameBoard {
         batch.begin();
         batch.end();
 
-        gameBoard.setProjectionMatrix(Game2048.camera.combined);
+//        gameBoard.setProjectionMatrix(Game2048.camera.combined);
         gameBoard.begin(ShapeRenderer.ShapeType.Filled);
         gameBoard.setColor(Color.DARK_GRAY);
         gameBoard.rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
@@ -101,7 +105,7 @@ public class GameBoard {
             for (int col = 0; col < COLS; col++) {
                 Tile current = board[row][col];
                 if (current == null) continue;
-                current.render(batch);
+                current.render(batch, tileFont);
             }
         }
     }
@@ -348,27 +352,27 @@ public class GameBoard {
     }
 
     private void checkKey() {
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
             Gdx.app.log("Dir", "Left");
             moveTiles(Direction.LEFT);
             if (!hasStarted)
                 hasStarted = true;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
             Gdx.app.log("Dir", "Right");
             moveTiles(Direction.RIGHT);
             if (!hasStarted)
                 hasStarted = true;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
             Gdx.app.log("Dir", "Down");
-            moveTiles(Direction.DOWN);
+            moveTiles(Direction.UP);
             if (!hasStarted)
                 hasStarted = true;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
             Gdx.app.log("Dir", "Up");
-            moveTiles(Direction.UP);
+            moveTiles(Direction.DOWN);
             if (!hasStarted)
                 hasStarted = true;
         }

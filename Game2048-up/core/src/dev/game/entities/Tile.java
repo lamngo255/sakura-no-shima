@@ -2,10 +2,9 @@ package dev.game.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
-import dev.game.main.Game2048;
 
 /**
  * Created by Lam Ngo on 11/19/2016.
@@ -69,15 +68,17 @@ public class Tile {
         }
     }
 
-    public void render(SpriteBatch batch) {
-        batch.begin();
-        batch.end();
+    public void render(SpriteBatch batch, BitmapFont tileFont) {
         drawImage();
-        shape.setProjectionMatrix(Game2048.camera.combined);
+//        shape.setProjectionMatrix(Game2048.camera.combined);
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(background);
         shape.rect(x, y, TILE_WIDTH, TILE_HEIGHT);
         shape.end();
+
+        batch.begin();
+        tileFont.draw(batch, "さ", x, y + TILE_HEIGHT);
+        batch.end();
     }
 
     public void update() {

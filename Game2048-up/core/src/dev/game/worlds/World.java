@@ -28,7 +28,7 @@ public class World {
     }
 
     public void render(SpriteBatch batch) {
-        shape.setProjectionMatrix(Game2048.camera.combined);
+//        shape.setProjectionMatrix(Game2048.camera.combined);
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.LIGHT_GRAY);
         shape.rect(0, 0, handler.getWidth(), handler.getHeight());
