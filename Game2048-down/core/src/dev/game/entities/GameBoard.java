@@ -96,14 +96,14 @@ public class GameBoard {
 
         gameBoard.setProjectionMatrix(Game2048.camera.combined);
         gameBoard.begin(ShapeRenderer.ShapeType.Filled);
-        gameBoard.setColor(Color.DARK_GRAY);
+        gameBoard.setColor(Color.valueOf("#bbada0"));
         gameBoard.rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
 
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
                 int x = (SPACING + SPACING * col + Tile.TILE_WIDTH * col);
                 int y = (SPACING + SPACING * row + Tile.TILE_WIDTH * row);
-                gameBoard.setColor(Color.LIGHT_GRAY);
+                gameBoard.setColor(Color.valueOf("#cdc1b4"));
                 gameBoard.rect(x, y, Tile.TILE_WIDTH, Tile.TILE_HEIGHT);
             }
         }
@@ -398,7 +398,8 @@ public class GameBoard {
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
                 Tile current = board[row][col];
-                current.dispose();
+                if (current != null)
+                    current.dispose();
             }
         }
         gameBoard.dispose();
