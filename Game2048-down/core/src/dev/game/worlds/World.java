@@ -22,14 +22,12 @@ public class World {
     private BitmapFont gameOverFont;
     private BitmapFont scoreLabelFont, scoreFont;
     private BitmapFont bestLabelFont, bestScoreFont;
-    private BitmapFont titleFont, titleFont2, newGameFont;
+    private BitmapFont titleFont, titleFont2, newGameFont, tryAgainFont;
     private BitmapFont statementFont, saFont;
 
     public World(Handler handler) {
         this.handler = handler;
-        this.gameBoard =
-                new GameBoard((handler.getWidth() / 2 - GameBoard.BOARD_WIDTH / 2),
-                        (handler.getHeight() - GameBoard.BOARD_HEIGHT - 10));
+        this.gameBoard = GameBoard.generate(handler);
         this.shape = new ShapeRenderer();
         generateFont();
     }
@@ -80,6 +78,10 @@ public class World {
         parameter.characters = "NewGame";
         newGameFont = generator.generateFont(parameter);
 
+        // Try Again Font
+        parameter.size = Gdx.graphics.getWidth() / 21;
+        parameter.characters = "TryAgain";
+        tryAgainFont = generator.generateFont(parameter);
 
         // Statement Font
         parameter.size = handler.getWidth() / 21;
@@ -134,11 +136,22 @@ public class World {
             shape.rect(0, 0, GameBoard.BOARD_WIDTH, GameBoard.BOARD_HEIGHT);
             shape.end();
 
+            // Try Again box (shape)
+            shape.begin(ShapeRenderer.ShapeType.Filled);
+            shape.setColor(Color.valueOf("#8f7a66"));
+            shape.rect(handler.getWidth() * 0.33f, handler.getHeight() * 0.23f,
+                            handler.getWidth() * 0.3f, handler.getHeight() * 0.07f);
+            shape.end();
+
+
             // Game Over font (text)
             batch.begin();
             gameOverFont.setColor(Color.valueOf("#424242"));
+            tryAgainFont.setColor(Color.valueOf("#faf8ef"));
             gameOverFont.draw(batch, "Game over!", handler.getWidth() * 0.1f,
-                                                    handler.getHeight() * 0.32f);
+                    handler.getHeight() * 0.39f);
+            tryAgainFont.draw(batch, "Try Again", handler.getWidth() * 0.37f,
+                    handler.getHeight() * 0.28f);
             batch.end();
         }
 
@@ -177,8 +190,32 @@ public class World {
 
     }
 
+    private void handleInput() {
+        // New Game listener
+        if (Gdx.input.justTouched()) {
+            if (Gdx.input.getX() >= handler.getWidth() * 0.66f
+                    && Gdx.input.getX() <= handler.getWidth() * (0.66f + 0.30f)
+                    && Gdx.input.getY() >= handler.getHeight() * (1 - 0.71f - 0.07)
+                    && Gdx.input.getY() <= handler.getHeight() * (1 - 0.71f)) {
+                gameBoard.dispose();
+                gameBoard = GameBoard.generate(handler);
+            }
+
+            if (gameBoard.isDead()) {
+                if (Gdx.input.getX() >= handler.getWidth() * 0.33f
+                        && Gdx.input.getX() <= handler.getWidth() * (0.33f + 0.3f)
+                        && Gdx.input.getY() >= handler.getHeight() * (1 - 0.23f - 0.07f)
+                        && Gdx.input.getY() <= handler.getHeight() * (1 - 0.23f)) {
+                    gameBoard.dispose();
+                    gameBoard = GameBoard.generate(handler);
+                }
+            }
+        }
+    }
+
     public void update() {
         gameBoard.update();
+        handleInput();
     }
 
     public void dispose() {
@@ -194,5 +231,6 @@ public class World {
         bestScoreFont.dispose();
         statementFont.dispose();
         saFont.dispose();
+        tryAgainFont.dispose();
     }
 }

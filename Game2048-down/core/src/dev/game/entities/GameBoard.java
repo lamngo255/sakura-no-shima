@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.input.DirectionGestureDetector;
 import dev.game.main.Game2048;
+import dev.game.main.Handler;
 import dev.game.utils.Direction;
 
 import java.util.Random;
@@ -32,6 +33,11 @@ public class GameBoard {
     public static int BOARD_HEIGHT = (ROWS + 1) * SPACING + ROWS * Tile.TILE_HEIGHT;
     public static boolean hasStarted;
     private BitmapFont tileFont;
+
+    public static GameBoard generate(Handler handler) {
+        return new GameBoard((handler.getWidth() / 2 - GameBoard.BOARD_WIDTH / 2),
+                (handler.getHeight() - GameBoard.BOARD_HEIGHT - 10));
+    }
 
     public GameBoard(int x, int y) {
         this.x = x;
