@@ -55,6 +55,7 @@ public class GameOverState extends State {
             gsm.set(new GameState(handler, gsm));
         }
     }
+
     @Override
     public void tick() {
         handleInput();
@@ -65,9 +66,9 @@ public class GameOverState extends State {
         batch.begin();
         batch.draw(background, 0, 0, handler.getWidth(), handler.getHeight());
         batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
-                            handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
-                            doremon.getRegionWidth() / 2,
-                            doremon.getRegionHeight() / 2);
+                handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
+                doremon.getRegionWidth() / 2,
+                doremon.getRegionHeight() / 2);
         gameOver.draw(batch, "Game Over", 90, 50);
         scoreFont.draw(batch, "Score: " + score, 200, 180);
         bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, 100, 240);
