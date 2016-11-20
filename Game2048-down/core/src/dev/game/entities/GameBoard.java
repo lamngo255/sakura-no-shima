@@ -60,10 +60,17 @@ public class GameBoard {
         generator.dispose();
     }
 
+    private boolean inBoundary() {
+        return (Gdx.input.getY() >= Gdx.graphics.getHeight() - BOARD_HEIGHT
+                && Gdx.input.getY() <= Gdx.graphics.getHeight());
+    }
+
     public void checkSwipe() {
         Gdx.input.setInputProcessor(new DirectionGestureDetector(new DirectionGestureDetector.DirectionListener() {
             @Override
             public void onUp() {
+                if (!inBoundary())
+                    return;
                 moveTiles(Direction.DOWN);
                 if (!hasStarted)
                     hasStarted = true;
@@ -71,6 +78,8 @@ public class GameBoard {
 
             @Override
             public void onRight() {
+                if (!inBoundary())
+                    return;
                 moveTiles(Direction.RIGHT);
                 if (!hasStarted)
                     hasStarted = true;
@@ -78,6 +87,8 @@ public class GameBoard {
 
             @Override
             public void onLeft() {
+                if (!inBoundary())
+                    return;
                 moveTiles(Direction.LEFT);
                 if (!hasStarted)
                     hasStarted = true;
@@ -85,6 +96,8 @@ public class GameBoard {
 
             @Override
             public void onDown() {
+                if (!inBoundary())
+                    return;
                 moveTiles(Direction.UP);
                 if (!hasStarted)
                     hasStarted = true;
