@@ -20,14 +20,15 @@ public class Game2048 extends ApplicationAdapter {
         world = new World(handler);
 
         camera = new OrthographicCamera(handler.getWidth(), handler.getHeight());
-        camera.setToOrtho(true, handler.getWidth(), handler.getHeight());
+        camera.setToOrtho(false, handler.getWidth(), handler.getHeight());
     }
 
     @Override
     public void render() {
-//        batch.setProjectionMatrix(camera.combined);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        batch.setProjectionMatrix(camera.combined);
+        Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glEnable(GL20.GL_BLEND);
         world.render(batch);
         world.update();
     }
@@ -35,5 +36,6 @@ public class Game2048 extends ApplicationAdapter {
     @Override
     public void dispose() {
         batch.dispose();
+        world.dispose();
     }
 }

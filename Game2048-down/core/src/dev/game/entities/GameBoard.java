@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.input.DirectionGestureDetector;
+import dev.game.main.Game2048;
 import dev.game.utils.Direction;
 
 import java.util.Random;
@@ -23,7 +25,6 @@ public class GameBoard {
     private boolean dead;
     private boolean won;
     private ShapeRenderer gameBoard;
-    private ShapeRenderer finalBoard;
     private int x;
     private int y;
     private static int SPACING = Gdx.graphics.getWidth() / 36;
@@ -37,13 +38,20 @@ public class GameBoard {
         this.y = y;
         board = new Tile[ROWS][COLS];
         gameBoard = new ShapeRenderer();
-        finalBoard = new ShapeRenderer();
         start();
         checkSwipe();
+        generateFont();
+    }
 
-        tileFont = new BitmapFont(Gdx.files.internal("font.fnt"));
-        tileFont.getData().setScale(Tile.TILE_WIDTH / 250f * 0.7f);
-        tileFont.setColor(Color.BROWN);
+    private void generateFont() {
+        FreeTypeFontGenerator generator =
+                new FreeTypeFontGenerator(Gdx.files.internal("KaoriGelBold.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter =
+                new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = Gdx.graphics.getWidth() / 8;
+        parameter.characters = Alphabet.alphabets;
+        tileFont = generator.generateFont(parameter);
+        generator.dispose();
     }
 
     public void checkSwipe() {
@@ -86,7 +94,7 @@ public class GameBoard {
         batch.begin();
         batch.end();
 
-//        gameBoard.setProjectionMatrix(Game2048.camera.combined);
+        gameBoard.setProjectionMatrix(Game2048.camera.combined);
         gameBoard.begin(ShapeRenderer.ShapeType.Filled);
         gameBoard.setColor(Color.DARK_GRAY);
         gameBoard.rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
@@ -125,7 +133,7 @@ public class GameBoard {
             int col = location % COLS;
             Tile current = board[row][col];
             if (current == null) {
-                int value = random.nextInt(10) < 9 ? 2 : 4;
+                String value = random.nextInt(10) < 9 ? "あ" : "い";
                 Tile tile = new Tile(value, getTileX(col), getTileY(row));
                 board[row][col] = tile;
                 isValid = true;
@@ -149,7 +157,7 @@ public class GameBoard {
                 if (current == null) continue;
                 current.update();
                 resetPosition(current, row, col);
-                if (current.getValue() == 2048) {
+                if (current.getValue().equals("さ")) {
                     won = true;
                 }
             }
@@ -208,10 +216,10 @@ public class GameBoard {
                 board[newRow - verticalDirection][newCol - horizontalDirection] = null;
                 board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
                 canMove = true;
-            } else if (board[newRow][newCol].getValue() == current.getValue()
+            } else if (board[newRow][newCol].getValue().equals(current.getValue())
                     && board[newRow][newCol].canCombine()) {
                 board[newRow][newCol].setCanCombine(false);
-                board[newRow][newCol].setValue(board[newRow][newCol].getValue() * 2);
+                board[newRow][newCol].setValue(Alphabet.getNextLetter(board[newRow][newCol].getValue()));
                 canMove = true;
                 board[newRow - verticalDirection][newCol - horizontalDirection] = null;
                 board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
@@ -303,6 +311,7 @@ public class GameBoard {
 
         dead = true;
         // setHighScore(score);
+        System.out.println("GG game");
 
     }
 
@@ -312,13 +321,13 @@ public class GameBoard {
             if (check == null) {
                 return true;
             }
-            if (current.getValue() == check.getValue())
+            if (current.getValue().equals(check.getValue()))
                 return true;
         }
         if (row < ROWS - 1) {
             Tile check = board[row + 1][col];
             if (check == null) return true;
-            if (current.getValue() == check.getValue()) return true;
+            if (current.getValue().equals(check.getValue())) return true;
         }
 
         if (col > 0) {
@@ -326,13 +335,13 @@ public class GameBoard {
             if (check == null) {
                 return true;
             }
-            if (current.getValue() == check.getValue())
+            if (current.getValue().equals(check.getValue()))
                 return true;
         }
         if (col < COLS - 1) {
             Tile check = board[row][col + 1];
             if (check == null) return true;
-            if (current.getValue() == check.getValue()) return true;
+            if (current.getValue().equals(check.getValue())) return true;
         }
         return false;
     }
@@ -352,6 +361,9 @@ public class GameBoard {
     }
 
     private void checkKey() {
+        if (dead) {
+            return;
+        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
             Gdx.app.log("Dir", "Left");
             moveTiles(Direction.LEFT);
@@ -376,5 +388,20 @@ public class GameBoard {
             if (!hasStarted)
                 hasStarted = true;
         }
+    }
+
+    public boolean isDead() {
+        return this.dead;
+    }
+
+    public void dispose() {
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
+                Tile current = board[row][col];
+                current.dispose();
+            }
+        }
+        gameBoard.dispose();
+        tileFont.dispose();
     }
 }
