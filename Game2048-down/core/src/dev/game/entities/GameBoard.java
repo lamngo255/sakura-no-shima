@@ -64,7 +64,6 @@ public class GameBoard {
         Gdx.input.setInputProcessor(new DirectionGestureDetector(new DirectionGestureDetector.DirectionListener() {
             @Override
             public void onUp() {
-                Gdx.app.log("Dir", "Up");
                 moveTiles(Direction.DOWN);
                 if (!hasStarted)
                     hasStarted = true;
@@ -72,7 +71,6 @@ public class GameBoard {
 
             @Override
             public void onRight() {
-                Gdx.app.log("Dir", "Right");
                 moveTiles(Direction.RIGHT);
                 if (!hasStarted)
                     hasStarted = true;
@@ -80,7 +78,6 @@ public class GameBoard {
 
             @Override
             public void onLeft() {
-                Gdx.app.log("Dir", "Left");
                 moveTiles(Direction.LEFT);
                 if (!hasStarted)
                     hasStarted = true;
@@ -88,7 +85,6 @@ public class GameBoard {
 
             @Override
             public void onDown() {
-                Gdx.app.log("Dir", "Down");
                 moveTiles(Direction.UP);
                 if (!hasStarted)
                     hasStarted = true;
@@ -252,7 +248,6 @@ public class GameBoard {
                     }
                 }
             }
-            Gdx.app.log("Message", "Move left");
         } else if (dir == Direction.RIGHT) {
             horizontalDirection = 1;
             for (int row = 0; row < ROWS; row++) {
@@ -371,25 +366,21 @@ public class GameBoard {
             return;
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            Gdx.app.log("Dir", "Left");
             moveTiles(Direction.LEFT);
             if (!hasStarted)
                 hasStarted = true;
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            Gdx.app.log("Dir", "Right");
             moveTiles(Direction.RIGHT);
             if (!hasStarted)
                 hasStarted = true;
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            Gdx.app.log("Dir", "Down");
             moveTiles(Direction.UP);
             if (!hasStarted)
                 hasStarted = true;
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            Gdx.app.log("Dir", "Up");
             moveTiles(Direction.DOWN);
             if (!hasStarted)
                 hasStarted = true;
