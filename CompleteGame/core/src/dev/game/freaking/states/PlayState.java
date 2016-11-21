@@ -2,6 +2,7 @@ package dev.game.freaking.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -59,8 +60,7 @@ public class PlayState extends State {
         blendAlpList();
         getContent();
 
-        Random rand = new Random();
-        bgColor = rand.nextInt(3);
+        bgColor = 0;
         shape = new ShapeRenderer();
     }
 
@@ -109,6 +109,8 @@ public class PlayState extends State {
                     && Gdx.input.getY() <= SCREEN_HEIGHT * (1 - 0.02f)) {
                 answerCase2();
             }
+            Random rand = new Random();
+            bgColor = rand.nextInt(4);
         }
     }
 
@@ -144,18 +146,23 @@ public class PlayState extends State {
 
     @Override
     public void render(SpriteBatch batch) {
-        if (bgColor == 0) {
-            Gdx.gl.glClearColor(64 / 255f, 64 / 255f, 64 / 255f, 64 / 255f);
-        }
-        if (bgColor == 1) {
-            Gdx.gl.glClearColor(109 / 255f, 135 / 255f, 100 / 255f, 64 / 255f);
-        }
-        if (bgColor == 2) {
-            Gdx.gl.glClearColor(112 / 255f, 77 / 255f, 54 / 255f, 255 / 255f);
-        }
-
         //-------------------SHAPE RENDERER------------------
         shape.begin(ShapeRenderer.ShapeType.Filled);
+        switch (bgColor) {
+            case 0:
+                shape.setColor(Color.valueOf("#455A64"));
+                break;
+            case 1:
+                shape.setColor(Color.valueOf("#0D47A1"));
+                break;
+            case 2:
+                shape.setColor(Color.valueOf("#004D40"));
+                break;
+            default:
+                shape.setColor(Color.valueOf("#424242"));
+        }
+        shape.rect(0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
+
         // Button 1 (shape)
         shape.setColor(Color.valueOf("#f9f6f2"));
         shape.rect(SCREEN_WIDTH * 0.03f, SCREEN_HEIGHT * 0.02f,
@@ -197,7 +204,7 @@ public class PlayState extends State {
 
     //get content of label case
     public void getContent() {
-        Random rand = new Random();
+        Random rand = new Random(System.nanoTime() / 100);
         trueLT = alphabets.get(currentAlphabet).getLatin();
         int index = rand.nextInt(alphabets.size());
         while (currentAlphabet == index) {
@@ -256,7 +263,7 @@ public class PlayState extends State {
     //blend japanese alphabet list
     public void blendAlpList() {
         Random rand = new Random();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 500; i++) {
             int j = rand.nextInt(alphabets.size());
             int k = rand.nextInt(alphabets.size());
             while (j == k) {

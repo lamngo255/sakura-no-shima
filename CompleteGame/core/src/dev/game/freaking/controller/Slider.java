@@ -12,7 +12,7 @@ import dev.game.main.GameHandler;
  */
 public class Slider {
 
-    private static final int SPEED = Gdx.graphics.getWidth() / 45;
+    private static final int SPEED = Gdx.graphics.getWidth() / 55;
     private FreakingHandler freakingHandler;
     private ShapeRenderer slider;
     private boolean running;

@@ -14,7 +14,7 @@ public class Alphabet {
     private String latin;
     private int type;
 
-    public static String ALL_CHARS = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにょにゅひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ"
+    public static String ALL_CHARS = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにょにゅひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ"
             + "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポキャキュキョシャシュショチャチュチョニャニュニョミャミュミョヒャヒュヒョリャリョリュギャギュギョジャジュジョビャビュビョピャプオピュ";
 
     public static ArrayList<Alphabet> alphabets = new ArrayList<>();
@@ -167,7 +167,6 @@ public class Alphabet {
         alphabets.add(new Alphabet("re", "レ", KATAKANA));
         alphabets.add(new Alphabet("ro", "ロ", KATAKANA));
         alphabets.add(new Alphabet("wa", "ワ", KATAKANA));
-        alphabets.add(new Alphabet("n", "ｎ", KATAKANA));
         alphabets.add(new Alphabet("ga", "ガ", KATAKANA));
         alphabets.add(new Alphabet("gi", "ギ", KATAKANA));
         alphabets.add(new Alphabet("gu", "グ", KATAKANA));

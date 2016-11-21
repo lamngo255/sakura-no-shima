@@ -29,7 +29,7 @@ public class Tile {
     }
 
     public void drawImage() {
-        if (value.equals("あ")) {
+        if (value.equals("一")) {
             background = Color.valueOf("#eee4da");
             textColor = Color.DARK_GRAY;
         } else if (value.equals("い")) {
