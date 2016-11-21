@@ -1,5 +1,6 @@
 package dev.game.kanji.worlds;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.kanji.entities.GameBoard;
 import dev.game.main.GameHandler;
+import dev.game.modules.GameModuleManager;
+import dev.game.modules.MainGameModule;
 import dev.game.modules.ModuleKanji;
 
 /**
@@ -24,10 +27,15 @@ public class World {
     private BitmapFont titleFont, titleFont2, newGameFont, tryAgainFont;
     private BitmapFont statementFont, saFont;
 
-    public World() {
+    private GameModuleManager cpanel;
+    private GameHandler gameHandler;
+
+    public World(GameModuleManager cpanel,GameHandler gameHandler) {
         this.gameBoard = GameBoard.generate();
         this.shape = new ShapeRenderer();
         generateFont();
+        this.cpanel = cpanel;
+        this.gameHandler = gameHandler;
     }
 
     public void generateFont() {
@@ -119,6 +127,12 @@ public class World {
         shape.setColor(Color.valueOf("#8f7a66"));
         shape.rect(GameHandler.GAME_WIDTH * 0.66f, GameHandler.GAME_HEIGHT * 0.71f,
                     GameHandler.GAME_WIDTH * 0.30f, GameHandler.GAME_HEIGHT * 0.07f);
+
+        //todo render Home box
+//        shape.rect(GameHandler.GAME_WIDTH * 0.66f, GameHandler.GAME_HEIGHT * 0.71f - 0.07f - 0.02f,
+//                    GameHandler.GAME_WIDTH * 0.30f, GameHandler.GAME_HEIGHT * 0.07f);
+
+
         shape.end();
 
         // render Game Board
@@ -190,13 +204,23 @@ public class World {
     private void handleInput() {
         // New Game listener
         if (Gdx.input.justTouched()) {
+            // new_game_button
             if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.66f
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.66f + 0.30f)
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07)
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f)) {
                 gameBoard.dispose();
                 gameBoard = GameBoard.generate();
+
             }
+            //todo home_button
+//            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.66f
+//                    && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.66f + 0.30f)
+//                    && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07f + 0.1f  )
+//                    && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f + 0.1f)) {
+//
+//                cpanel.set(new MainGameModule(gameHandler, cpanel));
+//            }
 
             if (gameBoard.isDead()) {
                 if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.33f

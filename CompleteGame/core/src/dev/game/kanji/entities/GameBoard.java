@@ -170,7 +170,7 @@ public class GameBoard {
             for (int col = 0; col < COLS; col++) {
                 Tile current = board[row][col];
                 if (current == null) continue;
-                current.update();
+                current.update(); // do nothing
                 resetPosition(current, row, col);
                 if (current.getValue().equals("さ")) {
                     won = true;
@@ -298,6 +298,8 @@ public class GameBoard {
         } else {
             System.out.println(dir + "is not a valid direction");
         }
+
+        //reset all tile can combine now
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
                 Tile current = board[row][col];

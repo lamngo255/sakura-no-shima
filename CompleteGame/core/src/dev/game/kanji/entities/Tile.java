@@ -5,20 +5,21 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import dev.game.main.GameHandler;
 
 /**
  * Created by Lam Ngo on 11/19/2016.
  */
 public class Tile {
-    public static int TILE_WIDTH = (int) (Gdx.graphics.getWidth() / 4.6f);
-    public static int TILE_HEIGHT = (int) (Gdx.graphics.getWidth() / 4.6f);
-    public static final int SLIDE_SPEED = 65;
+    public static int TILE_WIDTH = (int) (GameHandler.GAME_WIDTH / 4.6f);
+    public static int TILE_HEIGHT = (int) (GameHandler.GAME_WIDTH / 4.6f);
+    public static final int SLIDE_SPEED = GameHandler.GAME_WIDTH / 11;
     private int x;
     private int y;
     private String value;
     private Color background, textColor;
     private ShapeRenderer shape;
-    private boolean canCombine;
+    private boolean canCombine = true;
     private Point slideTo;
 
     public Tile(String value, int x, int y) {
@@ -100,6 +101,7 @@ public class Tile {
 
     public void setValue(String value) {
         this.value = value;
+
     }
 
     public void setSlideTo(Point slideTo) {
