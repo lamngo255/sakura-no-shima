@@ -15,8 +15,7 @@ import dev.game.main.GameHandler;
 public class FlyingItem extends Entity {
 
     private static final int SPEED = GameHandler.GAME_WIDTH / 72;
-    private static final float DEFAULT_COLLISION_BOUNDS_SCALE = 0.5f;
-    private static final float DEFAULT_TARGET_COLLISION_RANGE = 20f;
+    private static final float DEFAULT_TARGET_COLLISION_RANGE = GameHandler.GAME_WIDTH / 11f;
     private static final int DEFAULT_BONUS = 300;
 
     private ItemAttributes itemAttributes;
@@ -45,19 +44,7 @@ public class FlyingItem extends Entity {
         alive = isAlive;
     }
 
-    private Rectangle getTargetCollisionBounds(Entity target) {
-        float scale = DEFAULT_COLLISION_BOUNDS_SCALE;
 
-        float newTargetWidth = target.getWidth()*scale;
-        float newTargetHeight = target.getHeight() * scale;
-
-        float newTargetX = target.getMiddleX() - newTargetWidth;
-        float newTargetY = target.getMiddleY() - newTargetHeight;
-
-        Rectangle newbounds = new Rectangle(newTargetX,newTargetY,newTargetWidth,newTargetHeight);
-
-        return newbounds;
-    }
 
     private Circle getTargetBounds() {
         return targetBounds;
