@@ -32,7 +32,7 @@ public class Platform extends Entity {
         super(handler, x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
 
         POSITION += Handler.GAME_HEIGHT / PLATFORM_COUNT;
-        this.vx = 3;
+        this.vx = Handler.GAME_WIDTH / 170;
         this.type = (int) (Math.random() * 2);
         this.item = Item.createRandomItemForPlatfrom(handler, this);
     }

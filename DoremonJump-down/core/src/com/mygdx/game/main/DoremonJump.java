@@ -16,38 +16,21 @@ public class DoremonJump extends ApplicationAdapter {
     public static OrthographicCamera camera;
     public static int bestScore = 0;
 
-    public int WORLD_WIDTH;
-    public int WORLD_HEIGHT;
     private GameStateManager gsm;
     private SpriteBatch batch;
     private Handler handler;
-    private Viewport viewport;
 
     @Override
     public void create() {
         //debuging
-        WORLD_WIDTH = Gdx.graphics.getWidth();
-        WORLD_HEIGHT = Gdx.graphics.getHeight();
-
         batch = new SpriteBatch();
         Assets.init();
         init();
     }
 
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
-    }
-
     public void init() {
         camera = new OrthographicCamera();
         camera.setToOrtho(true);
-
-        viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
-        viewport.apply();
-
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
 
         handler = new Handler(this);
         gsm = new GameStateManager();
@@ -73,13 +56,5 @@ public class DoremonJump extends ApplicationAdapter {
 
     public static OrthographicCamera getCamera() {
         return camera;
-    }
-
-    public int getHeight() {
-        return WORLD_HEIGHT;
-    }
-
-    public int getWidth() {
-        return WORLD_WIDTH;
     }
 }
