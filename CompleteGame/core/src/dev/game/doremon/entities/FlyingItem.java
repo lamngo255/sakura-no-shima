@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.GameHandler;
 
 /**
  * Created by Nghia on 11/14/2016.
@@ -13,7 +14,7 @@ import dev.game.doremon.main.DoremonHandler;
 
 public class FlyingItem extends Entity {
 
-    private static final int SPEED = DoremonHandler.GAME_WIDTH / 72;
+    private static final int SPEED = GameHandler.GAME_WIDTH / 72;
     private static final float DEFAULT_COLLISION_BOUNDS_SCALE = 0.5f;
     private static final float DEFAULT_TARGET_COLLISION_RANGE = 20f;
     private static final int DEFAULT_BONUS = 300;

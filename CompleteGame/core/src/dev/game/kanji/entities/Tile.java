@@ -70,7 +70,7 @@ public class Tile {
 
     public void render(SpriteBatch batch, BitmapFont tileFont) {
         drawImage();
-//        shape.setProjectionMatrix(KanjiModule.camera.combined);
+//        shape.setProjectionMatrix(ModuleKanji.camera.combined);
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(background);
         shape.rect(x, y, TILE_WIDTH, TILE_HEIGHT);

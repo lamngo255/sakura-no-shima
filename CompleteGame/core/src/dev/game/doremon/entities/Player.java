@@ -8,18 +8,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.GameHandler;
 
 
 public class Player extends Entity {
-    public static final int PLAYER_WIDTH = (int) (DoremonHandler.GAME_WIDTH / 5.3);
-    public static final int PLAYER_HEIGHT = (int) (DoremonHandler.GAME_HEIGHT / 8.3);
+    public static final int PLAYER_WIDTH = (int) (GameHandler.GAME_WIDTH / 5.3);
+    public static final int PLAYER_HEIGHT = (int) (GameHandler.GAME_HEIGHT / 8.3);
     private static final float HORIZONTAL_VELOCITY_LIMIT = 3;
     private static final float HORIZONTAL_ACCELERATION = 0.1f;
     private static final float HORIZONTAL_BRAKE_ACCELEBRATION = 0.075f;
 
-    public static float GRAVITY = DoremonHandler.GAME_HEIGHT / 7200f;
-    public static int JUMP = -(int) (DoremonHandler.GAME_HEIGHT / 67.5);
-    public static int JUMP_HIGH = -(int) (DoremonHandler.GAME_HEIGHT / 20.56);
+    public static float GRAVITY = GameHandler.GAME_HEIGHT / 7200f;
+    public static int JUMP = -(int) (GameHandler.GAME_HEIGHT / 67.5);
+    public static int JUMP_HIGH = -(int) (GameHandler.GAME_HEIGHT / 20.56);
 
     private float vx, vy;
     private boolean isMovingLeft, isMovingRight;
@@ -35,8 +36,8 @@ public class Player extends Entity {
 
     public static Player generate(DoremonHandler doremonHandler) {
         return new Player(doremonHandler,
-                DoremonHandler.GAME_WIDTH / 2 - PLAYER_WIDTH / 2,
-                DoremonHandler.GAME_HEIGHT - Player.PLAYER_HEIGHT);
+                GameHandler.GAME_WIDTH / 2 - PLAYER_WIDTH / 2,
+                GameHandler.GAME_HEIGHT - Player.PLAYER_HEIGHT);
     }
 
     public Player(DoremonHandler doremonHandler, float x, float y) {
@@ -64,8 +65,8 @@ public class Player extends Entity {
         playerMove();
         playerJump();
         playerFallDown();
-        if (doremonHandler.getWorld().getBase().getY() > DoremonHandler.GAME_HEIGHT
-                && (this.y + this.height > DoremonHandler.GAME_HEIGHT)
+        if (doremonHandler.getWorld().getBase().getY() > GameHandler.GAME_HEIGHT
+                && (this.y + this.height > GameHandler.GAME_HEIGHT)
                 && !dead) {
             this.setDead(true);
             deadSound.play(0.5f);
@@ -87,10 +88,10 @@ public class Player extends Entity {
         isMovingRight = false;
         isMovingLeft = false;
 //        if (Gdx.input.isTouched()) {
-//            if (Gdx.input.getX() <= DoremonHandler.GAME_WIDTH / 2) {
+//            if (Gdx.input.getX() <= GameHandler.GAME_WIDTH / 2) {
 //                isMovingLeft = true;
 //                isMovingRight = false;
-//            } else if (Gdx.input.getX() > DoremonHandler.GAME_WIDTH / 2) {
+//            } else if (Gdx.input.getX() > GameHandler.GAME_WIDTH / 2) {
 //                isMovingRight = true;
 //                isMovingLeft = false;
 //            }
@@ -158,10 +159,10 @@ public class Player extends Entity {
         }
 
         // Move through the wall
-        if (this.x > DoremonHandler.GAME_WIDTH) {
+        if (this.x > GameHandler.GAME_WIDTH) {
             this.x = 0 - this.width;
         } else if (this.x < 0 - this.width) {
-            this.x = DoremonHandler.GAME_WIDTH;
+            this.x = GameHandler.GAME_WIDTH;
         }
 
     }
@@ -173,7 +174,7 @@ public class Player extends Entity {
         }
 
         // keep the player below half the screen when jumping
-        if (this.y >= (DoremonHandler.GAME_HEIGHT - this.height) / 2) {
+        if (this.y >= (GameHandler.GAME_HEIGHT - this.height) / 2) {
             this.y += this.vy;
 
             //vy should always be affected by GRAVITY
@@ -192,7 +193,7 @@ public class Player extends Entity {
     }
 
     private void playerFallDown() {
-        if (this.y >= DoremonHandler.GAME_HEIGHT / 2 - height / 2) {
+        if (this.y >= GameHandler.GAME_HEIGHT / 2 - height / 2) {
             return;
         }
         this.vy += GRAVITY;
@@ -208,9 +209,9 @@ public class Player extends Entity {
         if (this.isDead()) {
             angle += 4;
             if (this.width < PLAYER_WIDTH * 3)
-                this.width += DoremonHandler.GAME_WIDTH / 180;
+                this.width += GameHandler.GAME_WIDTH / 180;
             if (this.height < PLAYER_HEIGHT * 3)
-                this.height += DoremonHandler.GAME_HEIGHT / 360;
+                this.height += GameHandler.GAME_HEIGHT / 360;
         }
         batch.draw(sprite,
                 this.x, this.y,

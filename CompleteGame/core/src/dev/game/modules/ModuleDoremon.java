@@ -13,13 +13,13 @@ import dev.game.main.GameHandler;
 /**
  * Created by Lam Ngo on 11/21/2016.
  */
-public class DoremonModule extends Module {
+public class ModuleDoremon extends Module {
     public static OrthographicCamera camera;
     public static int bestScore = 0;
     private DoremonHandler doremonHandler;
     private GameStateManager gsm;
 
-    public DoremonModule(GameHandler gameHandler, GameModuleManager cpanel) {
+    public ModuleDoremon(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
         Assets.init();
         init();

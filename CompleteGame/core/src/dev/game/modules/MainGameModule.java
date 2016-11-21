@@ -17,10 +17,12 @@ public class MainGameModule extends Module {
     @Override
     public void tick() {
         if (Gdx.input.justTouched()) {
-            if (Gdx.input.getX() <= GameHandler.GAME_WIDTH / 2) {
-                cpanel.set(new DoremonModule(gameHandler, cpanel));
+            if (Gdx.input.getX() <= GameHandler.GAME_WIDTH / 3) {
+                cpanel.set(new ModuleDoremon(gameHandler, cpanel));
+            } else if (Gdx.input.getX() <= GameHandler.GAME_WIDTH * 2/3){
+                cpanel.set(new ModuleKanji(gameHandler, cpanel));
             } else {
-                cpanel.set(new KanjiModule(gameHandler, cpanel));
+
             }
             System.out.println(Gdx.input.getX());
         }

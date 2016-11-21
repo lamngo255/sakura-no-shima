@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.GameHandler;
 
 /**
  * Created by Nghia on 11/12/2016.
@@ -11,9 +12,9 @@ import dev.game.doremon.main.DoremonHandler;
 
 public class Item extends Entity {
 
-    private static final int DEFAULT_WIDTH = DoremonHandler.GAME_WIDTH / 8;
-    private static final int DEFAULT_HEIGHT = (int) (DoremonHandler.GAME_HEIGHT / 12.5);
-    private static final int DEFAULT_BOUNDS_RADIUS = (int) (DoremonHandler.GAME_WIDTH / 3.2);
+    private static final int DEFAULT_WIDTH = GameHandler.GAME_WIDTH / 8;
+    private static final int DEFAULT_HEIGHT = (int) (GameHandler.GAME_HEIGHT / 12.5);
+    private static final int DEFAULT_BOUNDS_RADIUS = (int) (GameHandler.GAME_WIDTH / 3.2);
     private static final int DEFAULT_TYPE = 0;
 
     private Circle gravityCircle;
@@ -56,7 +57,7 @@ public class Item extends Entity {
 
 
     public boolean isCollidable() {
-        return isAlive() && getY()+getHeight() <= DoremonHandler.GAME_HEIGHT;
+        return isAlive() && getY()+getHeight() <= GameHandler.GAME_HEIGHT;
     }
 
     public void setAlive(boolean alive) {

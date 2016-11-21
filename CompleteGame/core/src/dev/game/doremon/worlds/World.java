@@ -11,7 +11,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.doremon.entities.*;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
-import dev.game.modules.DoremonModule;
+import dev.game.main.GameHandler;
+import dev.game.modules.ModuleDoremon;
 
 import java.util.ArrayList;
 
@@ -76,20 +77,20 @@ public class World {
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(background, 0, 0, DoremonHandler.GAME_WIDTH, DoremonHandler.GAME_HEIGHT);
+        batch.draw(background, 0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         batch.end();
 
         Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-        hub.setProjectionMatrix(DoremonModule.camera.combined);
+        hub.setProjectionMatrix(ModuleDoremon.camera.combined);
         hub.begin(ShapeRenderer.ShapeType.Filled);
         hub.setColor(0, 51 / 255, 153 / 255, 0.3f);
-        hub.rect(0, 0, DoremonHandler.GAME_WIDTH, DoremonHandler.GAME_HEIGHT / 10.3f);
+        hub.rect(0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT / 10.3f);
         hub.end();
         batch.begin();
 
 
-        font.draw(batch, "Score: " + score, DoremonHandler.GAME_WIDTH / 28.8f,
-                DoremonHandler.GAME_HEIGHT / 43f);
+        font.draw(batch, "Score: " + score, GameHandler.GAME_WIDTH / 28.8f,
+                GameHandler.GAME_HEIGHT / 43f);
         for (Platform platform : platforms) {
             platform.render(batch);
         }
@@ -107,7 +108,7 @@ public class World {
 
     private void platformScrolling() {
         // create a illusion of scrolling when player reach above half screen
-        if (player.getY() >= DoremonHandler.GAME_HEIGHT / 2 - player.getHeight() / 2) {
+        if (player.getY() >= GameHandler.GAME_HEIGHT / 2 - player.getHeight() / 2) {
             return;
         }
         for (int position = 0; position < platforms.size(); position++) {
@@ -118,9 +119,9 @@ public class World {
             }
 
             // reset the platform's position which was below the screen
-            if (platform.getY() > DoremonHandler.GAME_HEIGHT) {
+            if (platform.getY() > GameHandler.GAME_HEIGHT) {
                 platform.setType(platform.generateType());
-                platform.setY(platform.getY() - DoremonHandler.GAME_HEIGHT);
+                platform.setY(platform.getY() - GameHandler.GAME_HEIGHT);
 
                 //new
                 platform.getItem().getNewRandomType();
@@ -228,12 +229,12 @@ public class World {
         }
         base.setY(10000);
 
-        if (player.getY() > DoremonHandler.GAME_HEIGHT / 2 && falling == 0) {
+        if (player.getY() > GameHandler.GAME_HEIGHT / 2 && falling == 0) {
             player.setY(player.getY() - 20);
             player.setVy(0);
-        } else if (player.getY() < DoremonHandler.GAME_HEIGHT / 2) {
+        } else if (player.getY() < GameHandler.GAME_HEIGHT / 2) {
             falling = 1;
-        } else if (player.getY() > DoremonHandler.GAME_HEIGHT) {
+        } else if (player.getY() > GameHandler.GAME_HEIGHT) {
             gameOver = true;
         }
         player.setDeadDir();
@@ -267,7 +268,7 @@ public class World {
         FreeTypeFontGenerator generator =
                 new FreeTypeFontGenerator(Gdx.files.internal("neuropol.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = DoremonHandler.GAME_WIDTH / 14;
+        parameter.size = GameHandler.GAME_WIDTH / 14;
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         parameter.flip = true;
         font = generator.generateFont(parameter);

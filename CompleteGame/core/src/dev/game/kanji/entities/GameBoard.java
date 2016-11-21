@@ -11,7 +11,7 @@ import dev.game.kanji.input.DirectionGestureDetector;
 import dev.game.kanji.main.KanjiHandler;
 import dev.game.kanji.utils.Direction;
 import dev.game.main.GameHandler;
-import dev.game.modules.KanjiModule;
+import dev.game.modules.ModuleKanji;
 
 import java.util.Random;
 
@@ -110,7 +110,7 @@ public class GameBoard {
         batch.begin();
         batch.end();
 
-        gameBoard.setProjectionMatrix(KanjiModule.camera.combined);
+        gameBoard.setProjectionMatrix(ModuleKanji.camera.combined);
         gameBoard.begin(ShapeRenderer.ShapeType.Filled);
         gameBoard.setColor(Color.valueOf("#bbada0"));
         gameBoard.rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);

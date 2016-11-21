@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.kanji.entities.GameBoard;
 import dev.game.kanji.main.KanjiHandler;
 import dev.game.main.GameHandler;
-import dev.game.modules.KanjiModule;
+import dev.game.modules.ModuleKanji;
 
 /**
  * Created by Lam Ngo on 11/19/2016.
@@ -130,7 +130,7 @@ public class World {
 
         // Transparent white when game over
         Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-        shape.setProjectionMatrix(KanjiModule.camera.combined);
+        shape.setProjectionMatrix(ModuleKanji.camera.combined);
         if (gameBoard.isDead()) {
             shape.begin(ShapeRenderer.ShapeType.Filled);
             shape.setColor(33, 150, 243, 0.7f);

@@ -1,14 +1,14 @@
 package dev.game.kanji.main;
 
-import dev.game.modules.KanjiModule;
+import dev.game.modules.ModuleKanji;
 
 /**
  * Created by Lam Ngo on 11/19/2016.
  */
 public class KanjiHandler {
-    private KanjiModule kanji;
+    private ModuleKanji kanji;
 
-    public KanjiHandler(KanjiModule kanji) {
+    public KanjiHandler(ModuleKanji kanji) {
         this.kanji = kanji;
     }
 }

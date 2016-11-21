@@ -11,13 +11,13 @@ import dev.game.main.GameHandler;
 /**
  * Created by Lam Ngo on 11/21/2016.
  */
-public class KanjiModule extends Module {
+public class ModuleKanji extends Module {
 
     public static OrthographicCamera camera;
     private KanjiHandler kanjiHandler;
     private World world;
 
-    public KanjiModule(GameHandler gameHandler, GameModuleManager cpanel) {
+    public ModuleKanji(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
         kanjiHandler = new KanjiHandler(this);
         world = new World(kanjiHandler);

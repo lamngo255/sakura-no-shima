@@ -4,12 +4,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.GameHandler;
 
 
 public class Spring extends Entity {
 
-    public static final int DEFAULT_WIDTH = DoremonHandler.GAME_WIDTH / 9;
-    public static final int DEFAULT_HEIGHT = DoremonHandler.GAME_HEIGHT / 18;
+    public static final int DEFAULT_WIDTH = GameHandler.GAME_WIDTH / 9;
+    public static final int DEFAULT_HEIGHT = GameHandler.GAME_HEIGHT / 18;
     private boolean appear = false;
     private Platform attachedPlatform ;
 
