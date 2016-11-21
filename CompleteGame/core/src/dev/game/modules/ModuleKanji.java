@@ -17,7 +17,7 @@ public class ModuleKanji extends Module {
 
     public ModuleKanji(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
-        world = new World();
+        world = new World(cpanel,gameHandler);
 
         camera = new OrthographicCamera(GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         camera.setToOrtho(false, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
