@@ -93,7 +93,7 @@ public class World {
         // Remain Statement Font
         FreeTypeFontGenerator generator2 =
                 new FreeTypeFontGenerator(Gdx.files.internal("KaoriGelBold.ttf"));
-        parameter.size = handler.getWidth() / 20;
+        parameter.size = handler.getWidth() / 18;
         parameter.characters = "さ";
         saFont = generator2.generateFont(parameter);
         generator2.dispose();
@@ -182,12 +182,11 @@ public class World {
                                         handler.getHeight() * 0.84f);
         newGameFont.draw(batch, "New Game", handler.getWidth() * 0.675f,
                                         handler.getHeight() * 0.756f);
-        statementFont.draw(batch, "Get to the     tile!", handler.getWidth() * 0.05f,
+        statementFont.draw(batch, "Get to the      tile!", handler.getWidth() * 0.05f,
                                         handler.getHeight() * 0.75f);
         saFont.draw(batch, "さ", handler.getWidth() * 0.3f,
-                                    handler.getHeight() * 0.752f);
+                                    handler.getHeight() * 0.757f);
         batch.end();
-
     }
 
     private void handleInput() {
