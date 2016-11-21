@@ -39,7 +39,6 @@ public class FreakingGame extends ApplicationAdapter {
         gsm = new GameStateManager();
         gsm.push(new MenuState(handler, gsm));
         batch = new SpriteBatch();
-
     }
 
     @Override
