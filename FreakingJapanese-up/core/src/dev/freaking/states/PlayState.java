@@ -131,7 +131,7 @@ public class PlayState extends State {
         } else {
             Music.play("gameover");
             HIGH_SCORE = Math.max(HIGH_SCORE, ACHIEVED_SCORE);
-            gsm.set(new GameOverState(handler, gsm));
+            gsm.set(new GameOverState(handler, gsm,ACHIEVED_SCORE));
         }
         scoreText = String.valueOf(ACHIEVED_SCORE);
     }

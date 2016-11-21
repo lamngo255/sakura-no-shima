@@ -1,5 +1,6 @@
 package dev.game.entities;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
@@ -12,6 +13,7 @@ import dev.game.main.Game2048;
 import dev.game.main.Handler;
 import dev.game.utils.Direction;
 
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -33,17 +35,34 @@ public class GameBoard {
     public static int BOARD_HEIGHT = (ROWS + 1) * SPACING + ROWS * Tile.TILE_HEIGHT;
     public static boolean hasStarted;
     private BitmapFont tileFont;
+    private int score = 0;
+    private int highScore = 0;
+    private Font scoreFont;
 
     public static GameBoard generate(Handler handler) {
         return new GameBoard((handler.getWidth() / 2 - GameBoard.BOARD_WIDTH / 2),
                 (handler.getHeight() - GameBoard.BOARD_HEIGHT - 10));
     }
+    //saving
+
+    private String saveDataPath;
+    private String fileName = "SaveData";
 
     public GameBoard(int x, int y) {
+        try {
+            saveDataPath = GameBoard.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+//            saveDataPath = System.getProperty("user.home");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         this.x = x;
         this.y = y;
         board = new Tile[ROWS][COLS];
         gameBoard = new ShapeRenderer();
+
         start();
         checkSwipe();
         generateFont();

@@ -41,12 +41,12 @@ public class MenuState extends State {
 
         // Hiragana Font
         parameter.size = SCREEN_WIDTH / 12;
-        parameter.characters = "Hiragana";
+        parameter.characters = "   Hiragana";
         hiraFont = generator.generateFont(parameter);
 
         // Katakana Font
         parameter.size = SCREEN_WIDTH / 12;
-        parameter.characters = "Katakana";
+        parameter.characters = "  Katakana";
         kataFont = generator.generateFont(parameter);
 
         // Mix Font
@@ -111,49 +111,49 @@ public class MenuState extends State {
         batch.begin();
         batch.draw(bgMenu, 0, 0, handler.getWidth(), handler.getHeight());
         batch.end();
-
-        // -------------SHAPE RENDERER---------------
-        // Transparent button
-        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-        shape.setProjectionMatrix(FreakingGame.camera.combined);
-
-        // Hiragana (shape)
-        shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.setColor(97, 97, 97, 0.7f);
-        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.5f,
-                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
-
-        // Katakana (shape)
-        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.385f,
-                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
-
-        // Mix Hira + Kata (shape)
-        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.27f,
-                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
-
-        // Home (shape)
-        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.155f,
-                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
-        shape.end();
+//
+//        // -------------SHAPE RENDERER---------------
+//        // Transparent button
+//        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
+//        shape.setProjectionMatrix(FreakingGame.camera.combined);
+//
+//        // Hiragana (shape)
+//        shape.begin(ShapeRenderer.ShapeType.Filled);
+//        shape.setColor(97, 97, 97, 0.7f);
+//        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.5f,
+//                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
+//
+//        // Katakana (shape)
+//        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.385f,
+//                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
+//
+//        // Mix Hira + Kata (shape)
+//        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.27f,
+//                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
+//
+//        // Home (shape)
+//        shape.rect(handler.getWidth() * 0.2f, handler.getHeight() * 0.155f,
+//                handler.getWidth() * 0.6f, handler.getHeight() * 0.1f);
+//        shape.end();
 
 
         //------------TEXT RENDERER-----------------
-        batch.begin();
-        hiraFont.setColor(Color.valueOf("#424242"));
-        kataFont.setColor(Color.valueOf("#424242"));
-        mixFont.setColor(Color.valueOf("#424242"));
-        homeFont.setColor(Color.valueOf("#424242"));
-
-        hiraFont.draw(batch, "Hiragana", handler.getWidth() * 0.25f,
-                handler.getHeight() * 0.57f);
-        kataFont.draw(batch, "Katakana", handler.getWidth() * 0.25f,
-                handler.getHeight() * 0.455f);
-        mixFont.draw(batch, "Hira and Kata", handler.getWidth() * 0.25f,
-                handler.getHeight() * 0.34f);
-        homeFont.draw(batch, "Home", handler.getWidth() * 0.25f,
-                handler.getHeight() * 0.225f);
-
-        batch.end();
+//        batch.begin();
+//        hiraFont.setColor(Color.valueOf("#424242"));
+//        kataFont.setColor(Color.valueOf("#424242"));
+//        mixFont.setColor(Color.valueOf("#424242"));
+//        homeFont.setColor(Color.valueOf("#424242"));
+//
+//        hiraFont.draw(batch, "   Hiragana", handler.getWidth() * 0.25f,
+//                handler.getHeight() * 0.57f);
+//        kataFont.draw(batch, "   Katakana", handler.getWidth() * 0.25f,
+//                handler.getHeight() * 0.455f);
+//        mixFont.draw(batch, "Hira and Kata", handler.getWidth() * 0.25f,
+//                handler.getHeight() * 0.34f);
+//        homeFont.draw(batch, "       Home", handler.getWidth() * 0.25f,
+//                handler.getHeight() * 0.225f);
+//
+//        batch.end();
     }
 
     @Override
