@@ -19,10 +19,10 @@ public class PlayingGuide extends State {
 
     public void handleInput() {
         if (Gdx.input.isTouched()) {
-            if (Gdx.input.getX() >= handler.getWidth() * 0.5f &&
-                    Gdx.input.getX() <= handler.getWidth() * 0.92f &&
-                    Gdx.input.getY() >= handler.getHeight() * 0.7f &&
-                    Gdx.input.getY() <= handler.getHeight() * 0.86f) {
+            if (Gdx.input.getX() >= Handler.GAME_WIDTH * 0.5f &&
+                    Gdx.input.getX() <= Handler.GAME_WIDTH * 0.92f &&
+                    Gdx.input.getY() >= Handler.GAME_HEIGHT * 0.7f &&
+                    Gdx.input.getY() <= Handler.GAME_HEIGHT * 0.86f) {
                 gsm.set(new GameState(handler, gsm));
             }
         }
@@ -36,7 +36,7 @@ public class PlayingGuide extends State {
     @Override
     public void render(SpriteBatch batch) {
         batch.begin();
-        batch.draw(playingGuide, 0, 0, handler.getWidth(), handler.getHeight());
+        batch.draw(playingGuide, 0, 0, Handler.GAME_WIDTH, Handler.GAME_HEIGHT);
         batch.end();
     }
 

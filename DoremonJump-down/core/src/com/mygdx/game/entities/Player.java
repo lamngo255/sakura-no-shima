@@ -11,16 +11,15 @@ import com.mygdx.game.main.Handler;
 
 
 public class Player extends Entity {
-    public static final int PLAYER_WIDTH = 130;
-    public static final int PLAYER_HEIGHT = 130;
+    public static final int PLAYER_WIDTH = (int) (Handler.GAME_WIDTH / 5.3);
+    public static final int PLAYER_HEIGHT = (int) (Handler.GAME_HEIGHT / 8.3);
     private static final float HORIZONTAL_VELOCITY_LIMIT = 3;
     private static final float HORIZONTAL_ACCELERATION = 0.1f;
     private static final float HORIZONTAL_BRAKE_ACCELEBRATION = 0.075f;
 
-
-    public static float GRAVITY = 0.15f;
-    public static int JUMP = -16;
-    public static int JUMP_HIGH = -50;
+    public static float GRAVITY = Handler.GAME_HEIGHT / 7200f;
+    public static int JUMP = -(int) (Handler.GAME_HEIGHT / 67.5);
+    public static int JUMP_HIGH = -(int) (Handler.GAME_HEIGHT / 20.56);
 
     private float vx, vy;
     private boolean isMovingLeft, isMovingRight;
@@ -36,8 +35,8 @@ public class Player extends Entity {
 
     public static Player generate(Handler handler) {
         return new Player(handler,
-                handler.getWidth() / 2 - PLAYER_WIDTH / 2,
-                handler.getHeight() - Player.PLAYER_HEIGHT);
+                Handler.GAME_WIDTH / 2 - PLAYER_WIDTH / 2,
+                Handler.GAME_HEIGHT - Player.PLAYER_HEIGHT);
     }
 
     public Player(Handler handler, float x, float y) {
@@ -65,8 +64,8 @@ public class Player extends Entity {
         playerMove();
         playerJump();
         playerFallDown();
-        if (handler.getWorld().getBase().getY() > handler.getHeight()
-                && (this.y + this.height > handler.getHeight())
+        if (handler.getWorld().getBase().getY() > Handler.GAME_HEIGHT
+                && (this.y + this.height > Handler.GAME_HEIGHT)
                 && !dead) {
             this.setDead(true);
             deadSound.play(0.5f);
@@ -76,7 +75,6 @@ public class Player extends Entity {
 
 
     private void controlDirection() {
-
         //check horizontal moving direction
         float accelX = Gdx.input.getAccelerometerX();
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -89,10 +87,10 @@ public class Player extends Entity {
         isMovingRight = false;
         isMovingLeft = false;
 //        if (Gdx.input.isTouched()) {
-//            if (Gdx.input.getX() <= handler.getWidth() / 2) {
+//            if (Gdx.input.getX() <= Handler.GAME_WIDTH / 2) {
 //                isMovingLeft = true;
 //                isMovingRight = false;
-//            } else if (Gdx.input.getX() > handler.getWidth() / 2) {
+//            } else if (Gdx.input.getX() > Handler.GAME_WIDTH / 2) {
 //                isMovingRight = true;
 //                isMovingLeft = false;
 //            }
@@ -160,10 +158,10 @@ public class Player extends Entity {
         }
 
         // Move through the wall
-        if (this.x > handler.getWidth()) {
+        if (this.x > Handler.GAME_WIDTH) {
             this.x = 0 - this.width;
         } else if (this.x < 0 - this.width) {
-            this.x = handler.getWidth();
+            this.x = Handler.GAME_WIDTH;
         }
 
     }
@@ -175,7 +173,7 @@ public class Player extends Entity {
         }
 
         // keep the player below half the screen when jumping
-        if (this.y >= (handler.getHeight() - this.height) / 2) {
+        if (this.y >= (Handler.GAME_HEIGHT - this.height) / 2) {
             this.y += this.vy;
 
             //vy should always be affected by GRAVITY
@@ -194,7 +192,7 @@ public class Player extends Entity {
     }
 
     private void playerFallDown() {
-        if (this.y >= handler.getHeight() / 2 - height / 2) {
+        if (this.y >= Handler.GAME_HEIGHT / 2 - height / 2) {
             return;
         }
         this.vy += GRAVITY;
@@ -209,20 +207,14 @@ public class Player extends Entity {
         Sprite sprite = new Sprite(getCurrentFrame());
         if (this.isDead()) {
             angle += 4;
-            if (this.width < PLAYER_WIDTH * 2)
-                this.width += 3;
-            if (this.height < PLAYER_HEIGHT * 2)
-                this.height += 3;
+            if (this.width < PLAYER_WIDTH * 3)
+                this.width += Handler.GAME_WIDTH / 180;
+            if (this.height < PLAYER_HEIGHT * 3)
+                this.height += Handler.GAME_HEIGHT / 360;
         }
         batch.draw(sprite,
-                 this.x,  this.y,
-////                getSceneWidth() / 2, getSceneHeight() / 2, this.getSceneWidth(), this.getSceneHeight(), 1, 1, angle);
+                this.x, this.y,
                 width / 2, height / 2, this.width, this.height, 1, 1, angle);
-
-//                 x * handler.getWorld_to_scene_width(),
-//                y * handler.getWorld_to_scene_height(),
-//                width * handler.getWorld_to_scene_width(),
-//                height * handler.getWorld_to_scene_height());
     }
 
     public TextureRegion getCurrentFrame() {
@@ -234,7 +226,7 @@ public class Player extends Entity {
             return Assets.player_high[1];
         } else if (dir.equals("left_land")) {
             return Assets.player_high[0];
-        } else if (dir.equals("left_fall")){
+        } else if (dir.equals("left_fall")) {
             return Assets.player_fall[0];
         } else if (dir.equals("right_fall")) {
             return Assets.player_fall[1];

@@ -11,15 +11,9 @@ import com.mygdx.game.main.Handler;
 
 public class Item extends Entity {
 
-    private static final int DEFAULT_WIDTH = 80;
-    private static final int DEFAULT_HEIGHT = 80;
-
-    private static final int DEFAULT_BOUNDS_RADIUS = 220;
-
-
-
-
-
+    private static final int DEFAULT_WIDTH = Handler.GAME_WIDTH / 8;
+    private static final int DEFAULT_HEIGHT = (int) (Handler.GAME_HEIGHT / 12.5);
+    private static final int DEFAULT_BOUNDS_RADIUS = (int) (Handler.GAME_WIDTH / 3.2);
     private static final int DEFAULT_TYPE = 0;
 
     private Circle gravityCircle;
@@ -37,7 +31,6 @@ public class Item extends Entity {
 
         gravityCircle = new Circle(x, y, DEFAULT_BOUNDS_RADIUS);
         alive = false;
-//        alive = true;
     }
 
     @Override
@@ -63,7 +56,7 @@ public class Item extends Entity {
 
 
     public boolean isCollidable() {
-        return isAlive() && getY()+getHeight() <= handler.getHeight();
+        return isAlive() && getY()+getHeight() <= Handler.GAME_HEIGHT;
     }
 
     public void setAlive(boolean alive) {
@@ -74,14 +67,7 @@ public class Item extends Entity {
     @Override
     public void render(SpriteBatch batch) {
         if (alive) {
-
-//            batch.draw(Assets.itemTypes.get(type).getItemTextureRegion(), x * handler.getWorld_to_scene_width(),
-//                    y * handler.getWorld_to_scene_height(),
-//                    width * handler.getWorld_to_scene_width(),
-//                    height * handler.getWorld_to_scene_height());
             batch.draw(Assets.itemTypes.get(type).getItemTextureRegion(), x, y, width, height);
-
-//            batch.draw(Assets.itemTypes.get(type).getItemTextureRegion(), x, y,  getSceneWidth(), getSceneHeight());
         }
     }
 
@@ -90,7 +76,6 @@ public class Item extends Entity {
     }
 
     public void updateWithPlatform(Platform platform) {
-
         setX(platform.getX() + (platform.getWidth() - getWidth()) / 2);
         setY(platform.getY() - getHeight());
         updateBounds();

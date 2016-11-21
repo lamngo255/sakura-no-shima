@@ -25,7 +25,7 @@ public class GameOverState extends State {
     public GameOverState(Handler handler, GameStateManager gsm, int score) {
         super(handler, gsm);
         this.doremon = Assets.player_jump[0];
-        this.background = Assets.gameoverbackground;
+        this.background = Assets.bgGameOver;
         initFont();
         replayButton = Assets.playButton[3];
         mainmenuButton = Assets.playButton[4];
@@ -43,7 +43,7 @@ public class GameOverState extends State {
         parameter.flip = true;
         gameOver = generator.generateFont(parameter);
 
-        parameter.size = (int) (handler.getHeight() * 0.035f);
+        parameter.size = (int) (Handler.GAME_HEIGHT * 0.035f);
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 
@@ -56,15 +56,15 @@ public class GameOverState extends State {
 
     public void handleInput() {
         if (Gdx.input.justTouched()) {
-            if (Gdx.input.getX() >= handler.getWidth() * 0.27f &&
-                    Gdx.input.getX() <= handler.getWidth() * 0.69f &&
-                    Gdx.input.getY() >= handler.getHeight() * 0.5f &&
-                    Gdx.input.getY() <= handler.getHeight() * 0.58f) {
+            if (Gdx.input.getX() >= Handler.GAME_WIDTH * 0.27f &&
+                    Gdx.input.getX() <= Handler.GAME_WIDTH * 0.69f &&
+                    Gdx.input.getY() >= Handler.GAME_HEIGHT * 0.5f &&
+                    Gdx.input.getY() <= Handler.GAME_HEIGHT * 0.58f) {
                 gsm.set(new GameState(handler, gsm));
-            } else if (Gdx.input.getX() >= handler.getWidth() * 0.27f &&
-                    Gdx.input.getX() <= handler.getWidth() * 0.69f &&
-                    Gdx.input.getY() >= handler.getHeight() * 0.64f &&
-                    Gdx.input.getY() <= handler.getHeight() * 0.69f
+            } else if (Gdx.input.getX() >= Handler.GAME_WIDTH * 0.27f &&
+                    Gdx.input.getX() <= Handler.GAME_WIDTH * 0.69f &&
+                    Gdx.input.getY() >= Handler.GAME_HEIGHT * 0.64f &&
+                    Gdx.input.getY() <= Handler.GAME_HEIGHT * 0.69f
                     ) {
                 gsm.set(new MenuState(handler, gsm));
 
@@ -80,21 +80,12 @@ public class GameOverState extends State {
     @Override
     public void render(SpriteBatch batch) {
         batch.begin();
-        batch.draw(background, 0, 0, handler.getWidth(), handler.getHeight());
-//
-//        batch.draw(doremon, handler.getWidth() / 2 - doremon.getRegionWidth() / 4,
-//                handler.getHeight() / 2 - doremon.getRegionHeight() / 4,
-//                doremon.getRegionWidth() / 2,
-//                doremon.getRegionHeight() / 2);
-//        gameOver.draw(batch, "Game Over", 90, 50);
-//        scoreFont.draw(batch, "Score: " + score, 200, 180);
-//        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, 100, 240);
+        batch.draw(background, 0, 0, Handler.GAME_WIDTH, Handler.GAME_HEIGHT);
 
-
-        scoreFont.draw(batch, "Score: " + score, (float) handler.getWidth() * 0.23f, handler.getHeight() * 0.3125f);
-        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, (float) handler.getWidth() * 0.23f, handler.getHeight() * 0.37f);
-        batch.draw(replayButton, handler.getWidth() * 0.27f, handler.getHeight() * 0.5f, handler.getWidth() * 0.47f, handler.getHeight() * 0.09f);
-        batch.draw(mainmenuButton, handler.getWidth() * 0.27f, handler.getHeight() * 0.63f, handler.getWidth() * 0.47f, handler.getHeight() * 0.09f);
+        scoreFont.draw(batch, "Score: " + score, (float) Handler.GAME_WIDTH * 0.23f, Handler.GAME_HEIGHT * 0.3125f);
+        bestScoreFont.draw(batch, "Best score: " + DoremonJump.bestScore, (float) Handler.GAME_WIDTH * 0.23f, Handler.GAME_HEIGHT * 0.37f);
+        batch.draw(replayButton, Handler.GAME_WIDTH * 0.27f, Handler.GAME_HEIGHT * 0.5f, Handler.GAME_WIDTH * 0.47f, Handler.GAME_HEIGHT * 0.09f);
+        batch.draw(mainmenuButton, Handler.GAME_WIDTH * 0.27f, Handler.GAME_HEIGHT * 0.63f, Handler.GAME_WIDTH * 0.47f, Handler.GAME_HEIGHT * 0.09f);
 
         batch.end();
 
@@ -102,14 +93,13 @@ public class GameOverState extends State {
         hub.setProjectionMatrix(DoremonJump.camera.combined);
         hub.begin(ShapeRenderer.ShapeType.Filled);
         hub.setColor(33, 150, 243, 0.3f);
-        hub.rect(0, 0, handler.getWidth(), 320);
+        hub.rect(0, 0, Handler.GAME_WIDTH, 320);
         hub.end();
     }
 
     @Override
     public void dispose() {
         gameOver.dispose();
-
         scoreFont.dispose();
         bestScoreFont.dispose();
     }

@@ -47,17 +47,13 @@ public class World {
         this.handler.setWorld(this);
         loadWorld();
         gameOver = false;
-
-        background = Assets.gameplaybackground;
+        background = Assets.bgGamePlay;
     }
 
     public void tick() {
-
         instancesTick();
-
         countItemTime++;
         countSpringTime++;
-
 
         for (Platform platform : platforms) {
             platform.tick();
@@ -67,8 +63,6 @@ public class World {
         player.tick();
         base.tick();
         platformScrolling();
-
-//        createSpring();
         spring.tick();
 
         collides();
@@ -79,30 +73,23 @@ public class World {
 
     private void instancesTick() {
         FlyingItemManager.instance.tick();
-//        FlyingItem.instance.tick();
     }
 
-
-
     public void render(SpriteBatch batch) {
-        batch.draw(background, 0, 0, handler.getWidth(), handler.getHeight());
+        batch.draw(background, 0, 0, Handler.GAME_WIDTH, Handler.GAME_HEIGHT);
         batch.end();
 
         Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
         hub.setProjectionMatrix(DoremonJump.camera.combined);
         hub.begin(ShapeRenderer.ShapeType.Filled);
         hub.setColor(0, 51 / 255, 153 / 255, 0.3f);
-        hub.rect(0, 0, handler.getWidth(), 105);
+        hub.rect(0, 0, Handler.GAME_WIDTH, Handler.GAME_HEIGHT / 10.3f);
         hub.end();
-
         batch.begin();
 
 
-        font.draw(batch, "Score: " + score, 25, 45);
-
-//        font.draw(batch, "Spring state: " + spring.getState(), 25, 45);
-
-
+        font.draw(batch, "Score: " + score, Handler.GAME_WIDTH / 28.8f,
+                Handler.GAME_HEIGHT / 43f);
         for (Platform platform : platforms) {
             platform.render(batch);
         }
@@ -118,36 +105,22 @@ public class World {
 //        FlyingItem.instance.render(batch);
     }
 
-
-
     private void platformScrolling() {
         // create a illusion of scrolling when player reach above half screen
-        if (player.getY() >= handler.getHeight() / 2 - player.getHeight() / 2) {
+        if (player.getY() >= Handler.GAME_HEIGHT / 2 - player.getHeight() / 2) {
             return;
         }
-        for (int position = 0; position<platforms.size();position++) {
+        for (int position = 0; position < platforms.size(); position++) {
             Platform platform = platforms.get(position);
-
-//        for (Platform platform : platforms) {
-
-            // move the platform downward while player get higher
-
 
             if (player.getVy() < 0) {
                 platform.setY(platform.getY() - player.getVy());
-
-                //newww
-                //scroll the FlyingItems too
-//                FlyingItem.instance.scroll(player.getVy());
-
-                //Its a new feature now
-
             }
 
             // reset the platform's position which was below the screen
-            if (platform.getY() > handler.getHeight()) {
+            if (platform.getY() > Handler.GAME_HEIGHT) {
                 platform.setType(platform.generateType());
-                platform.setY(platform.getY() - handler.getHeight());
+                platform.setY(platform.getY() - Handler.GAME_HEIGHT);
 
                 //new
                 platform.getItem().getNewRandomType();
@@ -198,11 +171,8 @@ public class World {
                 //debug
 
                 item.setAlive(false);
-                FlyingItemManager.instance.spawn(handler,item,player);
-//                FlyingItem.trigger(handler, item, player);
+                FlyingItemManager.instance.spawn(handler, item, player);
             }
-
-
 
             // collides with platforms
             if (player.getVy() > 0 && platform.getState() == 0
@@ -230,20 +200,11 @@ public class World {
             }
         }
 
-
         // collides with spring
         if (player.getVy() >= 0
                 && spring.isAppear()
                 && player.getBounds().overlaps(spring.getBounds())
-//                && spring.getState() == 0
-
-//                && (player.getX() + offset < spring.getX() + spring.getWidth())
-//                && (player.getX() + player.getWidth() - offset > spring.getX())
-//                && (player.getY() + player.getHeight() > spring.getY())
-//                && (player.getY() + player.getHeight()
-//                < spring.getY() + spring.getHeight())
                 ) {
-//            spring.setState(1);
             player.jumpHigh();
             spring.setAppear(false);
             rearrangeSpring();
@@ -267,12 +228,12 @@ public class World {
         }
         base.setY(10000);
 
-        if (player.getY() > handler.getHeight() / 2 && falling == 0) {
+        if (player.getY() > Handler.GAME_HEIGHT / 2 && falling == 0) {
             player.setY(player.getY() - 20);
             player.setVy(0);
-        } else if (player.getY() < handler.getHeight() / 2) {
+        } else if (player.getY() < Handler.GAME_HEIGHT / 2) {
             falling = 1;
-        } else if (player.getY() > handler.getHeight()) {
+        } else if (player.getY() > Handler.GAME_HEIGHT) {
             gameOver = true;
         }
         player.setDeadDir();
@@ -280,11 +241,9 @@ public class World {
 
     private void destroyInstances() {
         FlyingItemManager.instance.refresh();
-//        FlyingItem.instance.setAlive(false);
     }
 
     private void loadWorld() {
-
         initInstances();
         base = Base.generate(handler);
         player = Player.generate(handler);
@@ -297,11 +256,7 @@ public class World {
         platformBroken = PlatformBroken.generate(handler);
 
         //changed
-//        spring = Spring.generate(handler);
-
         spring = new Spring(handler, platforms.get(DEFAULT_PLATFORM_POSITION_WITH_SPRING));
-
-
         hub = new ShapeRenderer();
         score = 0;
         falling = 0;
@@ -312,7 +267,7 @@ public class World {
         FreeTypeFontGenerator generator =
                 new FreeTypeFontGenerator(Gdx.files.internal("neuropol.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 40;
+        parameter.size = Handler.GAME_WIDTH / 14;
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         parameter.flip = true;
         font = generator.generateFont(parameter);
@@ -349,7 +304,6 @@ public class World {
         return platformBroken;
     }
 
-
     public void setPlatformBroken(PlatformBroken platformBroken) {
         this.platformBroken = platformBroken;
     }
@@ -363,8 +317,6 @@ public class World {
     }
 
     public void dispose() {
-
-
         base.dispose();
         player.dispose();
         spring.dispose();
@@ -374,8 +326,6 @@ public class World {
         }
         font.dispose();
         FlyingItemManager.instance.dispose();
-//        FlyingItem.instance.dispose();
-
     }
 
 }

@@ -13,79 +13,73 @@ import com.mygdx.game.states.MenuState;
 
 
 public class DoremonJump extends ApplicationAdapter {
-	public static OrthographicCamera camera;
-	public static int bestScore = 0;
+    public static OrthographicCamera camera;
+    public static int bestScore = 0;
 
-	public int WORLD_WIDTH ;
-	public int WORLD_HEIGHT ;
-	private GameStateManager gsm;
-	private SpriteBatch batch;
-	private Handler handler;
+    public int WORLD_WIDTH;
+    public int WORLD_HEIGHT;
+    private GameStateManager gsm;
+    private SpriteBatch batch;
+    private Handler handler;
+    private Viewport viewport;
 
-	private Viewport viewport;
+    @Override
+    public void create() {
+        //debuging
+        WORLD_WIDTH = Gdx.graphics.getWidth();
+        WORLD_HEIGHT = Gdx.graphics.getHeight();
 
+        batch = new SpriteBatch();
+        Assets.init();
+        init();
+    }
 
-	@Override
-	public void create() {
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height);
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+    }
 
-		//debuging
-		WORLD_WIDTH =Gdx.graphics.getWidth();
-		WORLD_HEIGHT = Gdx.graphics.getHeight();
+    public void init() {
+        camera = new OrthographicCamera();
+        camera.setToOrtho(true);
 
+        viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
+        viewport.apply();
 
-		batch = new SpriteBatch();
-		Assets.init();
-		init();
-	}
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
 
-	@Override
-	public void resize(int width, int height) {
-		viewport.update(width, height);
-		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2,0);
-	}
+        handler = new Handler(this);
+        gsm = new GameStateManager();
+        gsm.push(new MenuState(handler, gsm));
+    }
 
-	public void init() {
-//		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-//		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera = new OrthographicCamera();
-		camera.setToOrtho(true);
+    @Override
+    public void render() {
+        batch.setProjectionMatrix(camera.combined);
+        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
-		viewport.apply();
+        gsm.render(batch);
+        gsm.tick();
+    }
 
-		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2,0);
-
-		handler = new Handler(this);
-		gsm = new GameStateManager();
-		gsm.push(new MenuState(handler, gsm));
-	}
-
-	@Override
-	public void render() {
-		batch.setProjectionMatrix(camera.combined);
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		gsm.render(batch);
-		gsm.tick();
-	}
-
-	@Override
-	public void dispose() {
-		batch.dispose();
-		gsm.dispose();
+    @Override
+    public void dispose() {
+        batch.dispose();
+        gsm.dispose();
         Assets.dispose();
-	}
+    }
 
-	public static OrthographicCamera getCamera() {
-		return camera;
-	}
+    public static OrthographicCamera getCamera() {
+        return camera;
+    }
 
-	public int getHeight() {
-		return WORLD_HEIGHT;
-	}
+    public int getHeight() {
+        return WORLD_HEIGHT;
+    }
 
-	public int getWidth() {
-		return WORLD_WIDTH;
-	}
+    public int getWidth() {
+        return WORLD_WIDTH;
+    }
 }

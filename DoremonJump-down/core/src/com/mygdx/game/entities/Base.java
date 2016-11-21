@@ -6,14 +6,14 @@ import com.mygdx.game.main.Handler;
 
 
 public class Base extends Entity {
-    public static final int BASE_WIDTH = 1000;
-    public static final int BASE_HEIGHT = 10;
+    public static final int BASE_WIDTH = Handler.GAME_WIDTH;
+    public static final int BASE_HEIGHT = Handler.GAME_HEIGHT / 108;
 
     private boolean moved = false;
 
     public static Base generate(Handler handler) {
         return new Base(handler,
-                0, handler.getHeight() - BASE_HEIGHT);
+                0, Handler.GAME_HEIGHT - BASE_HEIGHT);
     }
 
     public Base(Handler handler, float x, float y) {
@@ -28,12 +28,6 @@ public class Base extends Entity {
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(Assets.base, x, y, width, height);
-//        batch.draw(Assets.base, x * handler.getWorld_to_scene_width(),
-//                y * handler.getWorld_to_scene_height(),
-//                width * handler.getWorld_to_scene_width(),
-//                height * handler.getWorld_to_scene_height());
-
-//        batch.draw(Assets.base, x, y, getSceneWidth(), getSceneHeight());
     }
 
     public void dispose() {

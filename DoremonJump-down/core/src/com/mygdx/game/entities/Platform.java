@@ -1,5 +1,6 @@
 package com.mygdx.game.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -8,8 +9,8 @@ import com.mygdx.game.main.Handler;
 
 
 public class Platform extends Entity {
-    public static final int PLATFORM_WIDTH = 180;
-    public static final int PLATFORM_HEIGHT = 45;
+    public static final int PLATFORM_WIDTH = Handler.GAME_WIDTH / 4;
+    public static final int PLATFORM_HEIGHT = Handler.GAME_HEIGHT / 24;
     public static final int PLATFORM_COUNT = 7;
     public static float POSITION = 0;
     public static boolean BROKEN = false;
@@ -23,20 +24,18 @@ public class Platform extends Entity {
 
     public static Platform generate(Handler handler) {
         return new Platform(handler,
-                (float) Math.random() * (handler.getWidth() - PLATFORM_WIDTH),
+                (float) Math.random() * (Handler.GAME_WIDTH - PLATFORM_WIDTH),
                 Platform.POSITION);
     }
 
     public Platform(Handler handler, float x, float y) {
         super(handler, x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
 
-        POSITION += handler.getHeight() / PLATFORM_COUNT;
+        POSITION += Handler.GAME_HEIGHT / PLATFORM_COUNT;
         this.vx = 3;
         this.type = (int) (Math.random() * 2);
         this.item = Item.createRandomItemForPlatfrom(handler, this);
     }
-
-
 
     @Override
     public void tick() {
@@ -60,24 +59,15 @@ public class Platform extends Entity {
         }
 
         Sprite sprite = new Sprite(getCurrentFrame());
-//        batch.draw(sprite,
-//                (int) this.x, (int) this.y,
-//                getSceneWidth(), getSceneHeight());
-
         batch.draw(sprite,
                 this.x, this.y,
                 this.width, this.height);
-//        batch.draw(sprite,
-//                x * handler.getWorld_to_scene_width(),
-//                y * handler.getWorld_to_scene_height(),
-//                width * handler.getWorld_to_scene_width(),
-//                height * handler.getWorld_to_scene_height());
         item.render(batch);
     }
 
     private void moveAround() {
         if (this.type == 1 || this.type == 2) {
-            if (x < 0 || x + width > handler.getWidth()) {
+            if (x < 0 || x + width > Handler.GAME_WIDTH) {
                 this.vx *= -1;
             }
             this.x += this.vx;
@@ -91,10 +81,6 @@ public class Platform extends Entity {
             subs.setY(this.y);
             subs.setAppear(true);
             this.state = 0;
-
-
-//            item.setAlive(false);
-
         }
     }
 

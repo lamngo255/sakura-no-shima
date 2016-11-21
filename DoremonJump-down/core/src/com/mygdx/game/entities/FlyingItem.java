@@ -13,10 +13,10 @@ import com.mygdx.game.main.Handler;
 
 public class FlyingItem extends Entity {
 
-    private static final int SPEED = 10;
+    private static final int SPEED = Handler.GAME_WIDTH / 72;
     private static final float DEFAULT_COLLISION_BOUNDS_SCALE = 0.5f;
-    private static final float DEFAULT_TARGET_COLISSION_RANGE = 20f;
-    private static final int DEFAULT_BOUNUS = 200;
+    private static final float DEFAULT_TARGET_COLLISION_RANGE = 20f;
+    private static final int DEFAULT_BONUS = 300;
 
     private ItemAttributes itemAttributes;
     private Entity target;
@@ -27,10 +27,6 @@ public class FlyingItem extends Entity {
 
     private Vector2 velocity;
     boolean alive;
-
-
-
-
     public FlyingItem() {
         alive = false;
     }
@@ -44,10 +40,7 @@ public class FlyingItem extends Entity {
 
         //new
         flyingBounds = new Circle(x, y, itemTriggered.getWidth() / 2);
-        targetBounds = new Circle(target.getMiddleX(), target.getMiddleY(), DEFAULT_TARGET_COLISSION_RANGE);
-
-//        pickUpSound = Gdx.audio.newSound(Gdx.files.internal("Pickup_Coin.wav"));
-
+        targetBounds = new Circle(target.getMiddleX(), target.getMiddleY(), DEFAULT_TARGET_COLLISION_RANGE);
         alive = isAlive;
     }
 
@@ -84,11 +77,8 @@ public class FlyingItem extends Entity {
             if (this.flyingBounds.overlaps(targetBounds))
             {
                 FlyingItemManager.pickUpSound.play(0.5f);
-
-                handler.getWorld().addScore(DEFAULT_BOUNUS);
-
+                handler.getWorld().addScore(DEFAULT_BONUS);
                 setAlive(false);
-
                 //done colliding
             }
         }
@@ -108,13 +98,7 @@ public class FlyingItem extends Entity {
     @Override
     public void render(SpriteBatch batch) {
         if (isAlive()) {
-//            batch.draw(itemAttributes.getItemTextureRegion(), x, y,  getSceneWidth(), getSceneHeight());
-
             batch.draw(itemAttributes.getItemTextureRegion(), x, y, getWidth(), getHeight());
-//            batch.draw(itemAttributes.getItemTextureRegion(), x * handler.getWorld_to_scene_width(),
-//                    y * handler.getWorld_to_scene_height(),
-//                    width * handler.getWorld_to_scene_width(),
-//                    height * handler.getWorld_to_scene_height());
         }
 
     }
@@ -127,15 +111,9 @@ public class FlyingItem extends Entity {
         this.alive = alive;
     }
 
-//    public static FlyingItem instance = new FlyingItem();
-
     public static FlyingItem create(Handler handler, Item itemTriggered, Entity target) {
         return new FlyingItem(handler, itemTriggered, target, true);
     }
-
-//    public static void trigger(Handler handler, Item itemTriggered, Entity target) {
-//        instance = new FlyingItem(handler, itemTriggered, target, true);
-//    }
 
     public void scroll(float vy) {
         if (isAlive())

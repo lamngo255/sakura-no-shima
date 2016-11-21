@@ -23,8 +23,6 @@ public abstract class Entity {
         this.y = y;
         this.width = width;
         this.height = height;
-//        this.width = (int)(width * handler.getWorld_to_scene_width());
-//        this.height = (int)(height * handler.getWorld_to_scene_height());
         bounds = new Rectangle(x, y, width, height);
 
     }
