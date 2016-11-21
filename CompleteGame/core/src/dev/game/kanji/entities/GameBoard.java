@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.kanji.input.DirectionGestureDetector;
-import dev.game.kanji.main.KanjiHandler;
 import dev.game.kanji.utils.Direction;
 import dev.game.main.GameHandler;
 import dev.game.modules.ModuleKanji;
@@ -35,7 +34,7 @@ public class GameBoard {
     public static boolean hasStarted;
     private BitmapFont tileFont;
 
-    public static GameBoard generate(KanjiHandler kanjiHandler) {
+    public static GameBoard generate() {
         return new GameBoard((GameHandler.GAME_WIDTH / 2 - GameBoard.BOARD_WIDTH / 2),
                 (GameHandler.GAME_HEIGHT - GameBoard.BOARD_HEIGHT - 10));
     }

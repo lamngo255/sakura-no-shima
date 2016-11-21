@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.kanji.entities.GameBoard;
-import dev.game.kanji.main.KanjiHandler;
 import dev.game.main.GameHandler;
 import dev.game.modules.ModuleKanji;
 
@@ -19,16 +18,14 @@ public class World {
 
     private ShapeRenderer shape;
     private GameBoard gameBoard;
-    private KanjiHandler kanjiHandler;
     private BitmapFont gameOverFont;
     private BitmapFont scoreLabelFont, scoreFont;
     private BitmapFont bestLabelFont, bestScoreFont;
     private BitmapFont titleFont, titleFont2, newGameFont, tryAgainFont;
     private BitmapFont statementFont, saFont;
 
-    public World(KanjiHandler kanjiHandler) {
-        this.kanjiHandler = kanjiHandler;
-        this.gameBoard = GameBoard.generate(kanjiHandler);
+    public World() {
+        this.gameBoard = GameBoard.generate();
         this.shape = new ShapeRenderer();
         generateFont();
     }
@@ -198,7 +195,7 @@ public class World {
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07)
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f)) {
                 gameBoard.dispose();
-                gameBoard = GameBoard.generate(kanjiHandler);
+                gameBoard = GameBoard.generate();
             }
 
             if (gameBoard.isDead()) {
@@ -207,7 +204,7 @@ public class World {
                         && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.23f - 0.07f)
                         && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.23f)) {
                     gameBoard.dispose();
-                    gameBoard = GameBoard.generate(kanjiHandler);
+                    gameBoard = GameBoard.generate();
                 }
             }
         }

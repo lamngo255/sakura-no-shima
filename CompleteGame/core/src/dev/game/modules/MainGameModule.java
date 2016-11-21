@@ -22,7 +22,7 @@ public class MainGameModule extends Module {
             } else if (Gdx.input.getX() <= GameHandler.GAME_WIDTH * 2/3){
                 cpanel.set(new ModuleKanji(gameHandler, cpanel));
             } else {
-
+                cpanel.set(new ModuleFreaking(gameHandler, cpanel));
             }
             System.out.println(Gdx.input.getX());
         }

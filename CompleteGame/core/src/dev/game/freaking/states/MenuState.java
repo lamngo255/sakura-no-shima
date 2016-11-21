@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.freaking.main.FreakingHandler;
 import dev.game.freaking.model.Assets;
 import dev.game.main.GameHandler;
+import dev.game.modules.GameModuleManager;
+import dev.game.modules.MainGameModule;
 
 public class MenuState extends State {
 
@@ -20,8 +22,12 @@ public class MenuState extends State {
     private TextureRegion bgMenu;
 
 
-    public MenuState(FreakingHandler freakingHandler, GameStateManager gsm) {
+    public MenuState(FreakingHandler freakingHandler, GameStateManager gsm,
+                     GameModuleManager cpanel, GameHandler gameHandler) {
         super(freakingHandler, gsm);
+
+        this.cpanel = cpanel;
+        this.gameHandler = gameHandler;
         SCREEN_WIDTH = GameHandler.GAME_WIDTH;
         SCREEN_HEIGHT =  GameHandler.GAME_HEIGHT;
 
@@ -67,9 +73,8 @@ public class MenuState extends State {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.2f + 0.6f)
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.5f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.5f)) {
-                System.out.println("Hiragana");
                 PlayState.setAlphabetType(1);
-                gsm.set(new PlayState(freakingHandler, gsm));
+                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
 
             // Choose Katakana
@@ -77,7 +82,8 @@ public class MenuState extends State {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.2f + 0.6f)
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.385f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.385f)) {
-                System.out.println("Katakana");
+                PlayState.setAlphabetType(2);
+                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
 
             // Choose Hira + Kata
@@ -85,7 +91,8 @@ public class MenuState extends State {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.2f + 0.6f)
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.27f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.27f)) {
-                System.out.println("Mix");
+                PlayState.setAlphabetType(0);
+                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
 
             // Choose Home
@@ -93,14 +100,14 @@ public class MenuState extends State {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.2f + 0.6f)
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.155f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.155f)) {
-                System.out.println("Home");
+                cpanel.set(new MainGameModule(gameHandler, cpanel));
             }
         }
     }
 
 
     @Override
-    public void update(float dt) {
+    public void tick() {
         handleInput();
     }
 
@@ -113,7 +120,7 @@ public class MenuState extends State {
 //        // -------------SHAPE RENDERER---------------
 //        // Transparent button
 //        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-//        shape.setProjectionMatrix(FreakingGame.camera.combined);
+//        shape.setProjectionMatrix(ModuleFreaking.camera.combined);
 //
 //        // Hiragana (shape)
 //        shape.begin(ShapeRenderer.ShapeType.Filled);

@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import dev.game.freaking.main.FreakingHandler;
 import dev.game.freaking.model.Assets;
+import dev.game.main.GameHandler;
+import dev.game.modules.GameModuleManager;
 
 public class GameOverState extends State {
 
@@ -16,13 +18,15 @@ public class GameOverState extends State {
     private BitmapFont gameOverFont, scoreFont, bestScoreFont;
     private TextureRegion background;
 
-    public GameOverState(FreakingHandler freakingHandler, GameStateManager gsm, int score) {
+    public GameOverState(FreakingHandler freakingHandler, GameStateManager gsm, int score,
+                         GameModuleManager cpanel, GameHandler gameHandler) {
         super(freakingHandler, gsm);
+
+        this.cpanel = cpanel;
+        this.gameHandler = gameHandler;
         this.background = Assets.bgGameOver;
         PlayState.HIGH_SCORE = Math.max(PlayState.HIGH_SCORE, score);
         this.score = score;
-        System.out.println(score);
-        System.out.println(PlayState.HIGH_SCORE);
         generateFont();
 
     }
@@ -60,19 +64,19 @@ public class GameOverState extends State {
                     && Gdx.input.getX() <= SCREEN_WIDTH * 0.68f
                     && Gdx.input.getY() >= SCREEN_HEIGHT * 0.815f
                     && Gdx.input.getY() <= SCREEN_HEIGHT * 0.9f) {
-                gsm.set(new MenuState(freakingHandler, gsm));
+                gsm.set(new MenuState(freakingHandler, gsm, cpanel, gameHandler));
             }
             if (Gdx.input.getX() >= SCREEN_WIDTH * 0.29f
                     && Gdx.input.getX() <= SCREEN_WIDTH * 0.68f
                     && Gdx.input.getY() >= SCREEN_HEIGHT * 0.67f
                     && Gdx.input.getY() <= SCREEN_HEIGHT * 0.75f) {
-                gsm.set(new PlayState(freakingHandler, gsm));
+                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
         }
     }
 
     @Override
-    public void update(float dt) {
+    public void tick() {
         Gdx.gl.glClearColor(64 / 255f, 64 / 255f, 64 / 255f, 64 / 255f);
         handleInput();
     }

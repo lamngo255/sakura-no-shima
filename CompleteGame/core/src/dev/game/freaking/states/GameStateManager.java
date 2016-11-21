@@ -26,8 +26,8 @@ public class GameStateManager {
 	}
 
 
-	public void update(float dt) {
-		states.peek().update(dt);
+	public void tick() {
+		states.peek().tick();
 	}
 
 	public void render(SpriteBatch batch) {

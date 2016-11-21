@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import dev.game.kanji.main.KanjiHandler;
 import dev.game.kanji.worlds.World;
 import dev.game.main.GameHandler;
 
@@ -14,13 +13,11 @@ import dev.game.main.GameHandler;
 public class ModuleKanji extends Module {
 
     public static OrthographicCamera camera;
-    private KanjiHandler kanjiHandler;
     private World world;
 
     public ModuleKanji(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
-        kanjiHandler = new KanjiHandler(this);
-        world = new World(kanjiHandler);
+        world = new World();
 
         camera = new OrthographicCamera(GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         camera.setToOrtho(false, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);

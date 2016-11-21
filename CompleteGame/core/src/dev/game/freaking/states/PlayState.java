@@ -11,6 +11,7 @@ import dev.game.freaking.controller.Slider;
 import dev.game.freaking.main.FreakingHandler;
 import dev.game.freaking.model.Alphabet;
 import dev.game.main.GameHandler;
+import dev.game.modules.GameModuleManager;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -34,8 +35,12 @@ public class PlayState extends State {
 
     ArrayList<Alphabet> alphabets;
 
-    public PlayState(FreakingHandler freakingHandler, GameStateManager gsm) {
+    public PlayState(FreakingHandler freakingHandler, GameStateManager gsm,
+                     GameModuleManager cpanel, GameHandler gameHandler) {
         super(freakingHandler, gsm);
+
+        this.cpanel = cpanel;
+        this.gameHandler = gameHandler;
         SCREEN_WIDTH = GameHandler.GAME_WIDTH;
         SCREEN_HEIGHT = GameHandler.GAME_HEIGHT;
         ACHIEVED_SCORE = 0;
@@ -115,7 +120,7 @@ public class PlayState extends State {
     }
 
     @Override
-    public void update(float dt) {
+    public void tick() {
         handleInput();
         if (slider != null) {
             slider.update();
@@ -132,7 +137,7 @@ public class PlayState extends State {
         } else {
             Music.play("gameover");
             HIGH_SCORE = Math.max(HIGH_SCORE, ACHIEVED_SCORE);
-            gsm.set(new GameOverState(freakingHandler, gsm,ACHIEVED_SCORE));
+            gsm.set(new GameOverState(freakingHandler, gsm,ACHIEVED_SCORE, cpanel, gameHandler));
         }
         scoreText = String.valueOf(ACHIEVED_SCORE);
     }

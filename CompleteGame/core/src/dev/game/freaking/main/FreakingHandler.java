@@ -1,17 +1,19 @@
 package dev.game.freaking.main;
 
+import dev.game.modules.ModuleFreaking;
+
 public class FreakingHandler {
-    private FreakingGame freakingGame;
+    private ModuleFreaking moduleFreaking;
 
-    public FreakingHandler(FreakingGame freakingGame) {
-        this.freakingGame = freakingGame;
+    public FreakingHandler(ModuleFreaking moduleFreaking) {
+        this.moduleFreaking = moduleFreaking;
     }
 
-    public FreakingGame getGame() {
-        return freakingGame;
+    public ModuleFreaking getGame() {
+        return moduleFreaking;
     }
 
-    public void setGame(FreakingGame freakingGame) {
-        this.freakingGame = freakingGame;
+    public void setGame(ModuleFreaking freakingGame) {
+        this.moduleFreaking = freakingGame;
     }
 }
