@@ -11,13 +11,10 @@ import dev.game.main.CompleteGame;
  */
 public class Assets {
     private static final java.lang.String HIGH_SCORE_KEY = "Freaking_high_score";
-    public static TextureRegion bgMenu,bgGameOver;
-
-
+    public static TextureRegion bgMenu, bgGameOver;
+    public static TextureRegion[] buttonCases;
     public static Preferences preferences;
     public static int highScore;
-
-
 
     public static TextureRegion getTexture(String path) {
         TextureRegion sample = new TextureRegion(new Texture(path));
@@ -25,8 +22,12 @@ public class Assets {
     }
 
     public static void init() {
+        Texture sheet = new Texture("button/freaking_button.png");
+        buttonCases = new TextureRegion[2];
         bgMenu = getTexture("bgMenu.png");
         bgGameOver = getTexture("bgGameOver.png");
+        buttonCases[0] = new TextureRegion(sheet, 0, 0, 512, 512);
+        buttonCases[1] = new TextureRegion(sheet, 512, 0, 512, 512);
 
         preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
         highScore = preferences.getInteger(HIGH_SCORE_KEY, 0);
@@ -43,6 +44,11 @@ public class Assets {
     public static void dispose() {
         bgMenu.getTexture().dispose();
         bgGameOver.getTexture().dispose();
+
+        for (TextureRegion button : buttonCases) {
+            if (button != null)
+                button.getTexture().dispose();
+        }
     }
 
 }

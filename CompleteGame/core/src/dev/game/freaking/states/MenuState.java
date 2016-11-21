@@ -116,49 +116,6 @@ public class MenuState extends State {
         batch.begin();
         batch.draw(bgMenu, 0, 0, GameHandler.GAME_WIDTH,  GameHandler.GAME_HEIGHT);
         batch.end();
-//
-//        // -------------SHAPE RENDERER---------------
-//        // Transparent button
-//        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-//        shape.setProjectionMatrix(ModuleFreaking.camera.combined);
-//
-//        // Hiragana (shape)
-//        shape.begin(ShapeRenderer.ShapeType.Filled);
-//        shape.setColor(97, 97, 97, 0.7f);
-//        shape.rect(GameHandler.GAME_WIDTH * 0.2f,  GameHandler.GAME_HEIGHT * 0.5f,
-//                GameHandler.GAME_WIDTH * 0.6f,  GameHandler.GAME_HEIGHT * 0.1f);
-//
-//        // Katakana (shape)
-//        shape.rect(GameHandler.GAME_WIDTH * 0.2f,  GameHandler.GAME_HEIGHT * 0.385f,
-//                GameHandler.GAME_WIDTH * 0.6f,  GameHandler.GAME_HEIGHT * 0.1f);
-//
-//        // Mix Hira + Kata (shape)
-//        shape.rect(GameHandler.GAME_WIDTH * 0.2f,  GameHandler.GAME_HEIGHT * 0.27f,
-//                GameHandler.GAME_WIDTH * 0.6f,  GameHandler.GAME_HEIGHT * 0.1f);
-//
-//        // Home (shape)
-//        shape.rect(GameHandler.GAME_WIDTH * 0.2f,  GameHandler.GAME_HEIGHT * 0.155f,
-//                GameHandler.GAME_WIDTH * 0.6f,  GameHandler.GAME_HEIGHT * 0.1f);
-//        shape.end();
-
-
-        //------------TEXT RENDERER-----------------
-//        batch.begin();
-//        hiraFont.setColor(Color.valueOf("#424242"));
-//        kataFont.setColor(Color.valueOf("#424242"));
-//        mixFont.setColor(Color.valueOf("#424242"));
-//        homeFont.setColor(Color.valueOf("#424242"));
-//
-//        hiraFont.draw(batch, "   Hiragana", GameHandler.GAME_WIDTH * 0.25f,
-//                 GameHandler.GAME_HEIGHT * 0.57f);
-//        kataFont.draw(batch, "   Katakana", GameHandler.GAME_WIDTH * 0.25f,
-//                 GameHandler.GAME_HEIGHT * 0.455f);
-//        mixFont.draw(batch, "Hira and Kata", GameHandler.GAME_WIDTH * 0.25f,
-//                 GameHandler.GAME_HEIGHT * 0.34f);
-//        homeFont.draw(batch, "       Home", GameHandler.GAME_WIDTH * 0.25f,
-//                 GameHandler.GAME_HEIGHT * 0.225f);
-//
-//        batch.end();
     }
 
     @Override

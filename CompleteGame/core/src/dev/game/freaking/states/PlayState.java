@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.freaking.controller.Music;
@@ -36,8 +37,10 @@ public class PlayState extends State {
     private BitmapFont btnFont1, btnFont2, scoreFont;
     private ShapeRenderer shape;
     private String myText, btnText1, btnText2, scoreText;
+    private TextureRegion[] buttonCases;
 
     ArrayList<Alphabet> alphabets;
+    private int buttonPressed1, buttonPressed2;
 
     public PlayState(FreakingHandler freakingHandler, GameStateManager gsm,
                      GameModuleManager cpanel, GameHandler gameHandler) {
@@ -50,11 +53,6 @@ public class PlayState extends State {
         ACHIEVED_SCORE = 0;
         init();
         generateFont();
-
-        myText = "さ";
-        scoreText = "0";
-        btnText1 = "";
-        btnText2 = "";
     }
 
     private void init() {
@@ -65,6 +63,14 @@ public class PlayState extends State {
 
         bgColor = 0;
         shape = new ShapeRenderer();
+        myText = "さ";
+        scoreText = "0";
+        btnText1 = "";
+        btnText2 = "";
+        buttonPressed1 = 0;
+        buttonPressed2 = 0;
+
+        buttonCases = Assets.buttonCases;
     }
 
     public void generateFont() {
@@ -75,7 +81,7 @@ public class PlayState extends State {
 
         // Japanese Text Font
         japanFont = new BitmapFont(Gdx.files.internal("fonts/font.fnt"), false);
-        japanFont.setColor(Color.ORANGE);
+        japanFont.setColor(Color.WHITE);
         japanFont.getData().setScale(SCREEN_WIDTH / 360f * 0.56f,
                 SCREEN_WIDTH / 360f * 0.56f);
 
@@ -102,6 +108,7 @@ public class PlayState extends State {
                     && Gdx.input.getX() <= SCREEN_WIDTH * (0.03f + 0.45f)
                     && Gdx.input.getY() >= SCREEN_HEIGHT * (1 - 0.02f - 0.26f)
                     && Gdx.input.getY() <= SCREEN_HEIGHT * (1 - 0.02f)) {
+                buttonPressed1 = 1;
                 answerCase1();
             }
 
@@ -110,10 +117,14 @@ public class PlayState extends State {
                     && Gdx.input.getX() <= SCREEN_WIDTH * (0.52f + 0.45f)
                     && Gdx.input.getY() >= SCREEN_HEIGHT * (1 - 0.02f - 0.26f)
                     && Gdx.input.getY() <= SCREEN_HEIGHT * (1 - 0.02f)) {
+                buttonPressed2 = 1;
                 answerCase2();
             }
             Random rand = new Random();
             bgColor = rand.nextInt(4);
+        } else {
+            buttonPressed1 = 0;
+            buttonPressed2 = 0;
         }
     }
 
@@ -166,16 +177,17 @@ public class PlayState extends State {
                 shape.setColor(Color.valueOf("#90A4AE"));
         }
         shape.rect(0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
-
-        // Button 1 (shape)
-        shape.setColor(Color.valueOf("#f9f6f2"));
-        shape.rect(SCREEN_WIDTH * 0.03f, SCREEN_HEIGHT * 0.02f,
-                SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
-
-        // Button 2 (shape)
-        shape.rect(SCREEN_WIDTH * 0.52f, SCREEN_HEIGHT * 0.02f,
-                SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
         shape.end();
+
+
+        // ----------------BUTTON RENDERER------------------
+        batch.begin();
+        // Button 1 + 2 (shape)
+        batch.draw(buttonCases[buttonPressed1], SCREEN_WIDTH * 0.03f, SCREEN_HEIGHT * 0.02f,
+                                    SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
+        batch.draw(buttonCases[buttonPressed2], SCREEN_WIDTH * 0.52f, SCREEN_HEIGHT * 0.02f,
+                SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
+        batch.end();
 
 
         //-------------------TEXT RENDERER------------------
