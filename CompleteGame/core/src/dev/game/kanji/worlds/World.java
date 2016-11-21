@@ -91,7 +91,7 @@ public class World {
         // Remain Statement Font
         FreeTypeFontGenerator generator2 =
                 new FreeTypeFontGenerator(Gdx.files.internal("fonts/Mamelon.otf"));
-        parameter.size = GameHandler.GAME_WIDTH / 18;
+        parameter.size = GameHandler.GAME_WIDTH / 16;
         parameter.characters = "百";
         saFont = generator2.generateFont(parameter);
         generator2.dispose();
