@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import dev.game.kanji.states.GameStateManager;
+import dev.game.kanji.states.MenuState;
 import dev.game.kanji.worlds.World;
 import dev.game.main.GameHandler;
 
@@ -13,19 +15,24 @@ import dev.game.main.GameHandler;
 public class ModuleKanji extends Module {
 
     public static OrthographicCamera camera;
-    private World world;
+    private GameStateManager gsm;
 
     public ModuleKanji(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
-        world = new World(cpanel,gameHandler);
+        init();
+    }
 
+    private void init() {
         camera = new OrthographicCamera(GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         camera.setToOrtho(false, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
+
+        gsm = new GameStateManager();
+        gsm.push(new MenuState(gsm, cpanel, gameHandler));
     }
 
     @Override
     public void tick() {
-        world.tick();
+        gsm.tick();
     }
 
     @Override
@@ -34,11 +41,11 @@ public class ModuleKanji extends Module {
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glEnable(GL20.GL_BLEND);
-        world.render(batch);
+        gsm.render(batch);
     }
 
     @Override
     public void dispose() {
-        world.dispose();
+        gsm.dispose();
     }
 }

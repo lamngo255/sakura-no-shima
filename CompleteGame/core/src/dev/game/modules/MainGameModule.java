@@ -24,7 +24,6 @@ public class MainGameModule extends Module {
             } else {
                 cpanel.set(new ModuleFreaking(gameHandler, cpanel));
             }
-            System.out.println(Gdx.input.getX());
         }
     }
 
