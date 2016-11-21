@@ -22,7 +22,7 @@ public class World {
     private static final int TIME_TO_SHOW_AN_ITEM = 200;
     private static final int TIME_TO_SHOW_AN_SPRING = 300;
 
-    private static final int DEFAULT_PLATFORM_POSITION_WITH_SPRING = 0;
+    private static int PLATFORM_POSITION_WITH_SPRING = 0;
     private DoremonHandler doremonHandler;
 
     // Entities
@@ -126,7 +126,7 @@ public class World {
                 //new
                 platform.getItem().getNewRandomType();
 
-                if (countItemTime >= TIME_TO_SHOW_AN_ITEM && position != DEFAULT_PLATFORM_POSITION_WITH_SPRING) {
+                if (countItemTime >= TIME_TO_SHOW_AN_ITEM && position != PLATFORM_POSITION_WITH_SPRING) {
                     countItemTime = 0;
                     platform.showItem();
                 }
@@ -217,6 +217,7 @@ public class World {
         spring.setAppear(false);
         countSpringTime = 0;
         int newPlatformNum = (int) (Math.random() * platforms.size());
+        PLATFORM_POSITION_WITH_SPRING = newPlatformNum;
         spring.setAttachedPlatform(platforms.get(newPlatformNum));
     }
 
@@ -257,7 +258,7 @@ public class World {
         platformBroken = PlatformBroken.generate(doremonHandler);
 
         //changed
-        spring = new Spring(doremonHandler, platforms.get(DEFAULT_PLATFORM_POSITION_WITH_SPRING));
+        spring = new Spring(doremonHandler, platforms.get(PLATFORM_POSITION_WITH_SPRING));
         hub = new ShapeRenderer();
         score = 0;
         falling = 0;

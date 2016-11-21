@@ -6,6 +6,7 @@ import dev.game.doremon.main.DoremonHandler;
 import dev.game.doremon.worlds.World;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
+import dev.game.modules.ModuleDoremon;
 
 
 public class GameState extends State {
@@ -29,6 +30,9 @@ public class GameState extends State {
         } else {
             world.setGameOver(false);
             Gdx.app.log("Game Over State", "Loading");
+
+            //game Over
+            ModuleDoremon.updateBestScore(world.getScore());
             gsm.set(new GameOverState(doremonHandler, gsm, world.getScore(), cpanel, gameHandler));
         }
     }

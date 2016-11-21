@@ -25,7 +25,6 @@ public class GameOverState extends State {
         this.cpanel = cpanel;
         this.gameHandler = gameHandler;
         this.background = Assets.bgGameOver;
-        PlayState.HIGH_SCORE = Math.max(PlayState.HIGH_SCORE, score);
         this.score = score;
         generateFont();
 
@@ -87,7 +86,7 @@ public class GameOverState extends State {
         batch.draw(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 //        gameOverFont.draw(batch, "Game Over", SCREEN_WIDTH * 0.26f, SCREEN_HEIGHT * 0.6f);
         scoreFont.draw(batch, "Score : " + score, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.54f);
-        bestScoreFont.draw(batch, "High Score : " + PlayState.HIGH_SCORE, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.46f);
+        bestScoreFont.draw(batch, "High Score : " + Assets.highScore, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.46f);
         batch.end();
     }
 
