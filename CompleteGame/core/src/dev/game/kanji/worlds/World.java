@@ -68,7 +68,7 @@ public class World {
 
         // Title Font 2 (Hiragana)
         parameter.size = Gdx.graphics.getWidth() / 17;
-        parameter.characters = "Hiragana";
+        parameter.characters = "KanjiNumber";
         titleFont2 = generator.generateFont(parameter);
 
         // NewGame font
@@ -90,9 +90,9 @@ public class World {
 
         // Remain Statement Font
         FreeTypeFontGenerator generator2 =
-                new FreeTypeFontGenerator(Gdx.files.internal("fonts/KaoriGelBold.ttf"));
+                new FreeTypeFontGenerator(Gdx.files.internal("fonts/Mamelon.otf"));
         parameter.size = GameHandler.GAME_WIDTH / 18;
-        parameter.characters = "さ";
+        parameter.characters = "百";
         saFont = generator2.generateFont(parameter);
         generator2.dispose();
     }
@@ -176,14 +176,14 @@ public class World {
                                     GameHandler.GAME_HEIGHT * 0.86f);
         titleFont.draw(batch, "2048", GameHandler.GAME_WIDTH * 0.05f,
                                       GameHandler.GAME_HEIGHT * 0.92f);
-        titleFont2.draw(batch, "Hiragana", GameHandler.GAME_WIDTH * 0.07f,
+        titleFont2.draw(batch, "Kanji Number", GameHandler.GAME_WIDTH * 0.03f,
                                         GameHandler.GAME_HEIGHT * 0.84f);
         newGameFont.draw(batch, "New Game", GameHandler.GAME_WIDTH * 0.675f,
                                         GameHandler.GAME_HEIGHT * 0.756f);
         statementFont.draw(batch, "Get to the      tile!", GameHandler.GAME_WIDTH * 0.05f,
                                         GameHandler.GAME_HEIGHT * 0.75f);
-        saFont.draw(batch, "さ", GameHandler.GAME_WIDTH * 0.3f,
-                                    GameHandler.GAME_HEIGHT * 0.757f);
+        saFont.draw(batch, "百", GameHandler.GAME_WIDTH * 0.3f,
+                                    GameHandler.GAME_HEIGHT * 0.752f);
         batch.end();
     }
 
