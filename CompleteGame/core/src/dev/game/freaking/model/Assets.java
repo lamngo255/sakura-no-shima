@@ -10,14 +10,10 @@ import dev.game.main.CompleteGame;
  * Created by Lam Ngo on 11/20/2016.
  */
 public class Assets {
-    private static final java.lang.String HIGH_SCORE_KEY = "Freaking_high_score";
+    private static final String HIGH_SCORE_KEY = "Freaking_high_score";
     public static TextureRegion bgMenu,bgGameOver;
-
-
     public static Preferences preferences;
     public static int highScore;
-
-
 
     public static TextureRegion getTexture(String path) {
         TextureRegion sample = new TextureRegion(new Texture(path));

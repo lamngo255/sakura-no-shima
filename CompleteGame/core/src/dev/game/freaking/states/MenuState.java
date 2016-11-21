@@ -18,7 +18,6 @@ public class MenuState extends State {
     private int SCREEN_HEIGHT;
     private BitmapFont hiraFont, kataFont, mixFont, homeFont;
     private ShapeRenderer shape;
-
     private TextureRegion bgMenu;
 
 
@@ -30,7 +29,6 @@ public class MenuState extends State {
         this.gameHandler = gameHandler;
         SCREEN_WIDTH = GameHandler.GAME_WIDTH;
         SCREEN_HEIGHT =  GameHandler.GAME_HEIGHT;
-
         shape = new ShapeRenderer();
         bgMenu = Assets.bgMenu;
         generateFont();
