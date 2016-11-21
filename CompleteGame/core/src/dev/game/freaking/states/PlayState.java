@@ -150,16 +150,16 @@ public class PlayState extends State {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         switch (bgColor) {
             case 0:
-                shape.setColor(Color.valueOf("#455A64"));
+                shape.setColor(Color.valueOf("#A7DB8D"));
                 break;
             case 1:
-                shape.setColor(Color.valueOf("#0D47A1"));
+                shape.setColor(Color.valueOf("#F5AC78"));
                 break;
             case 2:
-                shape.setColor(Color.valueOf("#004D40"));
+                shape.setColor(Color.valueOf("#795548"));
                 break;
             default:
-                shape.setColor(Color.valueOf("#424242"));
+                shape.setColor(Color.valueOf("#90A4AE"));
         }
         shape.rect(0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
 
