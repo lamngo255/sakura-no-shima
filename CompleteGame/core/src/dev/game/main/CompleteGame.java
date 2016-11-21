@@ -5,10 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import dev.game.modules.GameModuleManager;
 import dev.game.modules.MainGameModule;
+import dev.game.modules.ModuleDoremon;
 
 public class CompleteGame extends ApplicationAdapter {
+    public static final int WORLD_WIDTH_TEST = 720 ;
+    public static final int WORLD_HEIGHT_TEST = 1200;
     public static OrthographicCamera camera;
     private SpriteBatch batch;
     private GameHandler gameHandler;
@@ -20,6 +25,12 @@ public class CompleteGame extends ApplicationAdapter {
         gameHandler = new GameHandler(this);
         cpanel = new GameModuleManager();
         cpanel.push(new MainGameModule(gameHandler, cpanel));
+
+        //added
+        ModuleDoremon.camera = new OrthographicCamera();
+        ModuleDoremon.camera.setToOrtho(true);
+        ModuleDoremon.viewport = new StretchViewport(WORLD_WIDTH_TEST, WORLD_HEIGHT_TEST, ModuleDoremon.camera);
+
 
         camera = new OrthographicCamera(GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         camera.setToOrtho(false, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
@@ -40,5 +51,14 @@ public class CompleteGame extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         cpanel.dispose();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        if (ModuleDoremon.viewport != null) {
+            ModuleDoremon.viewport.update(width, height);
+            ModuleDoremon.camera.position.set(camera.viewportWidth / 2, ModuleDoremon.camera.viewportHeight / 2,0);
+        }
+        super.resize(width, height);
     }
 }

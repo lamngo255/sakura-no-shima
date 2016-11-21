@@ -12,9 +12,15 @@ import dev.game.main.GameHandler;
 
 public class Item extends Entity {
 
-    private static final int DEFAULT_WIDTH = GameHandler.GAME_WIDTH / 8;
-    private static final int DEFAULT_HEIGHT = (int) (GameHandler.GAME_HEIGHT / 12.5);
-    private static final int DEFAULT_BOUNDS_RADIUS = (int) (GameHandler.GAME_WIDTH / 3.2);
+    private static final int DEFAULT_WIDTH = 80;
+    private static final int DEFAULT_HEIGHT = 80;
+
+    private static final int DEFAULT_BOUNDS_RADIUS = 220;
+
+
+
+
+
     private static final int DEFAULT_TYPE = 0;
 
     private Circle gravityCircle;

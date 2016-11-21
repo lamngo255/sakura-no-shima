@@ -14,9 +14,10 @@ import dev.game.main.GameHandler;
 
 public class FlyingItem extends Entity {
 
-    private static final int SPEED = GameHandler.GAME_WIDTH / 72;
-    private static final float DEFAULT_TARGET_COLLISION_RANGE = GameHandler.GAME_WIDTH / 11f;
-    private static final int DEFAULT_BONUS = 300;
+    private static final int SPEED = 10;
+    private static final float DEFAULT_COLLISION_BOUNDS_SCALE = 0.5f;
+    private static final float DEFAULT_TARGET_COLISSION_RANGE = 20f;
+    private static final int DEFAULT_BOUNUS = 200;
 
     private ItemAttributes itemAttributes;
     private Entity target;
@@ -40,7 +41,7 @@ public class FlyingItem extends Entity {
 
         //new
         flyingBounds = new Circle(x, y, itemTriggered.getWidth() / 2);
-        targetBounds = new Circle(target.getMiddleX(), target.getMiddleY(), DEFAULT_TARGET_COLLISION_RANGE);
+        targetBounds = new Circle(target.getMiddleX(), target.getMiddleY(), DEFAULT_TARGET_COLISSION_RANGE);
         alive = isAlive;
     }
 
@@ -65,7 +66,7 @@ public class FlyingItem extends Entity {
             if (this.flyingBounds.overlaps(targetBounds))
             {
                 FlyingItemManager.pickUpSound.play(0.5f);
-                doremonHandler.getWorld().addScore(DEFAULT_BONUS);
+                doremonHandler.getWorld().addScore(DEFAULT_BOUNUS);
                 setAlive(false);
                 //done colliding
             }

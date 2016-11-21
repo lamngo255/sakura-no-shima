@@ -9,6 +9,8 @@ import dev.game.main.CompleteGame;
 public class GameHandler {
     public static int GAME_WIDTH = Gdx.graphics.getWidth();
     public static int GAME_HEIGHT = Gdx.graphics.getHeight();
+//public static int GAME_WIDTH = CompleteGame.WORLD_WIDTH_TEST;
+//    public static int GAME_HEIGHT = CompleteGame.WORLD_HEIGHT_TEST;
 
     private CompleteGame completeGame;
 

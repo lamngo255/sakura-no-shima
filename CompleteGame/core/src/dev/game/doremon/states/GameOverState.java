@@ -49,7 +49,7 @@ public class GameOverState extends State {
         parameter.flip = true;
         gameOver = generator.generateFont(parameter);
 
-        parameter.size = (int) (GameHandler.GAME_HEIGHT * 0.035f);
+        parameter.size = 50;
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 

@@ -1,0 +1,277 @@
+[33mcommit 2b2c8926d5ab084973115065785297a0d0568d80[m
+Author: Ziggy192 <luuquangnghia97@gmail.com>
+Date:   Tue Nov 22 01:27:33 2016 +0700
+
+    CompleteGame fix Doremon kimono bug
+
+[33mcommit 23c2190781c67b801c77a2130d1ce31162b97acf[m
+Merge: 51a442e 181c4d3
+Author: Ziggy192 <luuquangnghia97@gmail.com>
+Date:   Tue Nov 22 00:39:54 2016 +0700
+
+    Merge branch 'test' into kanji
+
+[33mcommit 181c4d36f10c0cbf47ce9e3b61434f2a97bacff2[m
+Author: Ziggy192 <luuquangnghia97@gmail.com>
+Date:   Tue Nov 22 00:39:26 2016 +0700
+
+    CompleteGame: Store highscore + Fix logic bug Kanji
+
+[33mcommit 74c5b63365cd2b47cbc8647521d294f9fa533e17[m
+Author: Ziggy192 <luuquangnghia97@gmail.com>
+Date:   Tue Nov 22 00:00:08 2016 +0700
+
+    CompleteGame: Fix logic bug Kanji
+
+[33mcommit 49bf85aa37bdaa6cd8efc48ee59b77ae4146c206[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Tue Nov 22 00:31:44 2016 +0700
+
+    CompleteGame: Minor changes (resize Hyaku character)
+
+[33mcommit d2f92a7e2f3b04caf0ca82e9b28492922cdfd817[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Tue Nov 22 00:23:29 2016 +0700
+
+    CompleteGame: Change tile to Kanji
+
+[33mcommit 51a442ee6637b27201f5056f498c298ce5df1327[m
+Author: Ziggy192 <luuquangnghia97@gmail.com>
+Date:   Tue Nov 22 00:00:08 2016 +0700
+
+    CompleteGame: Fix logic bug Kanji
+
+[33mcommit 544628673241a65e429c969d07e54db590090b8e[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Mon Nov 21 23:09:46 2016 +0700
+
+    FreakingJap: Change color
+
+[33mcommit 606567fffcd84fd54e6699b786c3a56b83eb20e6[m
+Author: Ziggy192 <luuquangnghia97@gmail.com>
+Date:   Mon Nov 21 20:00:29 2016 +0700
+
+    Luu cho chac
+
+[33mcommit 15a99160dcd19408ea3bb694a91942141591e38a[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 19:30:27 2016 +0700
+
+    CompleteGame: Changes in local.properties
+
+[33mcommit 0b377fed8f0c6afcdb9bd06ef99cf33fa15d7924[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 17:30:28 2016 +0700
+
+    CompleteGame: Finish merging 3 games
+
+[33mcommit aee885fb889f6946a40da423808568e883c8e394[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 16:51:51 2016 +0700
+
+    FreakingJapanese: Remove unused resources
+
+[33mcommit 9ffe467ff73784e17a54b64f10b57ed1f2e543a5[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 16:43:52 2016 +0700
+
+    CompleteGame: Refactor code for simplicity
+
+[33mcommit 4ec0535ad8aea4756ab689063a0ba8d3d7ec5444[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:14:01 2016 +0700
+
+    Remove DoremonJump: Merged to FinalGame
+
+[33mcommit 80d207754f43a8cab84304c8d4b37216bf1426e1[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:12:43 2016 +0700
+
+    Remove Game2048 + FreakingJapanese: Finish merging into complete game
+
+[33mcommit 180c3dfa641a33459057864749340d1ad0292330[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:10:32 2016 +0700
+
+    Remove Test projects
+
+[33mcommit 0cf845ac3c216116fea94ac7c8772afd3fafd92c[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:05:52 2016 +0700
+
+    Game2048: Minor changes in World.java
+
+[33mcommit 929fb9fad6ee5097172542d11dcf2ac84bdf2bb3[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:05:16 2016 +0700
+
+    FreakingJapanese: Minor changes in local.properties
+
+[33mcommit 0d57624a9b427139ed524ec98cff72001495204e[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:04:44 2016 +0700
+
+    DoremonJump-down: Changes some velocity variables
+
+[33mcommit 464baf2a55a8905c7936e7b729338d1eac86b5d9[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 14:03:55 2016 +0700
+
+    CompleteGame: Experiment game merging
+
+[33mcommit 9a4caf5ee3fc8f94e9266d0098a59c776bba1810[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Mon Nov 21 13:53:27 2016 +0700
+
+    Game over
+
+[33mcommit 32f9760381c1034307382c0b2efc41168f03fb20[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 11:42:06 2016 +0700
+
+    DoremonJump: Semi-final
+
+[33mcommit 94ff5b0b60b16fec29c3ac429dad971b32358331[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 10:27:31 2016 +0700
+
+    DoremonJump: Remove previous version
+
+[33mcommit 314907f65d57ad5284396ac257d58a4684cd5523[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 10:18:35 2016 +0700
+
+    Some minor changes in local.properties
+
+[33mcommit 438b0615f627fd575d1ccec966e1a10003247c3b[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Mon Nov 21 10:17:49 2016 +0700
+
+    FreakingJapanese-up: Stable but non-complete version
+
+[33mcommit 2fb2334fa17e0d5022db70f7a1d9551610b45158[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Mon Nov 21 00:53:48 2016 +0700
+
+    Playing Guide sence
+
+[33mcommit a37ba637bc712bb5c6dda4eccb949f633ea5e8b7[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Sun Nov 20 22:09:43 2016 +0700
+
+    DoremonJump - stable
+
+[33mcommit cca7a38cdf02b138fbef5bf88065cc248090b80b[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 20:49:51 2016 +0700
+
+    Game2048: Remove previous version
+
+[33mcommit 33e4d2ed2120120abf9ab8995d1f80605394aa58[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 20:46:32 2016 +0700
+
+    DoremonJump: Remove unstable version
+
+[33mcommit a48a6e044c7d1fefe4ea7c2a9e18c913ef049527[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 20:45:22 2016 +0700
+
+    DoremonJump: Change from landspace to portrait
+
+[33mcommit 912d7151e276a1df1287da9e5ce51c359499a62c[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 20:16:07 2016 +0700
+
+    DoremonJump: Stable version, add local.properties
+
+[33mcommit cd34aa9d62c2a9017631ecc4bec679961bac98fb[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 20:14:44 2016 +0700
+
+    DoremonJump-up: Stable version
+
+[33mcommit 41d705c5d701bf31384063fe7d6581b6bf1524c5[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 19:05:30 2016 +0700
+
+    Game2048: Fix not in board boundary but auto swipe when press New Game
+
+[33mcommit 86b27f9d005d677cd58c5c9f492a7d9128952480[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 18:21:17 2016 +0700
+
+    Game2048: Remove unused debug messages
+
+[33mcommit 1e37264b1d677909913a23ebcd473f2a6ad90930[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 18:18:13 2016 +0700
+
+    Game2048: Finish up New Game + Try again features
+
+[33mcommit 2a5cac9e82c34887d736c856d73dcec498e14ac0[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 17:32:20 2016 +0700
+
+    Game2048: Finish up interface
+
+[33mcommit 89e14d3c3c756f9fc94192ba5d3ecb857641b185[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 13:56:41 2016 +0700
+
+    Game2048: Create GameOver label
+
+[33mcommit 0d10648eb86aeb7c17f8bffb2d2ee719a76228f3[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 13:22:39 2016 +0700
+
+    Game2048: Update interface
+
+[33mcommit f82a500399125b3d3e375ffc004f2ca82ab51c7e[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Sun Nov 20 11:13:40 2016 +0700
+
+    AddListener Button Change Background
+
+[33mcommit 987df96a6c1b9aa6a6e2806aafd26a250f6e5b8d[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 10:30:47 2016 +0700
+
+    2048: Demo new font
+
+[33mcommit 1a7612ad8c138198f3ba991402c7b9b71d3658f2[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Sun Nov 20 03:19:41 2016 +0700
+
+    Set Button Background
+
+[33mcommit 0ea461052dad6b5c36e40f144e961ffc650eeec8[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Sun Nov 20 01:57:26 2016 +0700
+
+    Update GameBoard
+
+[33mcommit 7158a89325136c2f4b89d7d698a248078c0c1393[m
+Author: Huỳnh Hà <hahpse04181@fpt.edu.vn>
+Date:   Sun Nov 20 01:56:44 2016 +0700
+
+    Update Background
+
+[33mcommit 13776d0d698032af85d93d6c436bbcde7087a4a8[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 01:40:20 2016 +0700
+
+    DoremonJump: add local.properties
+
+[33mcommit 6dae3a25adb82d5a7c2af272197bacc762277018[m
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 01:36:46 2016 +0700
+
+    Add DoremonJump again
+
+[33mcommit 517f2e6c09b8b638f3a1f846b6fcab117f1d8122[m
+Merge: 370f010 8482572
+Author: Lam Ngo <mocmeodx@hotmail.com>
+Date:   Sun Nov 20 01:35:23 2016 +0700
+
+    Remove Doremon

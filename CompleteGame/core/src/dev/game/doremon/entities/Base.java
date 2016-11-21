@@ -7,8 +7,8 @@ import dev.game.main.GameHandler;
 
 
 public class Base extends Entity {
-    public static final int BASE_WIDTH = GameHandler.GAME_WIDTH;
-    public static final int BASE_HEIGHT = GameHandler.GAME_HEIGHT / 108;
+    public static final int BASE_WIDTH = 1200;
+    public static final int BASE_HEIGHT = 10;
 
     private boolean moved = false;
 

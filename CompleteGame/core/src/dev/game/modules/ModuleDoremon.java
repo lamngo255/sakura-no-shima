@@ -5,8 +5,11 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.doremon.states.GameState;
 import dev.game.doremon.states.GameStateManager;
 import dev.game.doremon.states.MenuState;
 import dev.game.main.CompleteGame;
@@ -23,6 +26,7 @@ public class ModuleDoremon extends Module {
     private DoremonHandler doremonHandler;
     private GameStateManager gsm;
 
+    public static Viewport viewport;
 
     private static Preferences preferences;
 
@@ -36,12 +40,17 @@ public class ModuleDoremon extends Module {
         preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
         bestScore = preferences.getInteger(BEST_SCORE_KEY, 0);
 
-        camera = new OrthographicCamera();
-        camera.setToOrtho(true);
+
+
+//        camera = new OrthographicCamera();
+//        camera.setToOrtho(true);
+
+
+        viewport.apply();
 
         doremonHandler = new DoremonHandler(this);
         gsm = new GameStateManager();
-        gsm.push(new MenuState(doremonHandler, gsm, cpanel, gameHandler));
+        gsm.push(new GameState(doremonHandler, gsm, cpanel, gameHandler));
     }
 
     @Override
