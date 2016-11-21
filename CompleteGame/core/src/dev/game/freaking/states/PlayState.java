@@ -2,7 +2,6 @@ package dev.game.freaking.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -11,6 +10,7 @@ import dev.game.freaking.controller.Music;
 import dev.game.freaking.controller.Slider;
 import dev.game.freaking.main.FreakingHandler;
 import dev.game.freaking.model.Alphabet;
+import dev.game.freaking.model.Assets;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
 
@@ -19,7 +19,10 @@ import java.util.Random;
 
 public class PlayState extends State {
     private static int ALPHABET_TYPE = 1;
-    public static int HIGH_SCORE = 0;
+
+
+
+
     public static int ACHIEVED_SCORE;
     private Slider slider;
     private String trueLT, caseLT1, caseLT2;
@@ -138,7 +141,8 @@ public class PlayState extends State {
             btnText2 = getTextCenter(caseLT2);
         } else {
             Music.play("gameover");
-            HIGH_SCORE = Math.max(HIGH_SCORE, ACHIEVED_SCORE);
+            Assets.updateHighScore(ACHIEVED_SCORE);
+//            HIGH_SCORE = Math.max(HIGH_SCORE, ACHIEVED_SCORE);
             gsm.set(new GameOverState(freakingHandler, gsm,ACHIEVED_SCORE, cpanel, gameHandler));
         }
         scoreText = String.valueOf(ACHIEVED_SCORE);

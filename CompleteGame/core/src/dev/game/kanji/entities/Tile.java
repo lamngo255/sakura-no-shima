@@ -33,34 +33,34 @@ public class Tile {
         if (value.equals("一")) {
             background = Color.valueOf("#eee4da");
             textColor = Color.DARK_GRAY;
-        } else if (value.equals("い")) {
+        } else if (value.equals("ニ")) {
             background = Color.valueOf("#ede0c8");
             textColor = Color.DARK_GRAY;
-        } else if (value.equals("う")) {
+        } else if (value.equals("三")) {
             background = Color.valueOf("#f2b179");
             textColor = Color.WHITE;
-        } else if (value.equals("え")) {
+        } else if (value.equals("四")) {
             background = Color.valueOf("#f59563");
             textColor = Color.WHITE;
-        } else if (value.equals("お")) {
+        } else if (value.equals("五")) {
             background = Color.valueOf("#f67c5f");
             textColor = Color.valueOf("#f9f6f2");
-        } else if (value.equals("か")) {
+        } else if (value.equals("六")) {
             background = Color.valueOf("#f65e3b");
             textColor = Color.valueOf("#f9f6f2");
-        } else if (value.equals("き")) {
+        } else if (value.equals("七")) {
             background = Color.valueOf("#edcf72");
             textColor = Color.valueOf("#f9f6f2");
-        } else if (value.equals("く")) {
+        } else if (value.equals("八")) {
             background = Color.valueOf("#edcc61");
             textColor = Color.valueOf("#f9f6f2");
-        } else if (value.equals("け")) {
+        } else if (value.equals("九")) {
             background = Color.valueOf("#edc850");
             textColor = Color.valueOf("#f9f6f2");
-        } else if (value.equals("こ")) {
+        } else if (value.equals("十")) {
             background = Color.valueOf("#edc53f");
             textColor = Color.valueOf("#f9f6f2");
-        } else if (value.equals("さ")) {
+        } else if (value.equals("百")) {
             background = Color.valueOf("#edc22e");
             textColor = Color.valueOf("#f9f6f2");
         } else {

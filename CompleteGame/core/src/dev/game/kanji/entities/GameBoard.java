@@ -51,7 +51,7 @@ public class GameBoard {
 
     private void generateFont() {
         FreeTypeFontGenerator generator =
-                new FreeTypeFontGenerator(Gdx.files.internal("fonts/KaoriGelBold.ttf"));
+                new FreeTypeFontGenerator(Gdx.files.internal("fonts/Mamelon.otf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter =
                 new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = Gdx.graphics.getWidth() / 8;
@@ -148,7 +148,7 @@ public class GameBoard {
             int col = location % COLS;
             Tile current = board[row][col];
             if (current == null) {
-                String value = random.nextInt(10) < 9 ? "あ" : "い";
+                String value = random.nextInt(10) < 9 ? "一" : "ニ";
                 Tile tile = new Tile(value, getTileX(col), getTileY(row));
                 board[row][col] = tile;
                 isValid = true;
