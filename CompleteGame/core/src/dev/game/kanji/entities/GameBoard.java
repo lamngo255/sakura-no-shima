@@ -51,7 +51,7 @@ public class GameBoard {
 
     private void generateFont() {
         FreeTypeFontGenerator generator =
-                new FreeTypeFontGenerator(Gdx.files.internal("fonts/KaoriGelBold.ttf"));
+                new FreeTypeFontGenerator(Gdx.files.internal("fonts/kanji-k.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter =
                 new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = Gdx.graphics.getWidth() / 8;

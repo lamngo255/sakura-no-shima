@@ -7,7 +7,6 @@ import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
 import dev.game.main.GameHandler;
 
-
 public class Platform extends Entity {
     public static final int PLATFORM_WIDTH = GameHandler.GAME_WIDTH / 4;
     public static final int PLATFORM_HEIGHT = GameHandler.GAME_HEIGHT / 24;
