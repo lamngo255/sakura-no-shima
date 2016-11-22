@@ -13,8 +13,8 @@ import dev.game.modules.MainGameModule;
 import dev.game.modules.ModuleDoremon;
 
 public class CompleteGame extends ApplicationAdapter {
-    public static final int WORLD_WIDTH_TEST = 1080 ;
-    public static final int WORLD_HEIGHT_TEST = 1920;
+    public static final int WORLD_WIDTH_TEST = 900 ;
+    public static final int WORLD_HEIGHT_TEST = 1600;
     public static OrthographicCamera camera;
     private SpriteBatch batch;
     private GameHandler gameHandler;
