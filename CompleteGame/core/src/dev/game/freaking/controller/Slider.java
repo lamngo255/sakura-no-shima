@@ -26,12 +26,12 @@ public class Slider {
 
         this.x = 0;
         this.y = GameHandler.GAME_HEIGHT * 0.8f;
-        if(SPEED==1){
-            Slider.SPEED=Gdx.graphics.getWidth() / 55;
-        }else if(SPEED==2){
-            Slider.SPEED=Gdx.graphics.getWidth() / 75;
-        }else if(SPEED==3){
-            Slider.SPEED=Gdx.graphics.getWidth() / 100;
+        if (SPEED == 1) {
+            Slider.SPEED = Gdx.graphics.getWidth() / 55;
+        } else if (SPEED == 2) {
+            Slider.SPEED = Gdx.graphics.getWidth() / 75;
+        } else if (SPEED == 3) {
+            Slider.SPEED = Gdx.graphics.getWidth() / 100;
         }
         this.y = GameHandler.GAME_HEIGHT * 0.85f;
     }

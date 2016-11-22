@@ -24,7 +24,7 @@ public class ModuleStart extends Module {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.03f + 0.44f)
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.485f
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (0.485f + 0.08f)) {
-                cpanel.set(new ModuleKanji(gameHandler, cpanel));
+                cpanel.set(new ModuleDoremon(gameHandler, cpanel));
             }
 
             // Game Hira
@@ -40,7 +40,7 @@ public class ModuleStart extends Module {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.475f + 0.44f)
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.847f
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (0.847f + 0.08f)) {
-                cpanel.set(new ModuleDoremon(gameHandler, cpanel));
+                cpanel.set(new ModuleKanji(gameHandler, cpanel));
             }
         }
     }

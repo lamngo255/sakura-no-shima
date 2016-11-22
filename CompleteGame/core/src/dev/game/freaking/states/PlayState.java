@@ -49,7 +49,7 @@ public class PlayState extends State {
         SCREEN_WIDTH = GameHandler.GAME_WIDTH;
         SCREEN_HEIGHT = GameHandler.GAME_HEIGHT;
         ACHIEVED_SCORE = 0;
-        slider=new Slider(freakingHandler, HARD_LEVEL);
+        slider = new Slider(freakingHandler, HARD_LEVEL);
         slider.setRunning(false);
         init();
         generateFont();
@@ -155,7 +155,7 @@ public class PlayState extends State {
             Music.play("gameover");
             Assets.updateHighScore(ACHIEVED_SCORE);
 //            HIGH_SCORE = Math.max(HIGH_SCORE, ACHIEVED_SCORE);
-            gsm.set(new GameOverState(freakingHandler, gsm,ACHIEVED_SCORE, cpanel, gameHandler));
+            gsm.set(new GameOverState(freakingHandler, gsm, ACHIEVED_SCORE, cpanel, gameHandler));
         }
         scoreText = String.valueOf(ACHIEVED_SCORE);
     }
@@ -181,12 +181,11 @@ public class PlayState extends State {
         shape.end();
 
 
-
         // ----------------BUTTON RENDERER------------------
         batch.begin();
         // Button 1 + 2 (shape)
         batch.draw(buttonCases[buttonPressed1], SCREEN_WIDTH * 0.03f, SCREEN_HEIGHT * 0.02f,
-                                    SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
+                SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
         batch.draw(buttonCases[buttonPressed2], SCREEN_WIDTH * 0.52f, SCREEN_HEIGHT * 0.02f,
                 SCREEN_WIDTH * 0.45f, SCREEN_HEIGHT * 0.26f);
         batch.end();
@@ -204,7 +203,7 @@ public class PlayState extends State {
                 SCREEN_HEIGHT * 0.2f);
         scoreFont.setColor(Color.valueOf("#f9f6f2"));
         scoreFont.draw(batch, scoreText, SCREEN_WIDTH * 0.8f,
-                                    SCREEN_HEIGHT * 0.8f);
+                SCREEN_HEIGHT * 0.8f);
         batch.end();
 
         if (slider != null) {
@@ -244,12 +243,15 @@ public class PlayState extends State {
     public static void setAlphabetType(int alphabetType) {
         PlayState.ALPHABET_TYPE = alphabetType;
     }
-    public static void setHardLevel(int hardLevel){PlayState.HARD_LEVEL=hardLevel;}
+
+    public static void setHardLevel(int hardLevel) {
+        PlayState.HARD_LEVEL = hardLevel;
+    }
 
     //if chose case 1
     public void answerCase1() {
         if (slider == null) {
-            slider = new Slider(freakingHandler,HARD_LEVEL);
+            slider = new Slider(freakingHandler, HARD_LEVEL);
         }
         if (trueLT.equalsIgnoreCase(caseLT1.trim())) {
             ACHIEVED_SCORE += 1;
@@ -266,7 +268,7 @@ public class PlayState extends State {
     //if chose case 2
     public void answerCase2() {
         if (slider == null) {
-            slider = new Slider(freakingHandler,HARD_LEVEL);
+            slider = new Slider(freakingHandler, HARD_LEVEL);
         }
 
         if (!trueLT.equalsIgnoreCase(caseLT1.trim())) {
