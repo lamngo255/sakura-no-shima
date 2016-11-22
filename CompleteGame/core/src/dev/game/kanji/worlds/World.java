@@ -22,8 +22,6 @@ import dev.game.modules.ModuleStart;
  * Created by Lam Ngo on 11/19/2016.
  */
 public class World {
-
-
     private ShapeRenderer shape;
     private GameBoard gameBoard;
     private BitmapFont gameOverFont, okWinFont;

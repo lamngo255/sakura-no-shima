@@ -49,7 +49,8 @@ public class PlayState extends State {
         SCREEN_WIDTH = GameHandler.GAME_WIDTH;
         SCREEN_HEIGHT = GameHandler.GAME_HEIGHT;
         ACHIEVED_SCORE = 0;
-        System.out.println("Hard level: "+HARD_LEVEL);
+        slider=new Slider(freakingHandler, HARD_LEVEL);
+        slider.setRunning(false);
         init();
         generateFont();
     }
@@ -102,6 +103,7 @@ public class PlayState extends State {
 
     private void handleInput() {
         if (Gdx.input.justTouched()) {
+            slider.setRunning(true);
             // Choose Left Button
             if (Gdx.input.getX() >= SCREEN_WIDTH * 0.03f
                     && Gdx.input.getX() <= SCREEN_WIDTH * (0.03f + 0.45f)

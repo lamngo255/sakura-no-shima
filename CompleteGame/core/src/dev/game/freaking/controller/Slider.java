@@ -33,6 +33,7 @@ public class Slider {
         }else if(SPEED==3){
             Slider.SPEED=Gdx.graphics.getWidth() / 100;
         }
+        this.y = GameHandler.GAME_HEIGHT * 0.85f;
     }
 
     public void render(SpriteBatch batch) {
