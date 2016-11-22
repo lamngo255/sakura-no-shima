@@ -1,0 +1,9 @@
+info face="exo-large" size=150 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=2 padding=0,0,0,0 spacing=0,0
+common lineHeight=225 base=132 scaleW=1 scaleH=1 pages=1 packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="150_exo-large/exo-large.png"
+chars count=4
+char id=32   x=0    y=0    width=36   height=0    xoffset=0    yoffset=0    xadvance=36   page=0    chnl=0
+char id=12367x=2    y=4    width=51   height=123  xoffset=48   yoffset=14   xadvance=150  page=0    chnl=0
+char id=12373x=55   y=4    width=94   height=117  xoffset=27   yoffset=18   xadvance=150  page=0    chnl=0
+char id=12425x=151  y=4    width=92   height=114  xoffset=32   yoffset=18   xadvance=150  page=0    chnl=0
+kernings count=0

@@ -1,0 +1,9 @@
+info face="exo-small" size=50 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=2 padding=0,0,0,0 spacing=0,0
+common lineHeight=75 base=44 scaleW=1 scaleH=1 pages=1 packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="50_exo-small/exo-small.png"
+chars count=4
+char id=32   x=0    y=0    width=12   height=0    xoffset=0    yoffset=0    xadvance=12   page=0    chnl=0
+char id=12367x=2    y=4    width=17   height=41   xoffset=16   yoffset=5    xadvance=50   page=0    chnl=0
+char id=12373x=21   y=4    width=32   height=40   xoffset=8    yoffset=5    xadvance=50   page=0    chnl=0
+char id=12425x=55   y=4    width=32   height=38   xoffset=10   yoffset=6    xadvance=50   page=0    chnl=0
+kernings count=0
