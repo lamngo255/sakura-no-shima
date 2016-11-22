@@ -24,8 +24,8 @@ public class Assets {
 
     public static void init() {
         Texture sheet = new Texture("button/freaking_button.png");
-        Texture sheet1 = new Texture("button/home_button_freaking.png");
-        Texture sheet2 = new Texture("button/play_btn_freaking.png");
+        Texture sheet1 = new Texture("button/btn_freaking_home.png");
+        Texture sheet2 = new Texture("button/btn_freaking_replay.png");
 
         buttonCases = new TextureRegion[2];
         replayButton = new TextureRegion[2];
