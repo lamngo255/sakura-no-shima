@@ -79,21 +79,6 @@ public class World {
     public void render(SpriteBatch batch) {
         batch.draw(background, 0, 0, CompleteGame.WORLD_WIDTH_TEST
                 ,CompleteGame.WORLD_HEIGHT_TEST);
-        batch.end();
-
-        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-        hub.setProjectionMatrix(ModuleDoremon.camera.combined);
-        hub.begin(ShapeRenderer.ShapeType.Filled);
-        hub.setColor(0, 51 / 255, 153 / 255, 0.3f);
-        hub.rect(0, 0, CompleteGame.WORLD_WIDTH_TEST, 105);
-        hub.end();
-        batch.begin();
-
-
-        font.draw(batch, "Score: " + score, 25, 45);
-
-//        font.draw(batch, "Spring state: " + spring.getState(), 25, 45);
-
 
         for (Platform platform : platforms) {
             platform.render(batch);
@@ -103,6 +88,24 @@ public class World {
         spring.render(batch);
         player.render(batch);
         instancesRender(batch);
+
+
+        batch.end();
+
+        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
+        hub.setProjectionMatrix(ModuleDoremon.camera.combined);
+        hub.begin(ShapeRenderer.ShapeType.Filled);
+        hub.setColor(0, 51 / 255, 153 / 255, 0.3f);
+        hub.rect(0, 0, CompleteGame.WORLD_WIDTH_TEST, 160);
+        hub.end();
+        batch.begin();
+
+
+        font.draw(batch, "Score: " + score, 25, 50);
+
+
+
+
     }
 
     private void instancesRender(SpriteBatch batch) {
@@ -273,7 +276,7 @@ public class World {
         FreeTypeFontGenerator generator =
                 new FreeTypeFontGenerator(Gdx.files.internal("neuropol.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = (int)(CompleteGame.WORLD_WIDTH_TEST * 0.04f);
+        parameter.size = (int)(CompleteGame.WORLD_WIDTH_TEST * 0.06f);
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         parameter.flip = true;
         font = generator.generateFont(parameter);

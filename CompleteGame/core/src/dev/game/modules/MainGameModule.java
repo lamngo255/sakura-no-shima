@@ -26,6 +26,9 @@ public class MainGameModule extends Module {
         xCloud1 = 0 - GameHandler.GAME_WIDTH * 0.25f;
         xCloud2 = GameHandler.GAME_WIDTH;
 
+        gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_MAIN_MENU);
+        gameHandler.playBackgroundMusic();
+
         generateFont();
     }
 

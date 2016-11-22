@@ -24,9 +24,11 @@ public class GameHandler {
 
     private Music backgroundMusic;
     private CompleteGame completeGame;
+    private String playingMusic;
 
     public GameHandler(CompleteGame completeGame) {
         this.completeGame = completeGame;
+        playingMusic = "";
 //        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(""));
 
     }
@@ -52,7 +54,12 @@ public class GameHandler {
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(musicFilePath));
         backgroundMusic.setLooping(true);
         backgroundMusic.setVolume(0.5f);
+        playingMusic = musicFilePath;
 
+    }
+
+    public String getPlayingMusic() {
+        return playingMusic;
     }
 
     public void dispose() {

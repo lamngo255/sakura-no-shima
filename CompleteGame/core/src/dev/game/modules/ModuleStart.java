@@ -14,7 +14,10 @@ public class ModuleStart extends Module {
 
     public ModuleStart(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
-        gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_MAIN_MENU);
+        if (!gameHandler.getPlayingMusic().equals(GameHandler.BACKGROUND_MUSIC_MAIN_MENU)) {
+
+            gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_MAIN_MENU);
+        }
         gameHandler.playBackgroundMusic();
         background = new Texture("background/MapMenu.png");
     }
