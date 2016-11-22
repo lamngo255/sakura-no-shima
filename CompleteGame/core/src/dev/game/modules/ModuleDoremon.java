@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.game.doremon.gfx.Assets;
@@ -12,8 +13,11 @@ import dev.game.doremon.main.DoremonHandler;
 import dev.game.doremon.states.GameState;
 import dev.game.doremon.states.GameStateManager;
 import dev.game.doremon.states.MenuState;
+import dev.game.doremon.states.PlayingGuide;
 import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
+
+import java.util.Vector;
 
 /**
  * Created by Lam Ngo on 11/21/2016.
@@ -50,7 +54,7 @@ public class ModuleDoremon extends Module {
 
         doremonHandler = new DoremonHandler(this);
         gsm = new GameStateManager();
-        gsm.push(new GameState(doremonHandler, gsm, cpanel, gameHandler));
+        gsm.push(new MenuState(doremonHandler, gsm, cpanel, gameHandler));
     }
 
     @Override
@@ -78,5 +82,13 @@ public class ModuleDoremon extends Module {
     public void dispose() {
         gsm.dispose();
         Assets.dispose();
+    }
+
+    public static boolean checkIfButtonPressed(float xLeft, float xRight, float yTop, float yBot) {
+        Vector3 worldInputCoordinates = ModuleDoremon.camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(),0));
+        return  (worldInputCoordinates.x >= xLeft &&
+                worldInputCoordinates.x <= xRight &&
+                worldInputCoordinates.y >= yTop &&
+                worldInputCoordinates.y<= yBot);
     }
 }

@@ -29,7 +29,6 @@ public class Base extends Entity {
     @Override
     public void render(SpriteBatch batch) {
 
-        System.out.println(String.format("base x  = %s y - %s ", x, y));
         batch.draw(Assets.base, x, y, width, height);
     }
 

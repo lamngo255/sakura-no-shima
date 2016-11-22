@@ -14,12 +14,12 @@ import dev.game.main.CompleteGame;
 public class Player extends Entity {
     public static final int PLAYER_WIDTH = 130;
     public static final int PLAYER_HEIGHT = 130;
-    private static final float HORIZONTAL_VELOCITY_LIMIT = 3;
-    private static final float HORIZONTAL_ACCELERATION = 0.1f;
-    private static final float HORIZONTAL_BRAKE_ACCELEBRATION = 0.075f;
+    private static final float HORIZONTAL_VELOCITY_LIMIT = 7f;
+    private static final float HORIZONTAL_ACCELERATION = 0.08f;
+    private static final float HORIZONTAL_BRAKE_ACCELEBRATION = 0.06f;
 
 
-    public static float GRAVITY = 0.15f;
+    public static float GRAVITY = 0.1f;
     public static int JUMP = -16;
     public static int JUMP_HIGH = -50;
 

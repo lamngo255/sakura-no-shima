@@ -68,15 +68,31 @@ public class GameOverState extends State {
 //            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
 //                    Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.69f &&
 //                    Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.5f &&
-//                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.58f) {
-//                gsm.set(new GameState(doremonHandler, gsm, cpanel, gameHandler));
-//            } else if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
+//                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.58f)
+//
+            if (ModuleDoremon.checkIfButtonPressed(CompleteGame.WORLD_WIDTH_TEST *  0.27f,
+                    CompleteGame.WORLD_WIDTH_TEST* 0.69f,
+                    CompleteGame.WORLD_HEIGHT_TEST * 0.5f,
+                    CompleteGame.WORLD_HEIGHT_TEST *  0.58f
+            ))
+            {
+                gsm.set(new GameState(doremonHandler, gsm, cpanel, gameHandler));
+            }
+            else
+//                if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
 //                    Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.69f &&
 //                    Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.64f &&
 //                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.69f
-//                    ) {
-//                gsm.set(new MenuState(doremonHandler, gsm, cpanel, gameHandler));
-//            }
+//                    )
+                if (ModuleDoremon.checkIfButtonPressed(CompleteGame.WORLD_WIDTH_TEST *  0.27f,
+                        CompleteGame.WORLD_WIDTH_TEST* 0.69f,
+                        CompleteGame.WORLD_HEIGHT_TEST * 0.64f,
+                        CompleteGame.WORLD_HEIGHT_TEST *  0.69f
+                ))
+
+            {
+                gsm.set(new MenuState(doremonHandler, gsm, cpanel, gameHandler));
+            }
         }
     }
 

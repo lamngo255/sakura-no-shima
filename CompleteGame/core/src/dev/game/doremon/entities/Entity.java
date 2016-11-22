@@ -44,7 +44,6 @@ public abstract class Entity {
     }
 
     public void setY(float y) {
-        System.out.println(String.format("setting base y  = %s", y));
         this.y = y;
 
     }
