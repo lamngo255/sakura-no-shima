@@ -56,6 +56,8 @@ public class PlayState extends State {
     }
 
     private void init() {
+        gameHandler.stopBackgroundMusic();
+        
         Alphabet.initAlphabet();
         alphabets = Alphabet.getAlphabet(ALPHABET_TYPE);
         blendAlpList();

@@ -31,7 +31,7 @@ public class HardLevelState extends State {
         shape = new ShapeRenderer();
         bgHardLevel = Assets.bgHardLevel;
 
-        gameHandler.stopBackgroundMusic();
+
     }
 
 
