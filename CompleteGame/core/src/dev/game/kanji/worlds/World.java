@@ -98,18 +98,10 @@ public class World {
         tryAgainFont = generator.generateFont(parameter);
 
         // Statement Font
-        parameter.size = GameHandler.GAME_WIDTH / 21;
-        parameter.characters = "Gettothetile!";
-        statementFont = generator.generateFont(parameter);
+        parameter.size = GameHandler.GAME_WIDTH / 15;
+        parameter.characters = "Getto百thetile!";
+        statementFont = generator2.generateFont(parameter);
         generator.dispose();
-
-
-        // Remain Statement Font
-         generator2 =
-                new FreeTypeFontGenerator(Gdx.files.internal("fonts/Mamelon.otf"));
-        parameter.size = GameHandler.GAME_WIDTH / 16;
-        parameter.characters = "百";
-        saFont = generator2.generateFont(parameter);
         generator2.dispose();
     }
 
@@ -186,14 +178,10 @@ public class World {
         titleFont2.setColor(Color.valueOf("#776e65"));
         newGameFont.setColor(Color.valueOf("#faf8ef"));
         statementFont.setColor(Color.valueOf("#776e65"));
-        saFont.setColor(Color.valueOf("#776e65"));
-
         scoreLabelFont.draw(batch, "SCORE", GameHandler.GAME_WIDTH * 0.56f,
                                             GameHandler.GAME_HEIGHT * 0.9f);
 
         //draw score
-//        scoreFont.draw(batch, String.format("%s", score), GameHandler.GAME_WIDTH * 0.54f,
-//                                     GameHandler.GAME_HEIGHT * 0.86f);
         float scoreFontX = Assets.getCenterAlignmentPositionX(GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_WIDTH * 0.52f
                 , String.format("%s", score).length(), scoreFont.getSpaceWidth()*3);
         scoreFont.draw(batch, String.format("%s", score),scoreFontX,
@@ -215,10 +203,8 @@ public class World {
                                         GameHandler.GAME_HEIGHT * 0.84f);
         newGameFont.draw(batch, "New Game", GameHandler.GAME_WIDTH * 0.675f,
                                         GameHandler.GAME_HEIGHT * 0.756f);
-        statementFont.draw(batch, "Get to the      tile!", GameHandler.GAME_WIDTH * 0.05f,
+        statementFont.draw(batch, "Get to the 百 tile!", GameHandler.GAME_WIDTH * 0.05f,
                                         GameHandler.GAME_HEIGHT * 0.75f);
-        saFont.draw(batch, "百", GameHandler.GAME_WIDTH * 0.305f,
-                                    GameHandler.GAME_HEIGHT * 0.752f);
         batch.end();
     }
 
@@ -286,7 +272,6 @@ public class World {
         bestLabelFont.dispose();
         bestScoreFont.dispose();
         statementFont.dispose();
-        saFont.dispose();
         tryAgainFont.dispose();
     }
 }
