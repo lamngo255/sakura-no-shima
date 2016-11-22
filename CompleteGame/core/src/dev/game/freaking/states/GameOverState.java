@@ -1,6 +1,7 @@
 package dev.game.freaking.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -47,9 +48,9 @@ public class GameOverState extends State {
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 
-        scoreFont.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+        scoreFont.setColor(Color.BLACK);
 
-        bestScoreFont.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+        bestScoreFont.setColor(Color.BLACK);
 
         generator.dispose();
     }
