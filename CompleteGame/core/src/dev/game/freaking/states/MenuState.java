@@ -33,6 +33,8 @@ public class MenuState extends State {
         shape = new ShapeRenderer();
         bgMenu = Assets.bgMenu;
         generateFont();
+
+        gameHandler.playBackgroundMusic();
     }
 
     private void generateFont() {

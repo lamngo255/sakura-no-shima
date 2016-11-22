@@ -33,7 +33,7 @@ public class ModuleFreaking extends Module {
         Music.load("point", "sounds/sfx_point.wav");
         Music.load("gameover", "sounds/sfx_over.wav");
 
-        gameHandler.stopBackgroundMusic();
+        gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_FREAKING);
 
         freakingHandler = new FreakingHandler(this);
         gsm = new GameStateManager();

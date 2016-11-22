@@ -30,6 +30,8 @@ public class HardLevelState extends State {
         SCREEN_HEIGHT =  GameHandler.GAME_HEIGHT;
         shape = new ShapeRenderer();
         bgHardLevel = Assets.bgHardLevel;
+
+        gameHandler.stopBackgroundMusic();
     }
 
 

@@ -13,7 +13,7 @@ public class GameHandler {
     public static final String BACKGROUND_MUSIC_MAIN_MENU = "ByeByeAccelWorldOST-V.A.mp3";
     public static final String BACKGROUND_MUSIC_DOREMON_JUMP = "Kevin MacLeod ~ Merry Go.wav";
     public static final String BACKGROUND_MUSIC_KANJI = "Mitsuha_No_Theme.mp3";
-//    public static final String BACKGROUND_MUSIC_FREAKING = "";
+    public static final String BACKGROUND_MUSIC_FREAKING = "Mitsuha_No_Tsugaku.mp3";
 
 
     public static int GAME_WIDTH = Gdx.graphics.getWidth();
@@ -53,7 +53,6 @@ public class GameHandler {
         }
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(musicFilePath));
         backgroundMusic.setLooping(true);
-        backgroundMusic.setVolume(0.5f);
         playingMusic = musicFilePath;
 
     }
