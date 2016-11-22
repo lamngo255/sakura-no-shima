@@ -41,9 +41,7 @@ public class Assets {
 
     public static float getCenterAlignmentPositionX(float parentWidth, float parentX, int textLength, float spaceLength) {
         float middleX = parentX + parentWidth / 2;
-        System.out.println(textLength);
         float offset = (float)(textLength / 2) * spaceLength;
-        System.out.println(String.format("%2s", middleX - offset));
         return (middleX - offset);
 
 

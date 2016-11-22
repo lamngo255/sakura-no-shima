@@ -209,15 +209,15 @@ public class World {
         float highScoreFontX = Assets.getCenterAlignmentPositionX(GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_WIDTH * 0.76f,
                 String.format("%s", Assets.bestScore).length(), scoreFont.getSpaceWidth() * 3);
         bestScoreFont.draw(batch, String.format("%s", Assets.bestScore), highScoreFontX, GameHandler.GAME_HEIGHT * 0.86f);
-        titleFont.draw(batch, "日本", GameHandler.GAME_WIDTH * 0.06f,
+        titleFont.draw(batch, "日本", GameHandler.GAME_WIDTH * 0.07f,
                                       GameHandler.GAME_HEIGHT * 0.92f);
-        titleFont2.draw(batch, "Kanji Number", GameHandler.GAME_WIDTH * 0.03f,
+        titleFont2.draw(batch, "Kanji Number", GameHandler.GAME_WIDTH * 0.05f,
                                         GameHandler.GAME_HEIGHT * 0.84f);
         newGameFont.draw(batch, "New Game", GameHandler.GAME_WIDTH * 0.675f,
                                         GameHandler.GAME_HEIGHT * 0.756f);
         statementFont.draw(batch, "Get to the      tile!", GameHandler.GAME_WIDTH * 0.05f,
                                         GameHandler.GAME_HEIGHT * 0.75f);
-        saFont.draw(batch, "百", GameHandler.GAME_WIDTH * 0.3f,
+        saFont.draw(batch, "百", GameHandler.GAME_WIDTH * 0.305f,
                                     GameHandler.GAME_HEIGHT * 0.752f);
         batch.end();
     }
