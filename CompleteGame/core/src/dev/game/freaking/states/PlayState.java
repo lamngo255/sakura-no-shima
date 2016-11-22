@@ -180,6 +180,7 @@ public class PlayState extends State {
         shape.end();
 
 
+
         // ----------------BUTTON RENDERER------------------
         batch.begin();
         // Button 1 + 2 (shape)

@@ -29,7 +29,7 @@ public class Assets {
         buttonCases[0] = new TextureRegion(sheet, 0, 0, 512, 512);
         buttonCases[1] = new TextureRegion(sheet, 512, 0, 512, 512);
 
-        preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
+        preferences = CompleteGame.preferences;
         highScore = preferences.getInteger(HIGH_SCORE_KEY, 0);
     }
 

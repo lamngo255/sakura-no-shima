@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import dev.game.kanji.entities.Assets;
 import dev.game.kanji.entities.GameBoard;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
@@ -18,6 +19,8 @@ import dev.game.modules.ModuleKanji;
  * Created by Lam Ngo on 11/19/2016.
  */
 public class World {
+
+
 
     private ShapeRenderer shape;
     private GameBoard gameBoard;
@@ -30,12 +33,15 @@ public class World {
     private GameModuleManager cpanel;
     private GameHandler gameHandler;
 
+    private static int score;
+
     public World(GameModuleManager cpanel,GameHandler gameHandler) {
         this.gameBoard = GameBoard.generate();
         this.shape = new ShapeRenderer();
         generateFont();
         this.cpanel = cpanel;
         this.gameHandler = gameHandler;
+        score = 0;
     }
 
     public void generateFont() {
@@ -50,22 +56,22 @@ public class World {
         gameOverFont = generator.generateFont(parameter);
 
         // Score Label Font
-        parameter.size = Gdx.graphics.getWidth() / 25;
+        parameter.size = Gdx.graphics.getWidth() / 30;
         parameter.characters = "SCORE";
         scoreLabelFont = generator.generateFont(parameter);
 
         // Score Font
-        parameter.size = Gdx.graphics.getWidth() / 18;
+        parameter.size = Gdx.graphics.getWidth() / 25;
         parameter.characters = "0123456789";
         scoreFont = generator.generateFont(parameter);
 
         // Best Label Font
-        parameter.size = Gdx.graphics.getWidth() / 25;
+        parameter.size = Gdx.graphics.getWidth() / 30;
         parameter.characters = "BEST";
         bestLabelFont = generator.generateFont(parameter);
 
         // Best Font
-        parameter.size = Gdx.graphics.getWidth() / 18;
+        parameter.size = Gdx.graphics.getWidth() / 25;
         parameter.characters = "0123456789";
         bestScoreFont = generator.generateFont(parameter);
 
@@ -180,13 +186,17 @@ public class World {
         statementFont.setColor(Color.valueOf("#776e65"));
         saFont.setColor(Color.valueOf("#776e65"));
 
-        scoreLabelFont.draw(batch, "SCORE", GameHandler.GAME_WIDTH * 0.55f,
+        scoreLabelFont.draw(batch, "SCORE", GameHandler.GAME_WIDTH * 0.56f,
                                             GameHandler.GAME_HEIGHT * 0.9f);
-        scoreFont.draw(batch, "123", GameHandler.GAME_WIDTH * 0.56f,
+
+        //draw score
+        scoreFont.draw(batch, String.format("%s", score), GameHandler.GAME_WIDTH * 0.54f,
                                      GameHandler.GAME_HEIGHT * 0.86f);
         bestLabelFont.draw(batch, "BEST", GameHandler.GAME_WIDTH * 0.81f,
                                         GameHandler.GAME_HEIGHT * 0.9f);
-        bestScoreFont.draw(batch, "456", GameHandler.GAME_WIDTH * 0.8f,
+
+        //draw highscore
+        bestScoreFont.draw(batch, String.format("%s", Assets.bestScore), GameHandler.GAME_WIDTH * 0.78f,
                                     GameHandler.GAME_HEIGHT * 0.86f);
         titleFont.draw(batch, "2048", GameHandler.GAME_WIDTH * 0.05f,
                                       GameHandler.GAME_HEIGHT * 0.92f);
@@ -234,9 +244,23 @@ public class World {
         }
     }
 
+
+
     public void tick() {
         gameBoard.update();
         handleInput();
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static void addScore(int amount) {
+        score += amount;
+    }
+
+    public static void resetScore() {
+        score = 0;
     }
 
     public void dispose() {

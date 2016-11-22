@@ -32,7 +32,6 @@ public class ModuleDoremon extends Module {
 
     public static Viewport viewport;
 
-    private static Preferences preferences;
 
     public ModuleDoremon(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
@@ -41,8 +40,8 @@ public class ModuleDoremon extends Module {
     }
 
     private void init() {
-        preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
-        bestScore = preferences.getInteger(BEST_SCORE_KEY, 0);
+        CompleteGame.preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
+        bestScore = CompleteGame.preferences.getInteger(BEST_SCORE_KEY, 0);
 
 
 
@@ -73,8 +72,8 @@ public class ModuleDoremon extends Module {
     public static void updateBestScore(int score) {
         if (score > bestScore) {
             bestScore = score;
-            preferences.putInteger(BEST_SCORE_KEY, bestScore);
-            preferences.flush();
+            CompleteGame.preferences.putInteger(BEST_SCORE_KEY, bestScore);
+            CompleteGame.preferences.flush();
         }
     }
 

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.kanji.input.DirectionGestureDetector;
 import dev.game.kanji.utils.Direction;
+import dev.game.kanji.worlds.World;
 import dev.game.main.GameHandler;
 import dev.game.modules.ModuleKanji;
 
@@ -34,7 +35,9 @@ public class GameBoard {
     public static boolean hasStarted;
     private BitmapFont tileFont;
 
+
     public static GameBoard generate() {
+        World.resetScore();
         return new GameBoard((GameHandler.GAME_WIDTH / 2 - GameBoard.BOARD_WIDTH / 2),
                 (GameHandler.GAME_HEIGHT - GameBoard.BOARD_HEIGHT - 10));
     }
@@ -234,11 +237,15 @@ public class GameBoard {
             } else if (board[newRow][newCol].getValue().equals(current.getValue())
                     && board[newRow][newCol].canCombine()) {
                 board[newRow][newCol].setCanCombine(false);
+                // combine 2 tile
+                //add to score
+                World.addScore(Tile.getScoreValue(board[newRow][newCol].getValue()));
                 board[newRow][newCol].setValue(Alphabet.getNextLetter(board[newRow][newCol].getValue()));
+
                 canMove = true;
                 board[newRow - verticalDirection][newCol - horizontalDirection] = null;
                 board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
-                //add to score
+
             } else {
                 move = false;
             }
@@ -327,6 +334,7 @@ public class GameBoard {
 
         dead = true;
         // setHighScore(score);
+        Assets.updateHighScore(World.getScore());
         System.out.println("GG game");
 
     }

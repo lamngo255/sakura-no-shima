@@ -11,9 +11,13 @@ import dev.game.main.GameHandler;
  * Created by Lam Ngo on 11/19/2016.
  */
 public class Tile {
+
     public static int TILE_WIDTH = (int) (GameHandler.GAME_WIDTH / 4.6f);
     public static int TILE_HEIGHT = (int) (GameHandler.GAME_WIDTH / 4.6f);
     public static final int SLIDE_SPEED = GameHandler.GAME_WIDTH / 11;
+    public static final int BASE_SCORE = 100;
+
+
     private int x;
     private int y;
     private String value;
@@ -102,6 +106,37 @@ public class Tile {
     public void setValue(String value) {
         this.value = value;
 
+    }
+
+    public static int getScoreValue(String value) {
+        int scoreLevel ;
+        if (value.equals("一")) {
+            scoreLevel = 1;
+        } else if (value.equals("ニ")) {
+            scoreLevel = 2;
+        } else if (value.equals("三")) {
+            scoreLevel = 3;
+        } else if (value.equals("四")) {
+            scoreLevel = 4;
+        } else if (value.equals("五")) {
+            scoreLevel = 5;
+        } else if (value.equals("六")) {
+            scoreLevel  =6;
+        } else if (value.equals("七")) {
+            scoreLevel = 7;
+        } else if (value.equals("八")) {
+            scoreLevel = 8;
+        } else if (value.equals("九")) {
+            scoreLevel = 9;
+        } else if (value.equals("十")) {
+            scoreLevel = 10;
+        } else if (value.equals("百")) {
+            // never happend
+            scoreLevel = 11;
+        } else {
+            scoreLevel = 0;
+        }
+        return scoreLevel * BASE_SCORE;
     }
 
     public void setSlideTo(Point slideTo) {

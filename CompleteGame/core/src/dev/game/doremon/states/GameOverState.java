@@ -50,7 +50,7 @@ public class GameOverState extends State {
         parameter.flip = true;
         gameOver = generator.generateFont(parameter);
 
-        parameter.size = 50;
+        parameter.size = 70;
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 
@@ -106,8 +106,8 @@ public class GameOverState extends State {
         batch.begin();
         batch.draw(background, 0, 0, CompleteGame.WORLD_WIDTH_TEST,CompleteGame.WORLD_HEIGHT_TEST);
 
-        scoreFont.draw(batch, "Score: " + score, (float) CompleteGame.WORLD_WIDTH_TEST * 0.23f, CompleteGame.WORLD_HEIGHT_TEST * 0.3125f);
-        bestScoreFont.draw(batch, "Best score: " + ModuleDoremon.bestScore, (float) CompleteGame.WORLD_WIDTH_TEST * 0.23f, CompleteGame.WORLD_HEIGHT_TEST * 0.37f);
+        scoreFont.draw(batch, "Score: " + score, (float) CompleteGame.WORLD_WIDTH_TEST * 0.2f, CompleteGame.WORLD_HEIGHT_TEST * 0.3125f);
+        bestScoreFont.draw(batch, "Best score: " + ModuleDoremon.bestScore, (float) CompleteGame.WORLD_WIDTH_TEST * 0.2f, CompleteGame.WORLD_HEIGHT_TEST * 0.37f);
         batch.draw(replayButton, CompleteGame.WORLD_WIDTH_TEST * 0.27f, CompleteGame.WORLD_HEIGHT_TEST * 0.5f, CompleteGame.WORLD_WIDTH_TEST * 0.47f, CompleteGame.WORLD_HEIGHT_TEST * 0.09f);
         batch.draw(mainmenuButton, CompleteGame.WORLD_WIDTH_TEST * 0.27f, CompleteGame.WORLD_HEIGHT_TEST * 0.63f, CompleteGame.WORLD_WIDTH_TEST * 0.47f, CompleteGame.WORLD_HEIGHT_TEST * 0.09f);
 
