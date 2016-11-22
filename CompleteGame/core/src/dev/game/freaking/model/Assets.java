@@ -25,7 +25,7 @@ public class Assets {
         Texture sheet = new Texture("button/freaking_button.png");
         buttonCases = new TextureRegion[2];
         bgMenu = getTexture("bgMenu.png");
-        bgGameOver = getTexture("bgGameOver.png");
+        bgGameOver = getTexture("gameover_freakingnO1.png");
         buttonCases[0] = new TextureRegion(sheet, 0, 0, 512, 512);
         buttonCases[1] = new TextureRegion(sheet, 512, 0, 512, 512);
 
