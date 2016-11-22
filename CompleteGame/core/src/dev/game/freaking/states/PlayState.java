@@ -2,6 +2,7 @@ package dev.game.freaking.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -77,9 +78,9 @@ public class PlayState extends State {
 
         // Japanese Text Font
         japanFont = new BitmapFont(Gdx.files.internal("fonts/font.fnt"), false);
+        japanFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         japanFont.setColor(Color.WHITE);
-//        japanFont.getData().setScale(SCREEN_WIDTH / 360f * 0.56f,
-//                SCREEN_WIDTH / 360f * 0.56f);
+        japanFont.getData().setScale(SCREEN_WIDTH / 360f * 0.56f);
 
         // Button 1 Font
         parameter.size = SCREEN_WIDTH / 6;
