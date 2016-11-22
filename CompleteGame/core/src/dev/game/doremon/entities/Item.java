@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
 
 /**
@@ -63,7 +64,7 @@ public class Item extends Entity {
 
 
     public boolean isCollidable() {
-        return isAlive() && getY()+getHeight() <= GameHandler.GAME_HEIGHT;
+        return isAlive() && getY()+getHeight() <= CompleteGame.WORLD_HEIGHT_TEST;
     }
 
     public void setAlive(boolean alive) {

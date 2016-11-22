@@ -3,6 +3,7 @@ package dev.game.doremon.entities;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
 
 
@@ -14,7 +15,7 @@ public class Base extends Entity {
 
     public static Base generate(DoremonHandler doremonHandler) {
         return new Base(doremonHandler,
-                0, GameHandler.GAME_HEIGHT - BASE_HEIGHT);
+                0, CompleteGame.WORLD_HEIGHT_TEST - BASE_HEIGHT);
     }
 
     public Base(DoremonHandler doremonHandler, float x, float y) {

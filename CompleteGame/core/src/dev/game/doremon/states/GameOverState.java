@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.modules.ModuleDoremon;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
@@ -62,18 +63,20 @@ public class GameOverState extends State {
 
     public void handleInput() {
         if (Gdx.input.justTouched()) {
-            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
-                    Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.69f &&
-                    Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.5f &&
-                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.58f) {
-                gsm.set(new GameState(doremonHandler, gsm, cpanel, gameHandler));
-            } else if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
-                    Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.69f &&
-                    Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.64f &&
-                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.69f
-                    ) {
-                gsm.set(new MenuState(doremonHandler, gsm, cpanel, gameHandler));
-            }
+
+            //debug
+//            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
+//                    Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.69f &&
+//                    Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.5f &&
+//                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.58f) {
+//                gsm.set(new GameState(doremonHandler, gsm, cpanel, gameHandler));
+//            } else if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.27f &&
+//                    Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.69f &&
+//                    Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.64f &&
+//                    Gdx.input.getY() <= GameHandler.GAME_HEIGHT * 0.69f
+//                    ) {
+//                gsm.set(new MenuState(doremonHandler, gsm, cpanel, gameHandler));
+//            }
         }
     }
 
@@ -85,12 +88,12 @@ public class GameOverState extends State {
     @Override
     public void render(SpriteBatch batch) {
         batch.begin();
-        batch.draw(background, 0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
+        batch.draw(background, 0, 0, CompleteGame.WORLD_WIDTH_TEST,CompleteGame.WORLD_HEIGHT_TEST);
 
-        scoreFont.draw(batch, "Score: " + score, (float) GameHandler.GAME_WIDTH * 0.23f, GameHandler.GAME_HEIGHT * 0.3125f);
-        bestScoreFont.draw(batch, "Best score: " + ModuleDoremon.bestScore, (float) GameHandler.GAME_WIDTH * 0.23f, GameHandler.GAME_HEIGHT * 0.37f);
-        batch.draw(replayButton, GameHandler.GAME_WIDTH * 0.27f, GameHandler.GAME_HEIGHT * 0.5f, GameHandler.GAME_WIDTH * 0.47f, GameHandler.GAME_HEIGHT * 0.09f);
-        batch.draw(mainmenuButton, GameHandler.GAME_WIDTH * 0.27f, GameHandler.GAME_HEIGHT * 0.63f, GameHandler.GAME_WIDTH * 0.47f, GameHandler.GAME_HEIGHT * 0.09f);
+        scoreFont.draw(batch, "Score: " + score, (float) CompleteGame.WORLD_WIDTH_TEST * 0.23f, GameHandler.GAME_HEIGHT * 0.3125f);
+        bestScoreFont.draw(batch, "Best score: " + ModuleDoremon.bestScore, (float) CompleteGame.WORLD_WIDTH_TEST * 0.23f, CompleteGame.WORLD_HEIGHT_TEST * 0.37f);
+        batch.draw(replayButton, CompleteGame.WORLD_WIDTH_TEST * 0.27f, CompleteGame.WORLD_HEIGHT_TEST * 0.5f, CompleteGame.WORLD_WIDTH_TEST * 0.47f, CompleteGame.WORLD_HEIGHT_TEST * 0.09f);
+        batch.draw(mainmenuButton, CompleteGame.WORLD_WIDTH_TEST * 0.27f, CompleteGame.WORLD_HEIGHT_TEST * 0.63f, CompleteGame.WORLD_WIDTH_TEST * 0.47f, CompleteGame.WORLD_HEIGHT_TEST * 0.09f);
 
         batch.end();
 
@@ -98,7 +101,7 @@ public class GameOverState extends State {
         hub.setProjectionMatrix(ModuleDoremon.camera.combined);
         hub.begin(ShapeRenderer.ShapeType.Filled);
         hub.setColor(33, 150, 243, 0.3f);
-        hub.rect(0, 0, GameHandler.GAME_WIDTH, 320);
+        hub.rect(0, 0,  CompleteGame.WORLD_WIDTH_TEST, 320);
         hub.end();
     }
 

@@ -12,8 +12,8 @@ import dev.game.modules.MainGameModule;
 import dev.game.modules.ModuleDoremon;
 
 public class CompleteGame extends ApplicationAdapter {
-    public static final int WORLD_WIDTH_TEST = 720 ;
-    public static final int WORLD_HEIGHT_TEST = 1200;
+    public static final int WORLD_WIDTH_TEST = 1080 ;
+    public static final int WORLD_HEIGHT_TEST = 1920;
     public static OrthographicCamera camera;
     private SpriteBatch batch;
     private GameHandler gameHandler;
@@ -56,9 +56,13 @@ public class CompleteGame extends ApplicationAdapter {
     @Override
     public void resize(int width, int height) {
         if (ModuleDoremon.viewport != null) {
+            System.out.println("updating");
             ModuleDoremon.viewport.update(width, height);
-            ModuleDoremon.camera.position.set(camera.viewportWidth / 2, ModuleDoremon.camera.viewportHeight / 2,0);
+            ModuleDoremon.camera.position.set(ModuleDoremon.camera.viewportWidth / 2, ModuleDoremon.camera.viewportHeight / 2, 0);
+        } else {
+
+            super.resize(width, height);
         }
-        super.resize(width, height);
+
     }
 }

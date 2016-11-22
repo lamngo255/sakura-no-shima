@@ -3,12 +3,13 @@ package dev.game.doremon.entities;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
 
 
 public class PlatformBroken extends Entity {
-    public static int DEFAULT_WIDTH = (int) (GameHandler.GAME_WIDTH / 4.5);
-    public static int DEFAULT_HEIGHT = GameHandler.GAME_HEIGHT / 12;
+    public static int DEFAULT_WIDTH = 160;
+    public static int DEFAULT_HEIGHT = 90;
     private boolean appear = false;
 
     public static PlatformBroken generate(DoremonHandler doremonHandler) {
@@ -36,7 +37,7 @@ public class PlatformBroken extends Entity {
     private void moveDown() {
         if (appear) {
             this.y += 20;
-            if (this.y > GameHandler.GAME_HEIGHT / 1.2) {
+            if (this.y > CompleteGame.WORLD_HEIGHT_TEST / 1.2) {
                 appear = false;
             }
         }

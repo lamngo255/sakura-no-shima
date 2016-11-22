@@ -8,19 +8,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
 
 
 public class Player extends Entity {
-    public static final int PLAYER_WIDTH = (int) (GameHandler.GAME_WIDTH / 5.3);
-    public static final int PLAYER_HEIGHT = (int) (GameHandler.GAME_HEIGHT / 8.3);
+    public static final int PLAYER_WIDTH = 130;
+    public static final int PLAYER_HEIGHT = 130;
     private static final float HORIZONTAL_VELOCITY_LIMIT = 3;
     private static final float HORIZONTAL_ACCELERATION = 0.1f;
     private static final float HORIZONTAL_BRAKE_ACCELEBRATION = 0.075f;
 
-    public static float GRAVITY = GameHandler.GAME_HEIGHT / 7200f;
-    public static int JUMP = -(int) (GameHandler.GAME_HEIGHT / 67.5);
-    public static int JUMP_HIGH = -(int) (GameHandler.GAME_HEIGHT / 20.56);
+
+    public static float GRAVITY = 0.15f;
+    public static int JUMP = -16;
+    public static int JUMP_HIGH = -50;
 
     private float vx, vy;
     private boolean isMovingLeft, isMovingRight;
@@ -65,8 +67,8 @@ public class Player extends Entity {
         playerMove();
         playerJump();
         playerFallDown();
-        if (doremonHandler.getWorld().getBase().getY() > GameHandler.GAME_HEIGHT
-                && (this.y + this.height > GameHandler.GAME_HEIGHT)
+        if (doremonHandler.getWorld().getBase().getY() > CompleteGame.WORLD_HEIGHT_TEST
+                && (this.y + this.height > CompleteGame.WORLD_HEIGHT_TEST)
                 && !dead) {
             this.setDead(true);
             deadSound.play(0.5f);
@@ -159,10 +161,10 @@ public class Player extends Entity {
         }
 
         // Move through the wall
-        if (this.x > GameHandler.GAME_WIDTH) {
+        if (this.x >CompleteGame.WORLD_WIDTH_TEST) {
             this.x = 0 - this.width;
         } else if (this.x < 0 - this.width) {
-            this.x = GameHandler.GAME_WIDTH;
+            this.x = CompleteGame.WORLD_WIDTH_TEST;
         }
 
     }
@@ -174,7 +176,7 @@ public class Player extends Entity {
         }
 
         // keep the player below half the screen when jumping
-        if (this.y >= (GameHandler.GAME_HEIGHT - this.height) / 2) {
+        if (this.y >= (CompleteGame.WORLD_HEIGHT_TEST- this.height) / 2) {
             this.y += this.vy;
 
             //vy should always be affected by GRAVITY
@@ -193,7 +195,7 @@ public class Player extends Entity {
     }
 
     private void playerFallDown() {
-        if (this.y >= GameHandler.GAME_HEIGHT / 2 - height / 2) {
+        if (this.y >= CompleteGame.WORLD_HEIGHT_TEST / 2 - height / 2) {
             return;
         }
         this.vy += GRAVITY;
@@ -208,10 +210,10 @@ public class Player extends Entity {
         Sprite sprite = new Sprite(getCurrentFrame());
         if (this.isDead()) {
             angle += 4;
-            if (this.width < PLAYER_WIDTH * 3)
-                this.width += GameHandler.GAME_WIDTH / 180;
-            if (this.height < PLAYER_HEIGHT * 3)
-                this.height += GameHandler.GAME_HEIGHT / 360;
+            if (this.width < PLAYER_WIDTH * 2)
+                this.width += 3;
+            if (this.height < PLAYER_HEIGHT * 2)
+                this.height += 3;
         }
         batch.draw(sprite,
                 this.x, this.y,

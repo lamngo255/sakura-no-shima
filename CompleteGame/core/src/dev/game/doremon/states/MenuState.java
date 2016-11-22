@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
 import dev.game.modules.MainGameModule;
@@ -26,19 +27,22 @@ public class MenuState extends State {
     }
 
     public void handleInput() {
+
+
         if(Gdx.input.justTouched()){
-            if(Gdx.input.getX()>= GameHandler.GAME_WIDTH * 0.056f&&
-                    Gdx.input.getX()<= GameHandler.GAME_WIDTH*0.53f&&
-                    Gdx.input.getY()>= GameHandler.GAME_HEIGHT *0.6f&&
-                    Gdx.input.getY()<= GameHandler.GAME_HEIGHT*0.7f){
-                gsm.set(new PlayingGuide(doremonHandler, gsm, cpanel, gameHandler));
-            }
-            else if(Gdx.input.getX()>= GameHandler.GAME_WIDTH * 0.056f&&
-                    Gdx.input.getX()<= GameHandler.GAME_WIDTH*0.53f&&
-                    Gdx.input.getY()>= GameHandler.GAME_HEIGHT *0.73f&&
-                    Gdx.input.getY()<= GameHandler.GAME_HEIGHT*0.83f){
-                cpanel.set(new MainGameModule(gameHandler, cpanel));
-            }
+//            if(Gdx.input.getX()>= GameHandler.GAME_WIDTH * 0.056f&&
+//                    Gdx.input.getX()<= GameHandler.GAME_WIDTH*0.53f&&
+//                    Gdx.input.getY()>= GameHandler.GAME_HEIGHT *0.6f&&
+//                    Gdx.input.getY()<= GameHandler.GAME_HEIGHT*0.7f){
+//                gsm.set(new PlayingGuide(doremonHandler, gsm, cpanel, gameHandler));
+//            }
+//            else if(Gdx.input.getX()>= GameHandler.GAME_WIDTH * 0.056f&&
+//                    Gdx.input.getX()<= GameHandler.GAME_WIDTH*0.53f&&
+//                    Gdx.input.getY()>= GameHandler.GAME_HEIGHT *0.73f&&
+//                    Gdx.input.getY()<= GameHandler.GAME_HEIGHT*0.83f){
+//                cpanel.set(new MainGameModule(gameHandler, cpanel));
+//            }
+            gsm.set(new PlayingGuide(doremonHandler, gsm, cpanel, gameHandler));
         }
     }
 
@@ -50,9 +54,10 @@ public class MenuState extends State {
     @Override
     public void render(SpriteBatch batch) {
         batch.begin();
-        batch.draw(background, 0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
-        batch.draw(playButton, GameHandler.GAME_WIDTH * 0.056f, GameHandler.GAME_HEIGHT *0.6f, GameHandler.GAME_WIDTH * 0.47f, GameHandler.GAME_HEIGHT * 0.09f);
-        batch.draw(homeButton, GameHandler.GAME_WIDTH * 0.056f, GameHandler.GAME_HEIGHT * 0.73f, GameHandler.GAME_WIDTH * 0.47f, GameHandler.GAME_HEIGHT * 0.09f);
+
+        batch.draw(background, 0, 0, CompleteGame.WORLD_WIDTH_TEST, CompleteGame.WORLD_HEIGHT_TEST);
+        batch.draw(playButton, CompleteGame.WORLD_WIDTH_TEST * 0.056f, CompleteGame.WORLD_HEIGHT_TEST *0.6f, CompleteGame.WORLD_WIDTH_TEST * 0.47f,CompleteGame.WORLD_HEIGHT_TEST* 0.09f);
+        batch.draw(homeButton, CompleteGame.WORLD_WIDTH_TEST * 0.056f, CompleteGame.WORLD_HEIGHT_TEST * 0.73f, CompleteGame.WORLD_WIDTH_TEST * 0.47f, CompleteGame.WORLD_HEIGHT_TEST* 0.09f);
         batch.end();
     }
 

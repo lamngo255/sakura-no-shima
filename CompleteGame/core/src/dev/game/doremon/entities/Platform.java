@@ -5,12 +5,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
+import dev.game.main.CompleteGame;
 import dev.game.main.GameHandler;
 
 
 public class Platform extends Entity {
-    public static final int PLATFORM_WIDTH = GameHandler.GAME_WIDTH / 4;
-    public static final int PLATFORM_HEIGHT = GameHandler.GAME_HEIGHT / 24;
+    public static final int PLATFORM_WIDTH = 180;
+    public static final int PLATFORM_HEIGHT = 45;
     public static final int PLATFORM_COUNT = 7;
     public static float POSITION = 0;
     public static boolean BROKEN = false;
@@ -24,15 +25,15 @@ public class Platform extends Entity {
 
     public static Platform generate(DoremonHandler doremonHandler) {
         return new Platform(doremonHandler,
-                (float) Math.random() * (GameHandler.GAME_WIDTH - PLATFORM_WIDTH),
+                (float) Math.random() * (CompleteGame.WORLD_WIDTH_TEST - PLATFORM_WIDTH),
                 Platform.POSITION);
     }
 
     public Platform(DoremonHandler doremonHandler, float x, float y) {
         super(doremonHandler, x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
 
-        POSITION += GameHandler.GAME_HEIGHT / PLATFORM_COUNT;
-        this.vx = GameHandler.GAME_WIDTH / 170;
+        POSITION += CompleteGame.WORLD_HEIGHT_TEST / PLATFORM_COUNT;
+        this.vx = CompleteGame.WORLD_WIDTH_TEST / 170;
         this.type = (int) (Math.random() * 2);
         this.item = Item.createRandomItemForPlatfrom(doremonHandler, this);
     }
@@ -67,7 +68,7 @@ public class Platform extends Entity {
 
     private void moveAround() {
         if (this.type == 1 || this.type == 2) {
-            if (x < 0 || x + width > GameHandler.GAME_WIDTH) {
+            if (x < 0 || x + width > CompleteGame.WORLD_WIDTH_TEST) {
                 this.vx *= -1;
             }
             this.x += this.vx;

@@ -9,8 +9,10 @@ import dev.game.main.GameHandler;
 
 public class Spring extends Entity {
 
-    public static final int DEFAULT_WIDTH = GameHandler.GAME_WIDTH / 9;
-    public static final int DEFAULT_HEIGHT = GameHandler.GAME_HEIGHT / 18;
+    public static final int DEFAULT_WIDTH = 80;
+    public static final int DEFAULT_HEIGHT = 60;
+
+//    private int state = 0;
     private boolean appear = false;
     private Platform attachedPlatform ;
 
