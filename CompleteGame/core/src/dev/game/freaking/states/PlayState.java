@@ -84,7 +84,7 @@ public class PlayState extends State {
 
         // Button 1 Font
         parameter.size = SCREEN_WIDTH / 6;
-        parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        parameter.characters = "abcdefghijklmnopqrstuvwxyz";
         btnFont1 = generator.generateFont(parameter);
 
         // Button 2 Font
