@@ -34,10 +34,10 @@ public class Assets {
         bgGameOver = getTexture("gameover_freakingnO1.png");
         buttonCases[0] = new TextureRegion(sheet, 0, 0, 512, 512);
         buttonCases[1] = new TextureRegion(sheet, 512, 0, 512, 512);
-        homeButton[0] = new TextureRegion(sheet1, 0, 0, 418, 146);
-        homeButton[1] = new TextureRegion(sheet1, 418, 0, 418, 146);
-        replayButton[0] = new TextureRegion(sheet2, 0, 0, 418, 146);
-        replayButton[1] = new TextureRegion(sheet2, 418, 0, 418, 146);
+        homeButton[0] = new TextureRegion(sheet1, 0, 0, 418, 163);
+        homeButton[1] = new TextureRegion(sheet1, 418, 0, 418, 163);
+        replayButton[0] = new TextureRegion(sheet2, 0, 0, 418, 163);
+        replayButton[1] = new TextureRegion(sheet2, 418, 0, 418, 163);
 
         preferences = CompleteGame.preferences;
         highScore = preferences.getInteger(HIGH_SCORE_KEY, 0);

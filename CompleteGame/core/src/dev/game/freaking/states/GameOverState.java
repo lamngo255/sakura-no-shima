@@ -63,15 +63,15 @@ public class GameOverState extends State {
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() >= SCREEN_WIDTH * 0.09f
                     && Gdx.input.getX() <= SCREEN_WIDTH * 0.48f
-                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.7f
-                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.815f) {
+                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.725f
+                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.840f) {
                 homePressed = 1;
                 gsm.set(new MenuState(freakingHandler, gsm, cpanel, gameHandler));
             }
             if (Gdx.input.getX() >= SCREEN_WIDTH * 0.52f
                     && Gdx.input.getX() <= SCREEN_WIDTH * 0.91f
-                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.7f
-                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.815f) {
+                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.725f
+                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.840f) {
                 replayPressed = 1;
                 gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
@@ -92,9 +92,9 @@ public class GameOverState extends State {
         bestScoreFont.draw(batch, "High Score: " + Assets.highScore, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.47f);
 
         // ----------- BUTTON RENDERER--------------
-        batch.draw(homeButton[homePressed], SCREEN_WIDTH * 0.09f, SCREEN_HEIGHT * (1 - 0.815f),
+        batch.draw(homeButton[homePressed], SCREEN_WIDTH * 0.09f, SCREEN_HEIGHT * (1 - 0.840f),
                 SCREEN_WIDTH * 0.39f, SCREEN_HEIGHT * 0.115f);
-        batch.draw(replayButton[replayPressed], SCREEN_WIDTH * 0.52f, SCREEN_HEIGHT * (1 - 0.815f),
+        batch.draw(replayButton[replayPressed], SCREEN_WIDTH * 0.52f, SCREEN_HEIGHT * (1 - 0.840f),
                 SCREEN_WIDTH * 0.39f, SCREEN_HEIGHT * 0.115f);
         batch.end();
     }
