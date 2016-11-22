@@ -18,6 +18,8 @@ public class GameOverState extends State {
     private int score;
     private BitmapFont gameOverFont, scoreFont, bestScoreFont;
     private TextureRegion background;
+    private TextureRegion[] homeButton, replayButton;
+    private int homePressed, replayPressed;
 
     public GameOverState(FreakingHandler freakingHandler, GameStateManager gsm, int score,
                          GameModuleManager cpanel, GameHandler gameHandler) {
@@ -29,11 +31,15 @@ public class GameOverState extends State {
         this.score = score;
         generateFont();
 
+        homeButton = Assets.homeButton;
+        replayButton = Assets.replayButton;
+        homePressed = 0;
+        replayPressed = 0;
     }
 
     private void generateFont() {
         FreeTypeFontGenerator generator =
-                new FreeTypeFontGenerator(Gdx.files.internal("gloriahallelujah.ttf"));
+                new FreeTypeFontGenerator(Gdx.files.internal("fonts/SFPixelate.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter =
                 new FreeTypeFontGenerator.FreeTypeFontParameter();
 
@@ -43,33 +49,28 @@ public class GameOverState extends State {
         gameOverFont = generator.generateFont(parameter);
         // ScoreFont
 
-        parameter.size = (int) SCREEN_WIDTH / 14;
+        parameter.size = (int) SCREEN_WIDTH / 16;
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 
-        scoreFont.setColor(Color.BLACK);
-
-        bestScoreFont.setColor(Color.BLACK);
-
+        scoreFont.setColor(Color.valueOf("#2c3e50"));
+        bestScoreFont.setColor(Color.valueOf("#2c3e50"));
         generator.dispose();
     }
 
     private void handleInput() {
-//        if (Gdx.input.justTouched()) {
-//            gsm.set(new PlayState(freakingHandler, gsm));
-//        }
         if (Gdx.input.justTouched()) {
-            if (Gdx.input.getX() >= SCREEN_WIDTH * 0.29f
-                    && Gdx.input.getX() <= SCREEN_WIDTH * 0.68f
-                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.815f
-                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.9f) {
+            if (Gdx.input.getX() >= SCREEN_WIDTH * 0.09f
+                    && Gdx.input.getX() <= SCREEN_WIDTH * 0.48f
+                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.7f
+                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.815f) {
                 gsm.set(new MenuState(freakingHandler, gsm, cpanel, gameHandler));
             }
-            if (Gdx.input.getX() >= SCREEN_WIDTH * 0.29f
-                    && Gdx.input.getX() <= SCREEN_WIDTH * 0.68f
-                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.67f
-                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.75f) {
+            if (Gdx.input.getX() >= SCREEN_WIDTH * 0.52f
+                    && Gdx.input.getX() <= SCREEN_WIDTH * 0.91f
+                    && Gdx.input.getY() >= SCREEN_HEIGHT * 0.7f
+                    && Gdx.input.getY() <= SCREEN_HEIGHT * 0.815f) {
                 gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
         }
@@ -85,9 +86,14 @@ public class GameOverState extends State {
     public void render(SpriteBatch batch) {
         batch.begin();
         batch.draw(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//        gameOverFont.draw(batch, "Game Over", SCREEN_WIDTH * 0.26f, SCREEN_HEIGHT * 0.6f);
-        scoreFont.draw(batch, "Score : " + score, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.54f);
-        bestScoreFont.draw(batch, "High Score : " + Assets.highScore, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.47f);
+        scoreFont.draw(batch, "Score: " + score, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.525f);
+        bestScoreFont.draw(batch, "High Score: " + Assets.highScore, SCREEN_WIDTH * 0.2f, SCREEN_HEIGHT * 0.47f);
+
+        // ----------- BUTTON RENDERER--------------
+        batch.draw(homeButton[homePressed], SCREEN_WIDTH * 0.09f, SCREEN_HEIGHT * (1 - 0.815f),
+                SCREEN_WIDTH * 0.39f, SCREEN_HEIGHT * 0.115f);
+        batch.draw(replayButton[replayPressed], SCREEN_WIDTH * 0.52f, SCREEN_HEIGHT * (1 - 0.815f),
+                SCREEN_WIDTH * 0.39f, SCREEN_HEIGHT * 0.115f);
         batch.end();
     }
 

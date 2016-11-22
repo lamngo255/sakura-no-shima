@@ -20,10 +20,6 @@ import java.util.Random;
 
 public class PlayState extends State {
     private static int ALPHABET_TYPE = 1;
-
-
-
-
     public static int ACHIEVED_SCORE;
     private Slider slider;
     private String trueLT, caseLT1, caseLT2;
