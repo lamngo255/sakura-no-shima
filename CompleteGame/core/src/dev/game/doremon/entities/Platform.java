@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
 import dev.game.main.CompleteGame;
-import dev.game.main.GameHandler;
 
 
 public class Platform extends Entity {

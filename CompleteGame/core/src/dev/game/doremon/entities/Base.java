@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
 import dev.game.main.CompleteGame;
-import dev.game.main.GameHandler;
 
 
 public class Base extends Entity {
@@ -29,6 +28,8 @@ public class Base extends Entity {
 
     @Override
     public void render(SpriteBatch batch) {
+
+        System.out.println(String.format("base x  = %s y - %s ", x, y));
         batch.draw(Assets.base, x, y, width, height);
     }
 

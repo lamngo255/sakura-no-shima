@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
 import dev.game.main.CompleteGame;
-import dev.game.main.GameHandler;
 
 
 public class Player extends Entity {
@@ -38,8 +37,8 @@ public class Player extends Entity {
 
     public static Player generate(DoremonHandler doremonHandler) {
         return new Player(doremonHandler,
-                GameHandler.GAME_WIDTH / 2 - PLAYER_WIDTH / 2,
-                GameHandler.GAME_HEIGHT - Player.PLAYER_HEIGHT);
+                CompleteGame.WORLD_WIDTH_TEST / 2 - PLAYER_WIDTH / 2,
+                CompleteGame.WORLD_HEIGHT_TEST - Player.PLAYER_HEIGHT);
     }
 
     public Player(DoremonHandler doremonHandler, float x, float y) {

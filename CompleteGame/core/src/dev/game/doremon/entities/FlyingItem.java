@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import dev.game.doremon.main.DoremonHandler;
-import dev.game.main.GameHandler;
 
 /**
  * Created by Nghia on 11/14/2016.

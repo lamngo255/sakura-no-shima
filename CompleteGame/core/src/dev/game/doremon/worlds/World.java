@@ -12,7 +12,6 @@ import dev.game.doremon.entities.*;
 import dev.game.doremon.gfx.Assets;
 import dev.game.doremon.main.DoremonHandler;
 import dev.game.main.CompleteGame;
-import dev.game.main.GameHandler;
 import dev.game.modules.ModuleDoremon;
 
 import java.util.ArrayList;
