@@ -65,12 +65,14 @@ public class GameOverState extends State {
                     && Gdx.input.getX() <= SCREEN_WIDTH * 0.48f
                     && Gdx.input.getY() >= SCREEN_HEIGHT * 0.7f
                     && Gdx.input.getY() <= SCREEN_HEIGHT * 0.815f) {
+                homePressed = 1;
                 gsm.set(new MenuState(freakingHandler, gsm, cpanel, gameHandler));
             }
             if (Gdx.input.getX() >= SCREEN_WIDTH * 0.52f
                     && Gdx.input.getX() <= SCREEN_WIDTH * 0.91f
                     && Gdx.input.getY() >= SCREEN_HEIGHT * 0.7f
                     && Gdx.input.getY() <= SCREEN_HEIGHT * 0.815f) {
+                replayPressed = 1;
                 gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
             }
         }

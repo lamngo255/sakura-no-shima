@@ -78,8 +78,8 @@ public class PlayState extends State {
         // Japanese Text Font
         japanFont = new BitmapFont(Gdx.files.internal("fonts/font.fnt"), false);
         japanFont.setColor(Color.WHITE);
-        japanFont.getData().setScale(SCREEN_WIDTH / 360f * 0.56f,
-                SCREEN_WIDTH / 360f * 0.56f);
+//        japanFont.getData().setScale(SCREEN_WIDTH / 360f * 0.56f,
+//                SCREEN_WIDTH / 360f * 0.56f);
 
         // Button 1 Font
         parameter.size = SCREEN_WIDTH / 6;
