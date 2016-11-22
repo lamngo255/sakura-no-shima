@@ -10,6 +10,7 @@ import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
 import dev.game.modules.MainGameModule;
 import dev.game.modules.ModuleDoremon;
+import dev.game.modules.ModuleStart;
 
 
 public class MenuState extends State {
@@ -55,7 +56,7 @@ public class MenuState extends State {
                     CompleteGame.WORLD_HEIGHT_TEST * 0.83f
             ))
             {
-                cpanel.set(new MainGameModule(gameHandler, cpanel));
+                cpanel.set(new ModuleStart(gameHandler, cpanel));
             }
         }
     }

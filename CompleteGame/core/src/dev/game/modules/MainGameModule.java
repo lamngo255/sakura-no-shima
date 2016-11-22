@@ -20,19 +20,12 @@ public class MainGameModule extends Module {
     @Override
     public void tick() {
         if (Gdx.input.justTouched()) {
-            if (Gdx.input.getX() <= GameHandler.GAME_WIDTH / 3) {
-                cpanel.set(new ModuleDoremon(gameHandler, cpanel));
-            } else if (Gdx.input.getX() <= GameHandler.GAME_WIDTH * 2/3){
-                cpanel.set(new ModuleKanji(gameHandler, cpanel));
-            } else {
-                cpanel.set(new ModuleFreaking(gameHandler, cpanel));
-            }
+            cpanel.set(new ModuleStart(gameHandler, cpanel));
         }
     }
 
     @Override
     public void render(SpriteBatch batch) {
-//
         batch.begin();
         batch.draw(background, 0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         batch.end();

@@ -11,6 +11,7 @@ import dev.game.freaking.model.Assets;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
 import dev.game.modules.MainGameModule;
+import dev.game.modules.ModuleStart;
 
 public class MenuState extends State {
 
@@ -98,7 +99,7 @@ public class MenuState extends State {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.2f + 0.6f)
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.155f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.155f)) {
-                cpanel.set(new MainGameModule(gameHandler, cpanel));
+                cpanel.set(new ModuleStart(gameHandler, cpanel));
             }
         }
     }

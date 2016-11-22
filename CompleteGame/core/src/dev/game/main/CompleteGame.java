@@ -19,9 +19,7 @@ public class CompleteGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private GameHandler gameHandler;
     private GameModuleManager cpanel;
-
-    public static  Preferences preferences ;
-
+    public static Preferences preferences ;
 
     @Override
     public void create() {
@@ -29,11 +27,7 @@ public class CompleteGame extends ApplicationAdapter {
         gameHandler = new GameHandler(this);
         cpanel = new GameModuleManager();
         cpanel.push(new MainGameModule(gameHandler, cpanel));
-
-
         init();
-
-
     }
 
     private void init() {
@@ -42,7 +36,6 @@ public class CompleteGame extends ApplicationAdapter {
         ModuleDoremon.camera = new OrthographicCamera();
         ModuleDoremon.camera.setToOrtho(true);
         ModuleDoremon.viewport = new StretchViewport(WORLD_WIDTH_TEST, WORLD_HEIGHT_TEST, ModuleDoremon.camera);
-
 
         camera = new OrthographicCamera(GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         camera.setToOrtho(false, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
@@ -68,11 +61,9 @@ public class CompleteGame extends ApplicationAdapter {
     @Override
     public void resize(int width, int height) {
         if (ModuleDoremon.viewport != null) {
-            System.out.println("updating");
             ModuleDoremon.viewport.update(width, height);
             ModuleDoremon.camera.position.set(ModuleDoremon.camera.viewportWidth / 2, ModuleDoremon.camera.viewportHeight / 2, 0);
         } else {
-
             super.resize(width, height);
         }
 

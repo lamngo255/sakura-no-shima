@@ -16,6 +16,7 @@ import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
 import dev.game.modules.MainGameModule;
 import dev.game.modules.ModuleKanji;
+import dev.game.modules.ModuleStart;
 
 /**
  * Created by Lam Ngo on 11/19/2016.
@@ -254,7 +255,7 @@ public class World {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.69f + 0.12f)
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07f)
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f)) {
-                cpanel.set(new MainGameModule(gameHandler, cpanel));
+                cpanel.set(new ModuleStart(gameHandler, cpanel));
             }
 
             if (gameBoard.isDead() || gameBoard.isWon()) {

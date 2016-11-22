@@ -42,13 +42,6 @@ public class ModuleDoremon extends Module {
     private void init() {
         CompleteGame.preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
         bestScore = CompleteGame.preferences.getInteger(BEST_SCORE_KEY, 0);
-
-
-
-//        camera = new OrthographicCamera();
-//        camera.setToOrtho(true);
-
-
         viewport.apply();
 
         doremonHandler = new DoremonHandler(this);

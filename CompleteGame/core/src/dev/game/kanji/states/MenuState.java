@@ -7,6 +7,7 @@ import dev.game.kanji.entities.Assets;
 import dev.game.main.GameHandler;
 import dev.game.modules.GameModuleManager;
 import dev.game.modules.MainGameModule;
+import dev.game.modules.ModuleStart;
 
 /**
  * Created by Ha San~ on 11/22/2016.
@@ -38,7 +39,7 @@ public class MenuState extends State {
                     && Gdx.input.getX() <= GameHandler.GAME_WIDTH * 0.93f
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.825f
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (0.825 + 0.08f)) {
-                cpanel.set(new MainGameModule(gameHandler, cpanel));
+                cpanel.set(new ModuleStart(gameHandler, cpanel));
             }
         }
     }
