@@ -29,7 +29,7 @@ public class GameOverState extends State {
                          GameModuleManager cpanel, GameHandler gameHandler) {
         super(doremonHandler, gsm);
 
-        gameHandler.pauseBackgroundMusic();
+//        gameHandler.pauseBackgroundMusic();
         this.cpanel = cpanel;
         this.gameHandler = gameHandler;
         this.doremon = Assets.player_jump[0];

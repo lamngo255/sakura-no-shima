@@ -26,6 +26,8 @@ public class MenuState extends State {
         this.playButton = Assets.playButton[0];
         this.background = Assets.background;
         this.homeButton = Assets.playButton[2];
+
+        gameHandler.playBackgroundMusic();
     }
 
     public void handleInput() {
