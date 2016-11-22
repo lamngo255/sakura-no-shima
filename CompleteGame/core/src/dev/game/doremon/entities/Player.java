@@ -156,6 +156,7 @@ public class Player extends Entity {
             this.x += this.vx;
             if (this.vx > 0) {
                 this.vx -= HORIZONTAL_BRAKE_ACCELEBRATION;
+
             }
         }
 

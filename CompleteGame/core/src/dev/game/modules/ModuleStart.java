@@ -9,10 +9,13 @@ import dev.game.main.GameHandler;
  * Created by Lam Ngo on 11/22/2016.
  */
 public class ModuleStart extends Module {
+
     private Texture background;
 
     public ModuleStart(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
+        gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_MAIN_MENU);
+        gameHandler.playBackgroundMusic();
         background = new Texture("background/MapMenu.png");
     }
 

@@ -22,6 +22,7 @@ public class PlayingGuide extends State {
         this.cpanel = cpanel;
         this.gameHandler = gameHandler;
         playingGuide = Assets.playingGuide;
+        gameHandler.playBackgroundMusic();
     }
 
     public void handleInput() {

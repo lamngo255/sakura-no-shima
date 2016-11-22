@@ -16,6 +16,8 @@ public class GameState extends State {
                      GameModuleManager cpanel, GameHandler gameHandler) {
         super(doremonHandler, gsm);
 
+        gameHandler.playBackgroundMusic();
+
         this.cpanel = cpanel;
         this.gameHandler = gameHandler;
         world = new World(doremonHandler);

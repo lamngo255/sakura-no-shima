@@ -31,6 +31,7 @@ public class CompleteGame extends ApplicationAdapter {
     }
 
     private void init() {
+
         //added
         preferences = Gdx.app.getPreferences(CompleteGame.class.getName());
         ModuleDoremon.camera = new OrthographicCamera();

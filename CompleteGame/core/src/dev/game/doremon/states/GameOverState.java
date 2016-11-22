@@ -29,10 +29,12 @@ public class GameOverState extends State {
                          GameModuleManager cpanel, GameHandler gameHandler) {
         super(doremonHandler, gsm);
 
+        gameHandler.pauseBackgroundMusic();
         this.cpanel = cpanel;
         this.gameHandler = gameHandler;
         this.doremon = Assets.player_jump[0];
         this.background = Assets.bgGameOver;
+
         initFont();
         replayButton = Assets.playButton[3];
         mainmenuButton = Assets.playButton[4];

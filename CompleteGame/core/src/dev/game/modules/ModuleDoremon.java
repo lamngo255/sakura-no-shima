@@ -44,6 +44,8 @@ public class ModuleDoremon extends Module {
         bestScore = CompleteGame.preferences.getInteger(BEST_SCORE_KEY, 0);
         viewport.apply();
 
+        gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_DOREMON_JUMP);
+
         doremonHandler = new DoremonHandler(this);
         gsm = new GameStateManager();
         gsm.push(new MenuState(doremonHandler, gsm, cpanel, gameHandler));

@@ -1,5 +1,6 @@
 package dev.game.modules;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -25,6 +26,10 @@ public class ModuleKanji extends Module {
     private void init() {
         camera = new OrthographicCamera(GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
         camera.setToOrtho(false, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
+
+        gameHandler.changeBackgroundMusic(GameHandler.BACKGROUND_MUSIC_KANJI);
+        gameHandler.playBackgroundMusic();
+
 
         gsm = new GameStateManager();
         gsm.push(new MenuState(gsm, cpanel, gameHandler));
