@@ -44,9 +44,9 @@ public class Assets {
         }
     }
 
-    public static float getCenterAlignmentPositionX(float parentWidth, float parentX, int textLength, float spaceLength) {
+    public static float getCenterAlignmentPositionX(float parentWidth, float parentX, float textLength, float spaceLength) {
         float middleX = parentX + parentWidth / 2;
-        float offset = (float)(textLength / 2) * spaceLength;
+        float offset = (textLength / 2) * spaceLength;
         return (middleX - offset);
     }
 

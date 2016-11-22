@@ -122,12 +122,12 @@ public class World {
 
         // render score box (shape)
         shape.setColor(Color.valueOf("#bbada0"));
-        shape.rect(GameHandler.GAME_WIDTH * 0.52f, GameHandler.GAME_HEIGHT * 0.81f,
+        shape.rect(GameHandler.GAME_WIDTH * 0.52f, GameHandler.GAME_HEIGHT * 0.83f,
                 GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_HEIGHT * 0.11f);
 
         // render best score box (shape)
         shape.setColor(Color.valueOf("#bbada0"));
-        shape.rect(GameHandler.GAME_WIDTH * 0.76f, GameHandler.GAME_HEIGHT * 0.81f,
+        shape.rect(GameHandler.GAME_WIDTH * 0.76f, GameHandler.GAME_HEIGHT * 0.83f,
                 GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_HEIGHT * 0.11f);
         shape.end();
 
@@ -200,24 +200,25 @@ public class World {
         newGameFont.setColor(Color.valueOf("#faf8ef"));
         statementFont.setColor(Color.valueOf("#776e65"));
         scoreLabelFont.draw(batch, "SCORE", GameHandler.GAME_WIDTH * 0.56f,
-                GameHandler.GAME_HEIGHT * 0.9f);
+                GameHandler.GAME_HEIGHT * 0.92f);
 
         //draw score
         float scoreFontX = Assets.getCenterAlignmentPositionX(GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_WIDTH * 0.52f
-                , String.format("%s", score).length(), scoreFont.getSpaceWidth() * 3);
+                , String.format("%s", score).length(), scoreFont.getSpaceWidth() * 2);
         scoreFont.draw(batch, String.format("%s", score), scoreFontX,
-                GameHandler.GAME_HEIGHT * 0.86f);
+                GameHandler.GAME_HEIGHT * 0.88f);
 
-        bestLabelFont.draw(batch, "BEST", GameHandler.GAME_WIDTH * 0.81f,
-                GameHandler.GAME_HEIGHT * 0.9f);
+        bestLabelFont.draw(batch, "BEST", GameHandler.GAME_WIDTH * 0.82f,
+                GameHandler.GAME_HEIGHT * 0.92f);
 
         //draw highscore
 
 //        bestScoreFont.draw(batch, String.format("%s", Assets.bestScore), GameHandler.GAME_WIDTH * 0.78f,
 //                                    GameHandler.GAME_HEIGHT * 0.86f);
         float highScoreFontX = Assets.getCenterAlignmentPositionX(GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_WIDTH * 0.76f,
-                String.format("%s", Assets.bestScore).length(), scoreFont.getSpaceWidth() * 3);
-        bestScoreFont.draw(batch, String.format("%s", Assets.bestScore), highScoreFontX, GameHandler.GAME_HEIGHT * 0.86f);
+                String.format("%s", Assets.bestScore).length(), scoreFont.getSpaceWidth() * 2);
+        bestScoreFont.draw(batch, String.format("%s", Assets.bestScore),
+                highScoreFontX, GameHandler.GAME_HEIGHT * 0.88f);
         titleFont.draw(batch, "日本", GameHandler.GAME_WIDTH * 0.049f,
                 GameHandler.GAME_HEIGHT * 0.94f);
         titleFont2.draw(batch, "Kanji Number", GameHandler.GAME_WIDTH * 0.05f,
