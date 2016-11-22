@@ -48,6 +48,14 @@ public class ModuleStart extends Module {
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (0.847f + 0.08f)) {
                 cpanel.set(new ModuleKanji(gameHandler, cpanel));
             }
+
+            // Back to main screen
+            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.028f
+                    && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.028f + 0.1f)
+                    && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * 0.867f
+                    && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (0.867f + 0.12f)) {
+                cpanel.set(new MainGameModule(gameHandler, cpanel));
+            }
         }
     }
 
