@@ -209,10 +209,10 @@ public class Player extends Entity {
         Sprite sprite = new Sprite(getCurrentFrame());
         if (this.isDead()) {
             angle += 4;
-            if (this.width < PLAYER_WIDTH * 2)
-                this.width += 3;
-            if (this.height < PLAYER_HEIGHT * 2)
-                this.height += 3;
+            if (this.width < PLAYER_WIDTH * 5)
+                this.width += 4;
+            if (this.height < PLAYER_HEIGHT * 5)
+                this.height += 4;
         }
         batch.draw(sprite,
                 this.x, this.y,
