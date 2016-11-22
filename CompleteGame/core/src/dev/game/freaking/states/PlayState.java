@@ -21,6 +21,7 @@ import java.util.Random;
 
 public class PlayState extends State {
     private static int ALPHABET_TYPE = 1;
+    private static int HARD_LEVEL = 1;
     public static int ACHIEVED_SCORE;
     private Slider slider;
     private String trueLT, caseLT1, caseLT2;
@@ -48,6 +49,7 @@ public class PlayState extends State {
         SCREEN_WIDTH = GameHandler.GAME_WIDTH;
         SCREEN_HEIGHT = GameHandler.GAME_HEIGHT;
         ACHIEVED_SCORE = 0;
+        System.out.println("Hard level: "+HARD_LEVEL);
         init();
         generateFont();
     }
@@ -240,11 +242,12 @@ public class PlayState extends State {
     public static void setAlphabetType(int alphabetType) {
         PlayState.ALPHABET_TYPE = alphabetType;
     }
+    public static void setHardLevel(int hardLevel){PlayState.HARD_LEVEL=hardLevel;}
 
     //if chose case 1
     public void answerCase1() {
         if (slider == null) {
-            slider = new Slider(freakingHandler);
+            slider = new Slider(freakingHandler,HARD_LEVEL);
         }
         if (trueLT.equalsIgnoreCase(caseLT1.trim())) {
             ACHIEVED_SCORE += 1;
@@ -261,7 +264,7 @@ public class PlayState extends State {
     //if chose case 2
     public void answerCase2() {
         if (slider == null) {
-            slider = new Slider(freakingHandler);
+            slider = new Slider(freakingHandler,HARD_LEVEL);
         }
 
         if (!trueLT.equalsIgnoreCase(caseLT1.trim())) {

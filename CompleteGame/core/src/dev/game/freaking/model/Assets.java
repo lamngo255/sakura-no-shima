@@ -11,7 +11,7 @@ import dev.game.main.CompleteGame;
  */
 public class Assets {
     private static final String HIGH_SCORE_KEY = "Freaking_high_score";
-    public static TextureRegion bgMenu, bgGameOver;
+    public static TextureRegion bgMenu, bgGameOver,bgHardLevel;
     public static TextureRegion[] buttonCases;
     public static TextureRegion[] homeButton, replayButton;
     public static Preferences preferences;
@@ -31,6 +31,7 @@ public class Assets {
         replayButton = new TextureRegion[2];
         homeButton = new TextureRegion[2];
         bgMenu = getTexture("bgMenu.png");
+        bgHardLevel=getTexture("bgHardLevel.png");
         bgGameOver = getTexture("gameover_freakingnO1.png");
         buttonCases[0] = new TextureRegion(sheet, 0, 0, 512, 512);
         buttonCases[1] = new TextureRegion(sheet, 512, 0, 512, 512);
@@ -53,6 +54,7 @@ public class Assets {
 
     public static void dispose() {
         bgMenu.getTexture().dispose();
+        bgHardLevel.getTexture().dispose();
         bgGameOver.getTexture().dispose();
 
         for (TextureRegion button : buttonCases) {

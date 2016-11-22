@@ -12,20 +12,27 @@ import dev.game.main.GameHandler;
  */
 public class Slider {
 
-    private static final int SPEED = Gdx.graphics.getWidth() / 55;
+    private static int SPEED = Gdx.graphics.getWidth() / 55;
     private FreakingHandler freakingHandler;
     private ShapeRenderer slider;
     private boolean running;
     private float x, y;
     private float SLIDER_HEIGHT = Gdx.graphics.getHeight() / 108f;
 
-    public Slider(FreakingHandler freakingHandler) {
+    public Slider(FreakingHandler freakingHandler, int SPEED) {
         this.freakingHandler = freakingHandler;
         this.running = true;
         this.slider = new ShapeRenderer();
 
         this.x = 0;
         this.y = GameHandler.GAME_HEIGHT * 0.8f;
+        if(SPEED==1){
+            Slider.SPEED=Gdx.graphics.getWidth() / 55;
+        }else if(SPEED==2){
+            Slider.SPEED=Gdx.graphics.getWidth() / 75;
+        }else if(SPEED==3){
+            Slider.SPEED=Gdx.graphics.getWidth() / 100;
+        }
     }
 
     public void render(SpriteBatch batch) {

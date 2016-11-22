@@ -73,7 +73,7 @@ public class MenuState extends State {
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.5f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.5f)) {
                 PlayState.setAlphabetType(1);
-                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
+                gsm.set(new HardLevelState(freakingHandler, gsm, cpanel, gameHandler));
             }
 
             // Choose Katakana
@@ -82,7 +82,7 @@ public class MenuState extends State {
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.385f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.385f)) {
                 PlayState.setAlphabetType(2);
-                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
+                gsm.set(new HardLevelState(freakingHandler, gsm, cpanel, gameHandler));
             }
 
             // Choose Hira + Kata
@@ -91,7 +91,7 @@ public class MenuState extends State {
                     && Gdx.input.getY() >=  GameHandler.GAME_HEIGHT * (1 - 0.27f - 0.1f)
                     && Gdx.input.getY() <=  GameHandler.GAME_HEIGHT * (1 - 0.27f)) {
                 PlayState.setAlphabetType(0);
-                gsm.set(new PlayState(freakingHandler, gsm, cpanel, gameHandler));
+                gsm.set(new HardLevelState(freakingHandler, gsm, cpanel, gameHandler));
             }
 
             // Choose Home
