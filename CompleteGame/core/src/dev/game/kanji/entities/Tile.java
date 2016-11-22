@@ -15,7 +15,7 @@ public class Tile {
     public static int TILE_WIDTH = (int) (GameHandler.GAME_WIDTH / 4.6f);
     public static int TILE_HEIGHT = (int) (GameHandler.GAME_WIDTH / 4.6f);
     public static final int SLIDE_SPEED = GameHandler.GAME_WIDTH / 11;
-    public static final int BASE_SCORE = 100;
+    public static final int BASE_SCORE = 13;
 
 
     private int x;
@@ -115,24 +115,24 @@ public class Tile {
         } else if (value.equals("ニ")) {
             scoreLevel = 2;
         } else if (value.equals("三")) {
-            scoreLevel = 3;
-        } else if (value.equals("四")) {
             scoreLevel = 4;
-        } else if (value.equals("五")) {
+        } else if (value.equals("四")) {
             scoreLevel = 5;
-        } else if (value.equals("六")) {
-            scoreLevel  =6;
-        } else if (value.equals("七")) {
+        } else if (value.equals("五")) {
             scoreLevel = 7;
-        } else if (value.equals("八")) {
-            scoreLevel = 8;
-        } else if (value.equals("九")) {
+        } else if (value.equals("六")) {
+            scoreLevel  =8;
+        } else if (value.equals("七")) {
             scoreLevel = 9;
+        } else if (value.equals("八")) {
+            scoreLevel = 11;
+        } else if (value.equals("九")) {
+            scoreLevel = 13;
         } else if (value.equals("十")) {
-            scoreLevel = 10;
+            scoreLevel = 15;
         } else if (value.equals("百")) {
             // never happend
-            scoreLevel = 11;
+            scoreLevel = 17;
         } else {
             scoreLevel = 0;
         }

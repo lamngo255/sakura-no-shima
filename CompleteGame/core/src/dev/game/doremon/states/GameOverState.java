@@ -45,12 +45,12 @@ public class GameOverState extends State {
         FreeTypeFontGenerator generator =
                 new FreeTypeFontGenerator(Gdx.files.internal("gloriahallelujah.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 80;
+        parameter.size = (int) (CompleteGame.WORLD_WIDTH_TEST * 0.074f);
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         parameter.flip = true;
         gameOver = generator.generateFont(parameter);
 
-        parameter.size = 70;
+        parameter.size = (int) (CompleteGame.WORLD_WIDTH_TEST * 0.065f);
         scoreFont = generator.generateFont(parameter);
         bestScoreFont = generator.generateFont(parameter);
 

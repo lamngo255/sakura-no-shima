@@ -76,9 +76,11 @@ public class World {
         bestScoreFont = generator.generateFont(parameter);
 
         // Title Font
+        FreeTypeFontGenerator generator2 =
+                new FreeTypeFontGenerator(Gdx.files.internal("fonts/Mamelon.otf"));
         parameter.size = Gdx.graphics.getWidth() / 7;
-        parameter.characters = "0123456789";
-        titleFont = generator.generateFont(parameter);
+        parameter.characters = "日本";
+        titleFont = generator2.generateFont(parameter);
 
         // Title Font 2 (Hiragana)
         parameter.size = Gdx.graphics.getWidth() / 17;
@@ -103,7 +105,7 @@ public class World {
 
 
         // Remain Statement Font
-        FreeTypeFontGenerator generator2 =
+         generator2 =
                 new FreeTypeFontGenerator(Gdx.files.internal("fonts/Mamelon.otf"));
         parameter.size = GameHandler.GAME_WIDTH / 16;
         parameter.characters = "百";
@@ -207,7 +209,7 @@ public class World {
         float highScoreFontX = Assets.getCenterAlignmentPositionX(GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_WIDTH * 0.76f,
                 String.format("%s", Assets.bestScore).length(), scoreFont.getSpaceWidth() * 3);
         bestScoreFont.draw(batch, String.format("%s", Assets.bestScore), highScoreFontX, GameHandler.GAME_HEIGHT * 0.86f);
-        titleFont.draw(batch, "2048", GameHandler.GAME_WIDTH * 0.05f,
+        titleFont.draw(batch, "日本", GameHandler.GAME_WIDTH * 0.06f,
                                       GameHandler.GAME_HEIGHT * 0.92f);
         titleFont2.draw(batch, "Kanji Number", GameHandler.GAME_WIDTH * 0.03f,
                                         GameHandler.GAME_HEIGHT * 0.84f);

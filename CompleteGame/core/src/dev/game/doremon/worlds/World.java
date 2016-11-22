@@ -273,7 +273,7 @@ public class World {
         FreeTypeFontGenerator generator =
                 new FreeTypeFontGenerator(Gdx.files.internal("neuropol.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 40;
+        parameter.size = (int)(CompleteGame.WORLD_WIDTH_TEST * 0.04f);
         parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
         parameter.flip = true;
         font = generator.generateFont(parameter);
