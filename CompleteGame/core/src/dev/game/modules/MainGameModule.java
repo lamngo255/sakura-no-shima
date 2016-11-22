@@ -2,6 +2,7 @@ package dev.game.modules;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dev.game.main.GameHandler;
 
@@ -9,9 +10,11 @@ import dev.game.main.GameHandler;
  * Created by Lam Ngo on 11/21/2016.
  */
 public class MainGameModule extends Module {
+    private Texture background;
 
     public MainGameModule(GameHandler gameHandler, GameModuleManager cpanel) {
         super(gameHandler, cpanel);
+        background = new Texture("mainmenugame.png");
     }
 
     @Override
@@ -29,13 +32,14 @@ public class MainGameModule extends Module {
 
     @Override
     public void render(SpriteBatch batch) {
-        Gdx.gl.glClearColor(1, 0, 0, 0);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glEnable(GL20.GL_BLEND);
+//
+        batch.begin();
+        batch.draw(background, 0, 0, GameHandler.GAME_WIDTH, GameHandler.GAME_HEIGHT);
+        batch.end();
     }
 
     @Override
     public void dispose() {
-
+        background.dispose();
     }
 }
