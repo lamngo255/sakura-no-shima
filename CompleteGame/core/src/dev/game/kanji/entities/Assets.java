@@ -10,11 +10,11 @@ import dev.game.main.CompleteGame;
  */
 public class Assets {
 
-
     private static final java.lang.String BEST_SCORE_KEY = "kanji_best_score";
-    public static TextureRegion bgMenu;
     public static int bestScore;
     public static Preferences preferences;
+    public static TextureRegion bgMenu;
+    public static TextureRegion homeButton, replayButton;
 
     public static TextureRegion getTexture(String path) {
         TextureRegion sample = new TextureRegion(new Texture(path));
@@ -23,12 +23,17 @@ public class Assets {
 
     public static void init() {
         preferences = CompleteGame.preferences;
-        bgMenu = getTexture("kanjinumberback.png");
         bestScore = preferences.getInteger(BEST_SCORE_KEY, 0);
+        bgMenu = getTexture("kanjinumberback.png");
+
+        homeButton = getTexture("button/home_kanji.png");
+        replayButton = getTexture("button/replay_kanji.png");
     }
 
     public static void dispose() {
         bgMenu.getTexture().dispose();
+        homeButton.getTexture().dispose();
+        replayButton.getTexture().dispose();
     }
 
     public static void updateHighScore(int score) {
@@ -43,8 +48,6 @@ public class Assets {
         float middleX = parentX + parentWidth / 2;
         float offset = (float)(textLength / 2) * spaceLength;
         return (middleX - offset);
-
-
     }
 
 }

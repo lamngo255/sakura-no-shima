@@ -17,8 +17,9 @@ public class Alphabet {
     public static String ALL_CHARS = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽきゃきゅきょしゃしゅしょちゃちゅちょにゃにょにゅひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ"
             + "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポキャキュキョシャシュショチャチュチョニャニュニョミャミュミョヒャヒュヒョリャリョリュギャギュギョジャジュジョビャビュビョピャプオピュ";
 
-    public static ArrayList<Alphabet> alphabets = new ArrayList<>();
+    public static ArrayList<Alphabet> alphabets;
     public static void initAlphabet() {
+        alphabets = new ArrayList<>();
         alphabets.add(new Alphabet("a", "あ", HIRAGANA));
         alphabets.add(new Alphabet("i", "い", HIRAGANA));
         alphabets.add(new Alphabet("u", "う", HIRAGANA));

@@ -4,8 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.game.kanji.entities.Assets;
@@ -21,10 +23,9 @@ import dev.game.modules.ModuleKanji;
 public class World {
 
 
-
     private ShapeRenderer shape;
     private GameBoard gameBoard;
-    private BitmapFont gameOverFont;
+    private BitmapFont gameOverFont, okWinFont;
     private BitmapFont scoreLabelFont, scoreFont;
     private BitmapFont bestLabelFont, bestScoreFont;
     private BitmapFont titleFont, titleFont2, newGameFont, tryAgainFont;
@@ -32,16 +33,19 @@ public class World {
 
     private GameModuleManager cpanel;
     private GameHandler gameHandler;
+    private Texture homeButton, replayButton;
 
     private static int score;
 
-    public World(GameModuleManager cpanel,GameHandler gameHandler) {
+    public World(GameModuleManager cpanel, GameHandler gameHandler) {
+        this.cpanel = cpanel;
+        this.gameHandler = gameHandler;
         this.gameBoard = GameBoard.generate();
         this.shape = new ShapeRenderer();
         generateFont();
-        this.cpanel = cpanel;
-        this.gameHandler = gameHandler;
         score = 0;
+        this.homeButton = new Texture("button/home_kanji.png");
+        this.replayButton = new Texture("button/replay_kanji.png");
     }
 
     public void generateFont() {
@@ -54,6 +58,10 @@ public class World {
         parameter.size = Gdx.graphics.getWidth() / 7;
         parameter.characters = "Gameover!";
         gameOverFont = generator.generateFont(parameter);
+
+        // Ok Win Font
+        parameter.characters = "Ok,YouWin!";
+        okWinFont = generator.generateFont(parameter);
 
         // Score Label Font
         parameter.size = Gdx.graphics.getWidth() / 30;
@@ -116,23 +124,12 @@ public class World {
         // render score box (shape)
         shape.setColor(Color.valueOf("#bbada0"));
         shape.rect(GameHandler.GAME_WIDTH * 0.52f, GameHandler.GAME_HEIGHT * 0.81f,
-                    GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_HEIGHT * 0.11f);
+                GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_HEIGHT * 0.11f);
 
         // render best score box (shape)
         shape.setColor(Color.valueOf("#bbada0"));
         shape.rect(GameHandler.GAME_WIDTH * 0.76f, GameHandler.GAME_HEIGHT * 0.81f,
                 GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_HEIGHT * 0.11f);
-
-        // render New Game box (shape)
-        shape.setColor(Color.valueOf("#8f7a66"));
-        shape.rect(GameHandler.GAME_WIDTH * 0.66f, GameHandler.GAME_HEIGHT * 0.71f,
-                    GameHandler.GAME_WIDTH * 0.30f, GameHandler.GAME_HEIGHT * 0.07f);
-
-        //todo render Home box
-//        shape.rect(GameHandler.GAME_WIDTH * 0.66f, GameHandler.GAME_HEIGHT * 0.71f - 0.07f - 0.02f,
-//                    GameHandler.GAME_WIDTH * 0.30f, GameHandler.GAME_HEIGHT * 0.07f);
-
-
         shape.end();
 
         // render Game Board
@@ -151,8 +148,8 @@ public class World {
             // Try Again box (shape)
             shape.begin(ShapeRenderer.ShapeType.Filled);
             shape.setColor(Color.valueOf("#8f7a66"));
-            shape.rect(GameHandler.GAME_WIDTH * 0.33f, GameHandler.GAME_HEIGHT * 0.23f,
-                            GameHandler.GAME_WIDTH * 0.3f, GameHandler.GAME_HEIGHT * 0.07f);
+            shape.rect(GameHandler.GAME_WIDTH * 0.33f, GameHandler.GAME_HEIGHT * 0.20f,
+                    GameHandler.GAME_WIDTH * 0.3f, GameHandler.GAME_HEIGHT * 0.07f);
             shape.end();
 
 
@@ -163,7 +160,32 @@ public class World {
             gameOverFont.draw(batch, "Game over!", GameHandler.GAME_WIDTH * 0.1f,
                     GameHandler.GAME_HEIGHT * 0.39f);
             tryAgainFont.draw(batch, "Try Again", GameHandler.GAME_WIDTH * 0.37f,
-                    GameHandler.GAME_HEIGHT * 0.28f);
+                    GameHandler.GAME_HEIGHT * 0.24f);
+            batch.end();
+        }
+
+        if (gameBoard.isWon()) {
+            shape.begin(ShapeRenderer.ShapeType.Filled);
+            shape.setColor(33, 150, 243, 0.7f);
+            shape.rect(0, 0, GameBoard.BOARD_WIDTH, GameBoard.BOARD_HEIGHT);
+            shape.end();
+
+            // Try Again box (shape)
+            shape.begin(ShapeRenderer.ShapeType.Filled);
+            shape.setColor(Color.valueOf("#8f7a66"));
+            shape.rect(GameHandler.GAME_WIDTH * 0.33f, GameHandler.GAME_HEIGHT * 0.20f,
+                    GameHandler.GAME_WIDTH * 0.3f, GameHandler.GAME_HEIGHT * 0.07f);
+            shape.end();
+
+
+            // Ok You Win font (text)
+            batch.begin();
+            okWinFont.setColor(Color.valueOf("#424242"));
+            tryAgainFont.setColor(Color.valueOf("#faf8ef"));
+            okWinFont.draw(batch, "Ok, You Win!", GameHandler.GAME_WIDTH * 0.05f,
+                    GameHandler.GAME_HEIGHT * 0.39f);
+            tryAgainFont.draw(batch, "Try Again", GameHandler.GAME_WIDTH * 0.37f,
+                    GameHandler.GAME_HEIGHT * 0.24f);
             batch.end();
         }
 
@@ -179,16 +201,16 @@ public class World {
         newGameFont.setColor(Color.valueOf("#faf8ef"));
         statementFont.setColor(Color.valueOf("#776e65"));
         scoreLabelFont.draw(batch, "SCORE", GameHandler.GAME_WIDTH * 0.56f,
-                                            GameHandler.GAME_HEIGHT * 0.9f);
+                GameHandler.GAME_HEIGHT * 0.9f);
 
         //draw score
         float scoreFontX = Assets.getCenterAlignmentPositionX(GameHandler.GAME_WIDTH * 0.2f, GameHandler.GAME_WIDTH * 0.52f
-                , String.format("%s", score).length(), scoreFont.getSpaceWidth()*3);
-        scoreFont.draw(batch, String.format("%s", score),scoreFontX,
-                                     GameHandler.GAME_HEIGHT * 0.86f);
+                , String.format("%s", score).length(), scoreFont.getSpaceWidth() * 3);
+        scoreFont.draw(batch, String.format("%s", score), scoreFontX,
+                GameHandler.GAME_HEIGHT * 0.86f);
 
         bestLabelFont.draw(batch, "BEST", GameHandler.GAME_WIDTH * 0.81f,
-                                        GameHandler.GAME_HEIGHT * 0.9f);
+                GameHandler.GAME_HEIGHT * 0.9f);
 
         //draw highscore
 
@@ -198,13 +220,21 @@ public class World {
                 String.format("%s", Assets.bestScore).length(), scoreFont.getSpaceWidth() * 3);
         bestScoreFont.draw(batch, String.format("%s", Assets.bestScore), highScoreFontX, GameHandler.GAME_HEIGHT * 0.86f);
         titleFont.draw(batch, "日本", GameHandler.GAME_WIDTH * 0.049f,
-                                      GameHandler.GAME_HEIGHT * 0.94f);
+                GameHandler.GAME_HEIGHT * 0.94f);
         titleFont2.draw(batch, "Kanji Number", GameHandler.GAME_WIDTH * 0.05f,
-                                        GameHandler.GAME_HEIGHT * 0.84f);
+                GameHandler.GAME_HEIGHT * 0.84f);
         newGameFont.draw(batch, "New Game", GameHandler.GAME_WIDTH * 0.675f,
-                                        GameHandler.GAME_HEIGHT * 0.756f);
+                GameHandler.GAME_HEIGHT * 0.756f);
         statementFont.draw(batch, "Get to the 百 tile!", GameHandler.GAME_WIDTH * 0.05f,
-                                        GameHandler.GAME_HEIGHT * 0.75f);
+                GameHandler.GAME_HEIGHT * 0.75f);
+
+        batch.end();
+
+        batch.begin();
+        batch.draw(homeButton, GameHandler.GAME_WIDTH * 0.69f, GameHandler.GAME_HEIGHT * 0.71f,
+                GameHandler.GAME_WIDTH * 0.12f, GameHandler.GAME_HEIGHT * 0.07f);
+        batch.draw(replayButton, GameHandler.GAME_WIDTH * 0.84f, GameHandler.GAME_HEIGHT * 0.71f,
+                GameHandler.GAME_WIDTH * 0.12f, GameHandler.GAME_HEIGHT * 0.07f);
         batch.end();
     }
 
@@ -212,24 +242,22 @@ public class World {
         // New Game listener
         if (Gdx.input.justTouched()) {
             // new_game_button
-            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.66f
-                    && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.66f + 0.30f)
+            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.84f
+                    && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.84f + 0.12f)
                     && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07)
                     && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f)) {
                 gameBoard.dispose();
                 gameBoard = GameBoard.generate();
-
             }
             //todo home_button
-//            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.66f
-//                    && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.66f + 0.30f)
-//                    && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07f + 0.1f  )
-//                    && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f + 0.1f)) {
-//
-//                cpanel.set(new MainGameModule(gameHandler, cpanel));
-//            }
+            if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.69f
+                    && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.69f + 0.12f)
+                    && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.71f - 0.07f)
+                    && Gdx.input.getY() <= GameHandler.GAME_HEIGHT * (1 - 0.71f)) {
+                cpanel.set(new MainGameModule(gameHandler, cpanel));
+            }
 
-            if (gameBoard.isDead()) {
+            if (gameBoard.isDead() || gameBoard.isWon()) {
                 if (Gdx.input.getX() >= GameHandler.GAME_WIDTH * 0.33f
                         && Gdx.input.getX() <= GameHandler.GAME_WIDTH * (0.33f + 0.3f)
                         && Gdx.input.getY() >= GameHandler.GAME_HEIGHT * (1 - 0.23f - 0.07f)
@@ -240,7 +268,6 @@ public class World {
             }
         }
     }
-
 
 
     public void tick() {
@@ -264,6 +291,7 @@ public class World {
         gameBoard.dispose();
         shape.dispose();
         gameOverFont.dispose();
+        okWinFont.dispose();
         scoreLabelFont.dispose();
         scoreFont.dispose();
         titleFont.dispose();
@@ -273,5 +301,7 @@ public class World {
         bestScoreFont.dispose();
         statementFont.dispose();
         tryAgainFont.dispose();
+        homeButton.dispose();
+        replayButton.dispose();
     }
 }

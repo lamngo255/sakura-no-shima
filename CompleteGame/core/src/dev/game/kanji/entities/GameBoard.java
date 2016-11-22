@@ -168,6 +168,9 @@ public class GameBoard {
     }
 
     public void update() {
+        if (dead || won) {
+            return;
+        }
         checkKey();
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
@@ -175,7 +178,7 @@ public class GameBoard {
                 if (current == null) continue;
                 current.update(); // do nothing
                 resetPosition(current, row, col);
-                if (current.getValue().equals("さ")) {
+                if (current.getValue().equals("百")) {
                     won = true;
                 }
             }
@@ -412,6 +415,10 @@ public class GameBoard {
 
     public boolean isDead() {
         return this.dead;
+    }
+
+    public boolean isWon() {
+        return this.won;
     }
 
     public void dispose() {

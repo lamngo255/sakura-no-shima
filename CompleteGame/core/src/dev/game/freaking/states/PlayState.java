@@ -221,7 +221,9 @@ public class PlayState extends State {
         Random rand = new Random(System.nanoTime() / 100);
         trueLT = alphabets.get(currentAlphabet).getLatin();
         int index = rand.nextInt(alphabets.size());
-        while (currentAlphabet == index) {
+        while (alphabets.get(currentAlphabet).getLatin().equalsIgnoreCase(
+                alphabets.get(index).getLatin()
+        )) {
             index = rand.nextInt(alphabets.size());
         }
         String falseLT = alphabets.get(index).getLatin();
