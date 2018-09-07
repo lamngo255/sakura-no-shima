@@ -4,9 +4,9 @@
 
 Nhà phát triển : Trất’s Team 
 ## Đặc tả kĩ thuật :
-• Ngôn ngữ lập trình : Java 
-• Công nghệ : libGdx.
-• Nền tảng : Android, IOS, Desktop.
+ - Ngôn ngữ lập trình : Java 
+ - Công nghệ : libGdx.
+ - Nền tảng : Android, IOS, Desktop.
 
 ## Giới thiệu nội dung cốt truyện :
 Ở phía đông xa xôi của địa cầu, có một hòn đảo quanh năm Hoa anh đào nở - người ta hay gọi vùng đất này là Sakura No Shima – Quần đảo Hoa anh đào. Ở nơi này con người rất hiền hòa, nhân hậu , họ sống với nhau cũng rất hạnh phúc.
