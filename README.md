@@ -1,6 +1,5 @@
 # Trất's Team © Official Repository
 
-# CDI07 – Sakura No Shima
 ![Sakura No Shima](https://i.imgur.com/10t9fWZ.jpg)
 
 Nhà phát triển : Trất’s Team 
