@@ -1,9 +1,9 @@
-# tratteam-game-project
-Trất's Team © Official Game Repository
+# Trất's Team © Official Repository
 
-<3 CDI07 – Sakura No Shima
+# CDI07 – Sakura No Shima
 ![Sakura No Shima](https://i.imgur.com/10t9fWZ.jpg)
-## Nhà phát triển : Trất’s Team 
+
+Nhà phát triển : Trất’s Team 
 ## Đặc tả kĩ thuật :
 • Ngôn ngữ lập trình : Java 
 • Công nghệ : libGdx.
