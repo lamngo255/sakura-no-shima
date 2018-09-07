@@ -1,4 +1,4 @@
-# Trất's Team © Sakura No Shima (Cherry Blossom's Island)
+# Trất's Team - Sakura No Shima
 
 ![Sakura No Shima](https://i.imgur.com/10t9fWZ.jpg)
 
